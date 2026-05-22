@@ -1,0 +1,22 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% set pages = [
+    { url: "/", priority: "0.8" },
+    { url: "/about/", priority: "0.8" },
+    { url: "/pricing/", priority: "0.8" },
+    { url: "/contacts/", priority: "0.8" },
+    { url: "/contacts/message-sent-successfully/", priority: "0.2" }
+  ] %}
+  {% for p in pages %}
+  <url>
+    <loc>{{ site.seo.siteUrl }}{{ p.url }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>{{ p.priority }}</priority>
+    <lastmod>{{ buildDate }}</lastmod>
+  </url>
+  {% endfor %}
+</urlset>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ site.brand.language }}">
+<head>
+  <meta charset="UTF-8">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="bg_BG">
+  <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ site.seo.defaultTitle }}{% endif %}">
+  <meta property="og:description" content="{% if description %}{{ description }}{% else %}{{ site.seo.defaultDescription }}{% endif %}">
+  <meta property="og:url" content="{{ site.seo.siteUrl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.brand.name }}">
+  <meta property="og:image" content="{{ site.seo.siteUrl }}{{ site.seo.ogImage }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="description" content="{% if description %}{{ description }}{% else %}{{ site.seo.defaultDescription }}{% endif %}">
+  <link rel="canonical" href="{{ site.seo.siteUrl }}{{ page.url }}">
+  <title>{% if title %}{{ title }}{% else %}{{ site.seo.defaultTitle }}{% endif %}</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" style="width: 32px; height: 32px">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.gaId }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.gaId }}');
+</script>
+
+<body>
+
+<div class="site">
+
+    <header>
+        {% include "header.njk" %}
+    </header>
+
+    <main>
+        {{ content | safe }}
+    </main>
+
+    <footer>
+        {% include "footer.njk" %}
+    </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+#work-road-wrapper {
+    padding: 4em 1em 5em 1em;
+    width: 100%;
+    background-color: #F8EDE3;
+}
+
+#work-road-section {
+    margin: 0 auto;
+    width: 90%;
+    /*height: 100%;*/
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+}
+
+#work-road-text-container {
+    font-size: 1.1em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#work-road-text-container h2 span {
+    color: #F18B5D;
+}
+
+
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+
+
+#work-road-cards-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2em;
+    padding-bottom: 2em;
+}
+
+.work-road-card {
+    /*padding: 1em;*/
+    min-width: 20em;
+    max-width: 20em;
+    height: 22em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 25px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+
+
+.work-road-card-image-section {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.work-road-card-image {
+    width: 65%;
+    height: 90%;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center;
+}
+
+.work-road-card-image img {
+    width: 100%;
+    height: 100%;
+}
+
+#work-road-cards-section > div:nth-child(3) > div.work-road-card-image-section > div {
+    width: 80%;
+}
+
+
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+
+
+.work-road-card-text {
+    width: 90%;
+    height: 20%;
+}
+
+.work-road-card h3 {
+    width: 90%;
+    margin: auto;
+    color: #424551;
+    font-size: 1.3em;
+    margin-bottom: 0.3em;
+}
+
+.work-road-card p {
+    width: 90%;
+    margin: auto;
+}
+
+@media (max-width: 1300px) {
+
+    #work-road-cards-section {
+        overflow-x: auto;
+    }
+
+    .work-road-card {
+        padding: 1em 0;
+        min-width: 15em;
+        max-width: 10em;
+        height: 20em;
+        justify-content: flex-start;
+    }
+
+
+}
+
+
+@media (max-width: 800px) {
+
+    #work-road-section {
+        gap: 2em;
+    }
+
+    #work-road-wrapper {
+        padding: 2em 0;
+    }
+
+    #work-road-cards-section {
+        overflow-x: auto;
+        padding-right: 0.5em;
+    }
+
+    .work-road-card {
+        padding: 1em 0;
+        min-width: 15em;
+        max-width: 10em;
+        height: 18em;
+        justify-content: flex-start;
+    }
+
+    .work-road-card-text {
+        font-size: 0.9em;
+    }
+
+
+}
+
+@media (max-width: 570px) {
+
+    #work-road-cards-section {
+        overflow-x: auto;
+        padding-right: 0.5em;
+    }
+
+    .work-road-card {
+        padding: 1.5em 0;
+        min-width: 14em;
+        max-width: 10em;
+        height: 18em;
+        justify-content: flex-start;
+    }
+
+    .work-road-card-text {
+        font-size: 0.9em;
+    }
+
+
+    #work-road-text-container {
+        align-items: flex-start;
+    }
+
+}

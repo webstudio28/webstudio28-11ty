@@ -1,0 +1,147 @@
+#overlay-button {
+        position: absolute;
+        right: 2em;
+        top: 1.5em;
+        padding: 26px 11px;
+        z-index: 5;
+        cursor: pointer;
+        user-select: none;
+
+        span {
+            height: 0.2em;
+            width: 1.5em;
+            border-radius: 2px;
+            background-color: #112D4E;
+            position: relative;
+            display: block;
+            transition: all .2s ease-in-out;
+
+            &:before {
+                top: 0.5em;
+                visibility: visible;
+            }
+
+            &:after {
+                top: -0.5em;
+            }
+
+            &:before, &:after {
+            height: 0.2em;
+            width: 1.5em;
+                border-radius: 2px;
+                background-color: #112D4E;
+                position: absolute;
+                content: "";
+                transition: all 0.5s ease-in-out;
+            }
+        }
+
+        &:hover span, &:hover span:before, &:hover span:after {
+            background: #112D4E;
+        }
+    }
+
+    input[type=checkbox] {
+        display: none;
+
+        &:checked ~ #overlay {
+            visibility: visible;
+        }
+
+        &:checked ~ #overlay-button {
+            &:hover span, span {
+                background: transparent;
+            }
+
+            span {
+                &:before {
+                    transform: rotate(45deg) translate(7px, 7px);
+                    opacity: 0.5;
+                }
+
+                &:after {
+                    transform: rotate(-45deg) translate(7px, -7px);
+                    top: 1.8em;
+                }
+            }
+        }
+    }
+
+    #overlay {
+            position: fixed; /* Use fixed positioning to avoid affecting the layout */
+    top: 0;
+    left: 0;
+    height: zvh;
+    width: 100vw;
+    background: #F9F7F7;
+    z-index: 2;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    pointer-events: none; /* Prevent interactions when hidden */
+    transition: opacity 0.5s ease-in-out, visibility 0s 0.5s; /* Transition opacity */
+
+        &.active {
+                    display: block; /* Show when active */
+        visibility: visible;
+        transform: translateX(0);
+        transition: transform 0.5s ease-in-out, visibility 0s;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            height: 100vh;
+            padding-left: 0;
+            list-style-type: none;
+
+            li {
+                padding: 1em;
+
+                a {
+                    color: #3F72AF;
+                    text-decoration: none;
+                    font-size: 2em;
+                    font-weight: 500;
+
+                    &:hover {
+                        color: #333332;
+                    }
+                }
+            }
+        }
+    }
+
+input[type=checkbox]:checked ~ #overlay {
+    opacity: 1; /* Make visible */
+    visibility: visible; /* Make interactive */
+    pointer-events: auto; /* Enable interaction when visible */
+    transition: opacity 0.5s ease-in-out, visibility 0s; /* Transition opacity */
+    z-index: 10;
+}
+
+input[type=checkbox]:checked ~ #overlay-button {
+    z-index: 11;
+}
+
+/* When checkbox is checked, prevent page scrolling */
+input[type=checkbox]:checked ~ body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+
+#mobile-nav {
+    display: none;
+}
+
+
+@media (max-width: 920px) {
+
+    #mobile-nav {
+        display: block;
+    }
+
+}

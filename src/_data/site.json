@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "name": "WebStudio28",
+    "language": "bg"
+  },
+  "colors": {
+    "bg": "#F9F7F7",
+    "text": "#404040",
+    "heading": "#112D4E",
+    "accent": "#F18B5D"
+  },
+  "seo": {
+    "siteUrl": "https://www.webstudio28.com",
+    "defaultTitle": "Web Studio 28",
+    "defaultDescription": "От вашата идея до професионален и модерен уебсайт. Персонализирани решения за всеки клиент.",
+    "ogImage": "/assets/images/socials-paste.png",
+    "twitterCard": "summary_large_image"
+  },
+  "nav": [
+    { "label": "Начало", "url": "/" },
+    { "label": "За нас", "url": "/about/" },
+    { "label": "Услуги", "url": "/pricing/" },
+    { "label": "Контакти", "url": "/contacts/" }
+  ],
+  "contact": {
+    "phone": "+359892907007",
+    "email": "bgwebstudio28@gmail.com",
+    "address": "Бул. Васил Априлов 49, гр.Пловдив",
+    "mapsUrl": "https://www.google.com/maps?q=Бул.+Васил+Априлов+49,+Пловдив"
+  },
+  "analytics": {
+    "gaId": "G-R3DVEX9Z67"
+  },
+  "forms": {
+    "web3formsKey": "81d8ffaf-416a-4ffc-9fde-b7b661fe90d8",
+    "redirectUrl": "https://www.webstudio28.com/contacts/message-sent-successfully/"
+  },
+  "calendly": {
+    "url": "https://calendly.com/andon-go6ev/30min"
+  }
+}

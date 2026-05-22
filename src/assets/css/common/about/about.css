@@ -1,0 +1,30 @@
+#about-wrapper {
+    padding: 2em 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5em;
+    margin-bottom: 7em;
+}
+
+@media (max-width: 1200px) {
+
+    #about-wrapper {
+        gap: 3em;
+    }
+
+}
+
+#about-wrapper {
+    margin-bottom: 1em;
+}
+
+@media (max-width: 800px) {
+
+    #about-wrapper {
+        gap: 2em;
+    }
+
+}
+

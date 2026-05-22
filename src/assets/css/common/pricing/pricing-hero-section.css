@@ -1,0 +1,136 @@
+#pricing-hero-wrapper {
+    position: relative;
+    width: 100%;
+    height: 25em;
+    display: flex;
+    justify-content: center;
+}
+
+#pricing-hero-container {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#pricing-hero-left-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+#pricing-hero-right-section {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pricing-hero-image {
+    width: 25em;
+    height: 25em;
+    overflow: hidden;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#pricing-hero-image img {
+    width: 100%;
+    height: 100%;
+}
+
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+
+
+#pricing-heading-container {
+    font-size: 1.2em;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#pricing-action-section {
+    width: 50%;
+    display: flex;
+}
+
+#pricing-action-buttons-section {
+    width: 100%;
+    display: flex;
+    gap: 3em;
+}
+
+
+@media (max-width: 1200px) {
+
+    #pricing-heading-container {
+        width: 70%;
+    }
+
+    #pricing-hero-image {
+        width: 15em;
+        height: 15em;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    #pricing-heading-container {
+        font-size: 1em;
+        width: 100%;
+    }
+
+    #pricing-hero-image {
+        /*width: 80%;*/
+        /*height: 60%;*/
+    }
+
+}
+
+
+@media (max-width: 570px) {
+
+    #pricing-hero-wrapper {
+        height: 14em;
+    }
+
+    #pricing-heading-container {
+        font-size: 1em;
+        width: 100%;
+    }
+
+    #pricing-hero-image {
+        width: 10em;
+        height: 10em;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    #pricing-hero-wrapper {
+        height: 12em;
+    }
+
+    /*#pricing-heading-container {*/
+    /*    font-size: 0.8em;*/
+    /*    width: 100%;*/
+    /*}*/
+
+    #pricing-hero-image {
+        width: 8em;
+        height: 8em;
+    }
+
+}

@@ -1,0 +1,121 @@
+#home-bottom-section {
+    margin-top: -3em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+#home-bottom-roadmap-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#roadmap-text-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#roadmap-buttons-section {
+    height: 5em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+#road-map-link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #497D74;
+    border-color: rgba(255, 255, 255, 0.333);
+    border-radius: 40px 40px 40px 40px;
+    padding: 16px 24px 16px 28px;
+    transform: translate(0px, 0px) rotate(0deg);
+    transition: 0.2s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#road-map-link-button:hover {
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+#road-map-link-button:active {
+    box-shadow: none;
+}
+
+#contacts-link-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #35546E;
+    border-color: rgba(255, 255, 255, 0.333);
+    border-radius: 25px;
+    padding: 16px 24px 16px 28px;
+    transform: translate(0px, 0px) rotate(0deg);
+    transition: 0.2s;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#contacts-link-button:hover {
+    cursor: pointer;
+    background-color: #2b4357;
+    font-size: 0.9em;
+}
+
+#contacts-link-button:active {
+    box-shadow: none;
+}
+
+#home-bottom-section img {
+    display: none;
+}
+
+@media (max-width: 570px) {
+
+    #home-bottom-section {
+        margin-bottom: 2em;
+        position: relative;
+        width: 120vw;
+        align-items: flex-start;
+    }
+
+    #home-bottom-section img {
+        left: -10%;
+        bottom: -120%;
+        display: inline;
+        position: absolute;
+        width: 120%;
+        height: 300%;
+        rotate: 165deg;
+        opacity: 0.8;
+    }
+
+    #roadmap-text-section > h1 {
+        display: none;
+    }
+
+    #roadmap-text-section > p {
+        display: none;
+    }
+
+
+}

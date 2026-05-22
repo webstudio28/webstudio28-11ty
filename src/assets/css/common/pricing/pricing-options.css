@@ -1,0 +1,155 @@
+#pricing-options-wrapper {
+    width: 100%;
+    /*height: 30em;*/
+}
+
+#pricing-options-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#pricing-cards {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    align-items: center;
+}
+
+.pricing-card {
+    background-color: white;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+    padding: 1em;
+    width: 20em;
+    height: 28em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    overflow: hidden;
+}
+
+.pricing-card-title {
+}
+
+.pricing-card-title h2 {
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    background-color: #325883;
+    color: #fff;
+    padding: 0.2em 0.5em 0.2em 1.5em;
+    margin-left: -1.5em;
+    border-radius: 15px;
+}
+
+
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+
+.pricing-card-heading h3 {
+    font-size: 1.4em;
+}
+
+.pricing-card-heading p {
+    color: #3e3e3e;
+}
+
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+/*,*/
+
+.pricing-card-features {
+    width: 100%;
+    background-color: #f6f7fd;
+    border-radius: 15px;
+    padding: 0.5em ;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    color: #112D4E;
+}
+
+
+
+#pricing-cards > div:nth-child(2) {
+    width: 23em;
+    height: 30em;
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+#pricing-cards > div:nth-child(2) > div.pricing-card-title > h2 {
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    font-size: 1.6em;
+}
+
+#pricing-cards > div:nth-child(2) > div.pricing-card-heading > h3 {
+    font-size: 1.5em;
+}
+
+#pricing-cards > div:nth-child(2) > div.pricing-card-heading > p {
+    font-size: 1.1em;
+}
+
+#pricing-cards > div:nth-child(2) > div.pricing-card-features {
+    font-size: 1em;
+}
+
+.pricing-card-features p span {
+    color: green;
+}
+
+
+@media (max-width: 1200px) {
+
+    #pricing-cards {
+        padding: 2em;
+    }
+
+    .pricing-card {
+        width: 18em;
+        height: 25em;
+        gap: 0.5em;
+    }
+
+    #pricing-cards > div:nth-child(2) {
+        width: 22em;
+        height: 28em;
+    }
+
+}
+
+
+@media (max-width: 900px) {
+
+    #pricing-cards {
+        padding: 2em;
+        flex-wrap: wrap;
+    }
+
+    .pricing-card {
+        width: 25em;
+        height: 26em;
+        gap: 0.5em;
+    }
+
+    #pricing-cards > div:nth-child(2) {
+        width: 25em;
+        height: 26em;
+        order: -1;
+    }
+
+    .pricing-card-title {
+        font-size: 0.8em;
+    }
+
+}

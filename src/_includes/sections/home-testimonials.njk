@@ -1,0 +1,198 @@
+<section id="testimonials">
+
+    <div id="testimonials-heading">
+
+        <p>Отзиви</p>
+        <h2>Част от нашите клиенти и проектите, които създадохме за тях</h2>
+
+    </div>
+
+    <div id="partydrinks-section" class="t-card">
+
+        <h3><a target="_blank" href="https://www.partydrinks.bg" class="website-link">www.partydrinks.bg</a> - Цялостен редизайн на най-големият сайт за алкохолни напитки в България.</h3>
+
+        <div class="design-comparison-container">
+
+            <img src="/assets/images/partydrinks-old.png" alt="Old Design" class="image-before">
+            <img src="/assets/images/partydrinks-new.png" alt="New Design" class="image-after">
+            <div class="slider-bar">
+                <div class="slider-handle"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="testimonials-cards">
+
+        <div class="t-card">
+
+            <div class="website-media">
+
+                <a href="https://www.airevest.com" target="_blank"><img alt="Сайт на Симеон Гатев" src="/assets/images/airevest.png"></a>
+
+            </div>
+
+            <a target="_blank" href="https://www.airevest.com" class="website-link">www.airevest.com</a>
+
+            <p>Изключително доволен съм от Webstudio28! Много ми помогнаха да изчистя идеята си и я реализираха по
+                най-добрия начин. Отлична комуникация, професионализъм и внимание към детайла!
+            </p>
+
+            <hr>
+
+            <div class="name-stars">
+
+                <p><img class="profile-img" src="/assets/images/simeon-gatev.jpeg" alt="Симеон Гатев">Симеон
+                    Гатев</p>
+
+                <div class="star-rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="t-card">
+
+            <div class="website-media">
+
+                <a href="https://www.rosi-yovcheva.com" target="_blank"><img
+                        src="/assets/images/rosi-yovcheva.png" alt="Сайт на Роси Йовчева"></a>
+
+            </div>
+
+            <a target="_blank" href="https://www.rosi-yovcheva.com" class="website-link">www.rosi-yovcheva.com</a>
+
+            <p>Не вярвах, че правенето на сайт може да е толкова лесно и бързо! Почти без думи ме разбраха, всичко
+                беше светкавично. Сайтът напълно отразява мен и моята работа – и хората го усещат още с първото влизане.</p>
+
+            <hr>
+
+            <div class="name-stars">
+
+                <p><img class="profile-img" src="/assets/images/rosi-yovcheva.jpg" alt="Роси Йовчева профилна снимка">Роси
+                    Йовчева</p>
+
+                <div class="star-rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="t-card">
+
+            <div class="website-media">
+
+                <a href="https://www.darsimoti.com" target="_blank"><img alt="Сайт на Снежана Шкодрова" src="/assets/images/darsimoti.png"></a>
+
+            </div>
+
+            <a target="_blank" href="https://www.darsimoti.com" class="website-link">www.darsimoti.com</a>
+
+            <p>Преди ми предлагаха сложни и тежки софтуерни решения, които не отговаряха на нуждите ми. Тук обаче за
+                първи път някой наистина разбра какво искам – модерен, изчистен сайт, който точно отразява бизнеса ми,
+                без нищо излишно.</p>
+
+            <hr>
+
+            <div class="name-stars">
+
+                <p><img class="profile-img" src="/assets/images/snejana-shkodrova.jpg" alt="Профилна снимка Снежана Шкодрова">Снежана
+                    Шкодрова</p>
+
+                <div class="star-rating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.from(".t-card", {
+                scrollTrigger: {
+                    trigger: "#testimonials-cards",
+                    start: "top 75%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 0,
+                y: 40,
+                duration: 1,
+                stagger: 0.6,
+                ease: "power2.out"
+            });
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const container = document.querySelector('.design-comparison-container');
+        if (!container) return;
+        const slider = container.querySelector('.slider-bar');
+        const imageBefore = container.querySelector('.image-before');
+        const imageAfter = container.querySelector('.image-after');
+
+        let isDragging = false;
+
+        const startDragging = (e) => {
+            isDragging = true;
+            const event = e.touches ? e.touches[0] : e;
+            slider.style.transition = 'none';
+            document.body.style.cursor = 'ew-resize';
+            document.body.style.userSelect = 'none';
+        };
+
+        const stopDragging = () => {
+            isDragging = false;
+            slider.style.transition = '';
+            document.body.style.cursor = 'default';
+            document.body.style.userSelect = 'auto';
+        };
+
+        const onDrag = (e) => {
+            if (!isDragging) return;
+            const event = e.touches ? e.touches[0] : e;
+            const rect = container.getBoundingClientRect();
+            let offsetX = event.clientX - rect.left;
+            offsetX = Math.max(0, Math.min(offsetX, rect.width));
+            const percent = (offsetX / rect.width) * 100;
+            slider.style.left = `${percent}%`;
+            imageAfter.style.clipPath = `inset(0 0 0 ${percent}%)`;
+            imageBefore.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
+        };
+
+        slider.addEventListener('mousedown', startDragging);
+        slider.addEventListener('touchstart', startDragging);
+        document.addEventListener('mouseup', stopDragging);
+        document.addEventListener('touchend', stopDragging);
+        document.addEventListener('mousemove', onDrag);
+        document.addEventListener('touchmove', onDrag);
+    });
+</script>

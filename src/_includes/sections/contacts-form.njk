@@ -1,0 +1,75 @@
+<div id="contacts-wrapper">
+
+    <div id="contacts-ct">
+
+        <div id="contacts">
+
+            <div id="contacts-phone"><img src="/assets/images/standards1.png"></div>
+
+            <div id="contacts-inner-ct">
+
+                <h1>Контакти</h1>
+
+                <div id="contact-containers">
+
+                    <div class="contact-ct">
+
+                        <h3>Телефон</h3>
+                        <a href="tel:+359892907007"><img src="/assets/images/f-phone.png">+359892907007</a>
+
+                    </div>
+
+                    <div class="contact-ct">
+
+                        <h3>Имейл</h3>
+                        <a><img src="/assets/images/f-email.png">bgwebstudio28@gmail.com</a>
+
+                    </div>
+
+                    <div class="contact-ct">
+
+                        <h3>Адрес</h3>
+                        <a href="https://www.google.com/maps?q=Бул.+Васил+Априлов+49,+Пловдив" target="_blank">
+                            <img src="/assets/images/f-location.png" alt="Location">
+                            Бул. Васил Априлов 49, гр.Пловдив
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="contact-form-ct">
+
+            <div id="contacts-form-left-ct"></div>
+
+            <div id="contact-form-ct-inner">
+
+                <h1>Връзка с нас</h1>
+
+                <form action="https://api.web3forms.com/submit" method="POST">
+
+                    <input type="hidden" name="access_key" value="{{ site.forms.web3formsKey }}">
+
+                    <input type="text" name="name" required placeholder="Име и фамилия">
+                    <input type="email" name="email" required placeholder="Имейл">
+                    <textarea name="message" required placeholder="Съобщение"></textarea>
+
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <input type="hidden" name="redirect" value="{{ site.forms.redirectUrl }}">
+
+                    <button type="submit">Изпрати</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

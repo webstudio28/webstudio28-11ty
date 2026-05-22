@@ -1,0 +1,36 @@
+#contacts-page-wrapper {
+    margin: 3em 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10em;
+}
+
+@media (max-width: 1200px) {
+
+    #contacts-page-wrapper {
+        gap: 8em;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    #contacts-page-wrapper {
+        gap: 5em;
+    }
+
+}
+
+
+@media (max-width: 570px) {
+
+    #contacts-page-wrapper {
+        margin: 0 0 2em 0;
+    }
+
+    #contacts-page-wrapper {
+        gap: 1em;
+    }
+
+}

@@ -1,0 +1,29 @@
+#header-nav-section {
+    display: flex;
+    align-items: flex-end;
+    height: 4em;
+}
+
+#header-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+}
+
+#header-nav li {
+    color: #112D4E;
+    font-size: 1.1em;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+@media (max-width: 920px) {
+
+    #header-nav {
+        display: none;
+    }
+
+}

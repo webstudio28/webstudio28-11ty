@@ -1,0 +1,59 @@
+<div id="header-wrapper">
+
+    <a href="/">
+        <div id="header-logo-container"><img src="/assets/images/webstudio28-logo2.png"></div>
+    </a>
+
+    <div id="header-nav-section">
+
+        <ul id="header-nav">
+
+            <a href="/"><li>Начало</li></a>
+            <a href="/about/"><li>За нас</li></a>
+            <a href="/pricing/"><li>Услуги</li></a>
+            <a href="/contacts/"><li>Контакти</li></a>
+
+        </ul>
+
+        <div id="mobile-nav">
+
+            <input type="checkbox" id="overlay-input"/>
+
+            <label for="overlay-input" id="overlay-button"><span></span></label>
+
+            <div id="overlay">
+
+                <ul>
+
+                    <li><a href="/">Начало</a></li>
+                    <li><a href="/about/">За нас</a></li>
+                    <li><a href="/pricing/">Услуги</a></li>
+                    <li><a href="/contacts/">Контакти</a></li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const checkbox = document.getElementById('overlay-input');
+    const body = document.body;
+
+    function toggleBodyOverflow() {
+        if (checkbox.checked) {
+            body.style.overflow = 'hidden';
+            body.style.height = '100vh';
+        } else {
+            body.style.overflow = '';
+            body.style.height = '';
+        }
+    }
+
+    checkbox.addEventListener('change', toggleBodyOverflow);
+    toggleBodyOverflow();
+</script>
