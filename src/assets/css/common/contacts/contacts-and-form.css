@@ -7,7 +7,7 @@
 
 #contacts-ct {
     position: relative;
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: flex-end;
 }
@@ -191,7 +191,7 @@
         flex-direction: column;
         justify-content: center;
         gap: 3em;
-        width: 90%;
+        width: 100%;
     }
 
     #contacts {

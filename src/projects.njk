@@ -1,0 +1,41 @@
+---
+layout: base.njk
+permalink: /projects/
+title: Проекти
+description: Реализирани уебсайтове на WebStudio28 — портфолио от проекти за различни бизнеси.
+---
+
+<div id="projects-page-wrapper">
+
+    <div id="projects-hero-wrapper">
+        <div class="container-custom">
+            <div id="projects-hero">
+                <h1>Нашите проекти</h1>
+                <p>Реални сайтове за реални бизнеси — разгледайте част от работата ни.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-custom">
+        <div id="projects-grid">
+            {% for project in projects %}
+            {% if project.active %}
+            <article class="project-card">
+                <a href="/projects/{{ project.slug }}/" class="project-card-image-link">
+                    <img src="{{ project.thumbnail }}" alt="{{ project.title }}" loading="lazy" onerror="this.src='/assets/images/projects/placeholder.svg'">
+                </a>
+                <div class="project-card-body">
+                    <h2><a href="/projects/{{ project.slug }}/">{{ project.title }}</a></h2>
+                    <p>{{ project.description }}</p>
+                    <div class="project-card-actions">
+                        <a href="/projects/{{ project.slug }}/" class="project-card-link">Виж детайли</a>
+                        <a href="{{ project.link }}" class="project-card-link project-card-link-external" target="_blank" rel="noopener noreferrer">Към сайта</a>
+                    </div>
+                </div>
+            </article>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+</div>

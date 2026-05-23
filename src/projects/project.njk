@@ -1,0 +1,81 @@
+---
+---
+
+<div id="project-detail-wrapper">
+
+    <div class="container-custom">
+        <nav class="project-breadcrumb">
+            <a href="/projects/">← Всички проекти</a>
+        </nav>
+
+        <header class="project-detail-header">
+            <h1>{{ project.title }}</h1>
+            <p>{{ project.description }}</p>
+            <a href="{{ project.link }}" class="project-live-link" target="_blank" rel="noopener noreferrer">Посети сайта</a>
+        </header>
+
+        <div class="project-detail-thumbnail">
+            <img src="{{ project.thumbnail }}" alt="{{ project.title }}" onerror="this.src='/assets/images/projects/placeholder.svg'">
+        </div>
+
+        {% if project.gallery.length %}
+        <section class="project-gallery-section">
+            <h2>Снимки от проекта</h2>
+            <div class="project-gallery" id="project-gallery">
+                {% for image in project.gallery %}
+                <button type="button" class="project-gallery-item" data-src="{{ image }}" aria-label="Увеличи снимка {{ loop.index }}">
+                    <img src="{{ image }}" alt="{{ project.title }} — снимка {{ loop.index }}" loading="lazy" onerror="this.src='/assets/images/projects/placeholder.svg'">
+                </button>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+    </div>
+
+</div>
+
+<div id="project-gallery-modal" class="project-gallery-modal" hidden>
+    <div class="project-gallery-modal-backdrop"></div>
+    <div class="project-gallery-modal-content">
+        <button type="button" class="project-gallery-modal-close" aria-label="Затвори">×</button>
+        <img src="" alt="" id="project-gallery-modal-image">
+    </div>
+</div>
+
+<script>
+(function () {
+    const gallery = document.getElementById("project-gallery");
+    const modal = document.getElementById("project-gallery-modal");
+    if (!gallery || !modal) return;
+
+    const modalImage = document.getElementById("project-gallery-modal-image");
+    const closeBtn = modal.querySelector(".project-gallery-modal-close");
+    const backdrop = modal.querySelector(".project-gallery-modal-backdrop");
+
+    function openModal(src, alt) {
+        modalImage.src = src;
+        modalImage.alt = alt;
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+        modal.hidden = true;
+        modalImage.src = "";
+        document.body.style.overflow = "";
+    }
+
+    gallery.addEventListener("click", function (event) {
+        const item = event.target.closest(".project-gallery-item");
+        if (!item) return;
+        const img = item.querySelector("img");
+        openModal(item.dataset.src, img ? img.alt : "");
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    backdrop.addEventListener("click", closeModal);
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !modal.hidden) closeModal();
+    });
+})();
+</script>

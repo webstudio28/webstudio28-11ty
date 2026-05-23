@@ -19,6 +19,7 @@
   "nav": [
     { "label": "Начало", "url": "/" },
     { "label": "За нас", "url": "/about/" },
+    { "label": "Проекти", "url": "/projects/" },
     { "label": "Услуги", "url": "/pricing/" },
     { "label": "Контакти", "url": "/contacts/" }
   ],

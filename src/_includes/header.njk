@@ -1,3 +1,4 @@
+<div class="container-custom">
 <div id="header-wrapper">
 
     <a href="/">
@@ -8,10 +9,9 @@
 
         <ul id="header-nav">
 
-            <a href="/"><li>Начало</li></a>
-            <a href="/about/"><li>За нас</li></a>
-            <a href="/pricing/"><li>Услуги</li></a>
-            <a href="/contacts/"><li>Контакти</li></a>
+            {% for item in site.nav %}
+            <a href="{{ item.url }}"><li>{{ item.label }}</li></a>
+            {% endfor %}
 
         </ul>
 
@@ -25,10 +25,9 @@
 
                 <ul>
 
-                    <li><a href="/">Начало</a></li>
-                    <li><a href="/about/">За нас</a></li>
-                    <li><a href="/pricing/">Услуги</a></li>
-                    <li><a href="/contacts/">Контакти</a></li>
+                    {% for item in site.nav %}
+                    <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+                    {% endfor %}
 
                 </ul>
 
@@ -38,6 +37,7 @@
 
     </div>
 
+</div>
 </div>
 
 <script>

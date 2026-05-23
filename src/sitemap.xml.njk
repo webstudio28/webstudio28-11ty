@@ -7,6 +7,7 @@ eleventyExcludeFromCollections: true
   {% set pages = [
     { url: "/", priority: "0.8" },
     { url: "/about/", priority: "0.8" },
+    { url: "/projects/", priority: "0.8" },
     { url: "/pricing/", priority: "0.8" },
     { url: "/contacts/", priority: "0.8" },
     { url: "/contacts/message-sent-successfully/", priority: "0.2" }
@@ -18,5 +19,15 @@ eleventyExcludeFromCollections: true
     <priority>{{ p.priority }}</priority>
     <lastmod>{{ buildDate }}</lastmod>
   </url>
+  {% endfor %}
+  {% for project in projects %}
+  {% if project.active %}
+  <url>
+    <loc>{{ site.seo.siteUrl }}/projects/{{ project.slug }}/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <lastmod>{{ buildDate }}</lastmod>
+  </url>
+  {% endif %}
   {% endfor %}
 </urlset>

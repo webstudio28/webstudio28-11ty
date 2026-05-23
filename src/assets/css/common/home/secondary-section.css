@@ -1,5 +1,5 @@
 #secondary-section-wrapper {
-    width: 90%;
+    width: 100%;
     height: 15em;
 }
 
@@ -50,7 +50,7 @@
 @media (max-width: 800px) {
 
     #secondary-section-wrapper {
-        width: 90%;
+        width: 100%;
         height: 20em;
     }
 

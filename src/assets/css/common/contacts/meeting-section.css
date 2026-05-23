@@ -21,7 +21,7 @@
 }
 
 #meeting-options {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-grow: 1;
     justify-content: center;
@@ -46,7 +46,7 @@
 }
 
 #meeting-images {
-    padding: 0 2em;
+    padding: 0;
     position: relative;
     height: 100%;
     width: 50%;
@@ -120,7 +120,7 @@
     }
 
     #meeting-text > p {
-        width: 90%;
+        width: 100%;
     }
 
 }

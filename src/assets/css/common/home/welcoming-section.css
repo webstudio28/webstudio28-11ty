@@ -9,7 +9,7 @@
 }
 
 #heading-and-image-section {
-    width: 90%;
+    width: 100%;
     display: flex;
 }
 
@@ -49,33 +49,43 @@
 }
 
 #hero-actions {
-    background-color: #F18B5D;
-    background: rgb(108, 102, 99);
-    background: linear-gradient(121deg, rgba(108, 102, 99, 1) 0%, rgba(213, 130, 113, 1) 23%, rgba(204, 129, 196, 1) 47%, rgba(136, 138, 208, 1) 84%, rgba(186, 181, 181, 1) 100%);
     width: 100%;
-    height: 2em;
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1em;
-    border-radius: 10px;
-    overflow: hidden;
+    margin-top: 0.5em;
 }
 
-#hero-actions a {
-    gap: 0.5em;
-    font-size: 0.8em;
-    color: #e1e1e1;
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 0.75em;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    padding: 1em 1.5em;
+    border-radius: 40px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.35);
+    transition: 0.2s;
+    white-space: nowrap;
 }
 
-#hero-actions {
-    gap: 0.5em;
+.hero-cta:hover {
+    cursor: pointer;
+    transform: translateY(-1px);
+    filter: brightness(1.05);
 }
 
-#hero-actions a img {
-    vertical-align: bottom;
-    width: 1.5em;
-    margin-right: 0.2em;
+.hero-cta-primary {
+    background-color: #497D74;
+}
+
+.hero-cta-secondary {
+    background-color: #35546E;
 }
 
 
@@ -89,11 +99,10 @@
         font-size: 3em;
     }
 
-    #hero-actions a {
-    gap: 0.5em;
-    font-size: 0.7em;
-    color: #e1e1e1;
-}
+    .hero-cta {
+        font-size: 0.65em;
+        padding: 0.9em 1.2em;
+    }
 
 }
 
@@ -168,14 +177,15 @@
 
     #hero-actions {
         margin-top: 1em;
-        gap: 0.2em;
-        width: 90vw;
-        /*margin-left: -8%;*/
-        border-radius: 15px;
+        gap: 0.6em;
+        width: 100%;
     }
 
-    #hero-actions a {
-        font-size: 0.5em;
+    .hero-cta {
+        font-size: 0.55em;
+        padding: 0.85em 1em;
+        flex: 1 1 auto;
+        min-width: 8em;
     }
 
 }

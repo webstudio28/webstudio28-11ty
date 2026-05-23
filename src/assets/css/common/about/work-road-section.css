@@ -1,12 +1,12 @@
 #work-road-wrapper {
-    padding: 4em 1em 5em 1em;
+    padding: 4em 0 5em 0;
     width: 100%;
     background-color: #F8EDE3;
 }
 
 #work-road-section {
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
     /*height: 100%;*/
     display: flex;
     flex-direction: column;
@@ -97,12 +97,12 @@
 
 
 .work-road-card-text {
-    width: 90%;
+    width: 100%;
     height: 20%;
 }
 
 .work-road-card h3 {
-    width: 90%;
+    width: 100%;
     margin: auto;
     color: #424551;
     font-size: 1.3em;
@@ -110,7 +110,7 @@
 }
 
 .work-road-card p {
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 

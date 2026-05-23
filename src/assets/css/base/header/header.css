@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    padding: 1em 4.2em;
+    padding: 1em 0;
     /*background-color: #F9F7F7;*/
 }
 
@@ -15,13 +15,13 @@ header {
 
 @media (max-width: 1200px) {
     header {
-        padding: 0.5em 2em;
+        padding: 0.5em 0;
     }
 }
 
 @media (max-width: 570px) {
     header {
-        padding: 0.5em 2em;
+        padding: 0.5em 0;
     }
 }
 
