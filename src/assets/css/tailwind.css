@@ -1,5 +1,7 @@
-/* Tailwind entry — utilities only (no Preflight; site typography lives in styles.css) */
+/* Tailwind utilities + components only — Preflight is disabled in tailwind.config.js
+   so site typography in styles.css stays intact (Jost, custom headings, etc.) */
 @tailwind components;
+@tailwind utilities;
 
 @layer components {
   .container-custom {

@@ -1,59 +1,53 @@
-<div class="container-custom">
-<div id="header-wrapper">
+{% set nav = site.nav %}
+<header class="site-header">
+  <div class="container-custom">
+    <div class="site-header__surface js-header-surface">
 
-    <a href="/">
-        <div id="header-logo-container"><img src="/assets/images/webstudio28-logo2.png"></div>
-    </a>
+      <a href="/" class="site-header__brand" aria-label="Web Studio 28 — Начало">
+        <img src="/assets/images/webstudio28-logo2.png" alt="Web Studio 28">
+      </a>
 
-    <div id="header-nav-section">
+      <nav class="site-header__nav" aria-label="Основна навигация">
+        {% for item in nav %}
+          <a href="{{ item.url }}"{% if page.url == item.url %} class="is-active" aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% endfor %}
+      </nav>
 
-        <ul id="header-nav">
+      <div class="site-header__end">
+        <a href="/contacts/" class="site-header__cta">
+          Свържи се
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
 
-            {% for item in site.nav %}
-            <a href="{{ item.url }}"><li>{{ item.label }}</li></a>
-            {% endfor %}
-
-        </ul>
-
-        <div id="mobile-nav">
-
-            <input type="checkbox" id="overlay-input"/>
-
-            <label for="overlay-input" id="overlay-button"><span></span></label>
-
-            <div id="overlay">
-
-                <ul>
-
-                    {% for item in site.nav %}
-                    <li><a href="{{ item.url }}">{{ item.label }}</a></li>
-                    {% endfor %}
-
-                </ul>
-
-            </div>
-
-        </div>
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Отвори меню"
+          aria-expanded="false"
+          aria-controls="menu-panel"
+        >
+          <span class="menu-toggle__line"></span>
+          <span class="menu-toggle__line"></span>
+          <span class="menu-toggle__line"></span>
+        </button>
+      </div>
 
     </div>
+  </div>
+</header>
 
-</div>
-</div>
+<div id="menu-backdrop" class="menu-backdrop" aria-hidden="true" hidden></div>
 
-<script>
-    const checkbox = document.getElementById('overlay-input');
-    const body = document.body;
+<aside id="menu-panel" class="menu-panel" aria-hidden="true" hidden>
+  <button type="button" class="menu-close" id="menu-close" aria-label="Затвори меню">&times;</button>
 
-    function toggleBodyOverflow() {
-        if (checkbox.checked) {
-            body.style.overflow = 'hidden';
-            body.style.height = '100vh';
-        } else {
-            body.style.overflow = '';
-            body.style.height = '';
-        }
-    }
-
-    checkbox.addEventListener('change', toggleBodyOverflow);
-    toggleBodyOverflow();
-</script>
+  <nav class="menu-nav" aria-label="Мобилна навигация">
+    {% for item in nav %}
+      <a href="{{ item.url }}" class="menu-link"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+    {% endfor %}
+    <a href="/contacts/" class="menu-link menu-link--cta">Свържи се</a>
+  </nav>
+</aside>

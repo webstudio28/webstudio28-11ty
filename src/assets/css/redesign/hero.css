@@ -1,0 +1,187 @@
+/* ─────────────────────────────────────────────────────────────
+   Hero — modern, glassmorphism-tinged, keeps the original
+   "You and your brand" line as the anchor
+   ───────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  padding-top: 2.5rem;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 3.5rem;
+  }
+}
+
+.hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 3.5rem;
+  }
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  max-width: 36rem;
+}
+
+.hero__title {
+  font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  font-weight: 800;
+  color: var(--ink);
+  margin: 0;
+}
+.hero__title em {
+  font-style: normal;
+  background: linear-gradient(120deg, #d97548 0%, #c45f8e 60%, #6f6bc4 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.hero__lead {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0;
+  max-width: 32rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.3rem;
+}
+
+.hero__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+  padding: 0.55rem 0.95rem 0.55rem 0.55rem;
+  border-radius: var(--r-pill);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.hero__meta-dot {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+}
+.hero__meta-dot--icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  background: linear-gradient(140deg, var(--accent), var(--accent-deep));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: none;
+}
+.hero__meta-dot--icon svg { width: 0.95rem; height: 0.95rem; }
+
+/* Visual panel */
+.hero__visual {
+  position: relative;
+  width: 100%;
+}
+.hero__visual-card {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow:
+    0 30px 60px -22px rgba(17, 45, 78, 0.32),
+    0 1px 0 rgba(255, 255, 255, 0.65) inset;
+  aspect-ratio: 4 / 3.2;
+}
+.hero__visual-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Floating decorative chips for depth */
+.hero__chip {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--r-pill);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: 0 14px 30px -14px rgba(17, 45, 78, 0.32);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.hero__chip svg { width: 1rem; height: 1rem; color: var(--accent-deep); }
+
+.hero__chip--top {
+  top: -0.9rem;
+  left: 1.25rem;
+}
+.hero__chip--bottom {
+  bottom: -0.9rem;
+  right: 1.25rem;
+}
+@media (max-width: 559px) {
+  .hero__chip--top  { left: 0.6rem; }
+  .hero__chip--bottom { right: 0.6rem; }
+  .hero__chip span.short { display: inline; }
+}
+
+/* Soft background blobs for the hero only — adds dimension under glass */
+.hero__blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero__blob--a {
+  width: 22rem;
+  height: 22rem;
+  background: radial-gradient(circle, rgba(241, 139, 93, 0.45), transparent 65%);
+  top: -4rem;
+  right: -4rem;
+}
+.hero__blob--b {
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle, rgba(136, 138, 208, 0.45), transparent 65%);
+  bottom: -6rem;
+  left: -3rem;
+}
+.hero__grid > * { position: relative; z-index: 1; }

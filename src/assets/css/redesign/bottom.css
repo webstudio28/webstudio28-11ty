@@ -1,0 +1,87 @@
+/* ─────────────────────────────────────────────────────────────
+   Bottom CTA — single glass call to action
+   ───────────────────────────────────────────────────────────── */
+
+.home-cta {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+@media (min-width: 768px) {
+  .home-cta {
+    padding-top: var(--section-y-md);
+    padding-bottom: var(--section-y-md);
+  }
+}
+
+.home-cta__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.1rem;
+  padding: 2.5rem 1.5rem 2.75rem;
+  border-radius: var(--r-xl);
+  background:
+    linear-gradient(135deg, rgba(241, 139, 93, 0.18) 0%, rgba(136, 138, 208, 0.18) 100%),
+    var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow-lift);
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .home-cta__panel { padding: 3.5rem 2.5rem 3.75rem; }
+}
+
+.home-cta__panel::before,
+.home-cta__panel::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+.home-cta__panel::before {
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle, rgba(241, 139, 93, 0.5), transparent 70%);
+  top: -6rem; left: -6rem;
+}
+.home-cta__panel::after {
+  width: 18rem;
+  height: 18rem;
+  background: radial-gradient(circle, rgba(136, 138, 208, 0.5), transparent 70%);
+  bottom: -6rem; right: -6rem;
+}
+
+.home-cta__panel > * { position: relative; z-index: 1; }
+
+.home-cta__title {
+  margin: 0.4rem 0 0;
+  font-size: clamp(1.85rem, 4.2vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 38rem;
+}
+.home-cta__title span { color: var(--accent-deep); }
+
+.home-cta__lead {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text);
+  max-width: 34rem;
+}
+
+.home-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 0.4rem;
+}

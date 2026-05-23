@@ -1,19 +1,36 @@
+/* ─────────────────────────────────────────────────────────────
+   Web Studio 28 — styles.css
+   1. Base (resets, fonts, gradient background)
+   2. Redesign tokens + atoms
+   3. Header (sticky glass pill + mobile drawer)
+   4. Home page sections
+   5. Other pages (about, pricing, contacts)
+   ───────────────────────────────────────────────────────────── */
+
+/* 1. Base */
 @import "base/base.css";
-@import "base/header/header.css";
-@import "base/header/logo-section.css";
-@import "base/header/nav-section.css";
+
+/* 2. Redesign tokens (must come right after base for var overrides) */
+@import "redesign/tokens.css";
+
+/* 3. Header */
+@import "redesign/header.css";
+
+/* 4. Home sections */
+@import "redesign/hero.css";
+@import "redesign/press.css";
+@import "redesign/secondary.css";
+@import "redesign/features.css";
+@import "redesign/projects.css";
+@import "redesign/standards.css";
+@import "redesign/bottom.css";
+
+/* 5. Other pages (kept from previous implementation) */
 @import "base/footer/footer.css";
-@import "common/home/home.css";
-@import "common/home/welcoming-section.css";
-@import "common/home/secondary-section.css";
-@import "common/home/features-section.css";
-@import "common/home/standards-section.css";
-@import "common/home/bottom-section.css";
 @import "common/about/about.css";
 @import "common/about/top-section.css";
 @import "common/about/work-road-section.css";
 @import "common/about/team.css";
-@import "common/projects/projects.css";
 @import "common/pricing/pricing.css";
 @import "common/pricing/pricing-hero-section.css";
 @import "common/pricing/pricing-options.css";
@@ -21,6 +38,4 @@
 @import "common/contacts/contacts.css";
 @import "common/contacts/contacts-and-form.css";
 @import "common/contacts/meeting-section.css";
-@import "base/header/mobile-nav.css";
 @import "common/contacts/message-sent.css";
-@import "common/home/testimonials.css";

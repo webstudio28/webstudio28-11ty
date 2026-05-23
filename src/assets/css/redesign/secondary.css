@@ -1,0 +1,101 @@
+/* ─────────────────────────────────────────────────────────────
+   Secondary — "Създай лицето на бизнеса си"
+   Image + copy on a soft glass panel
+   ───────────────────────────────────────────────────────────── */
+
+.secondary {
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+@media (min-width: 768px) {
+  .secondary {
+    padding-top: var(--section-y-md);
+    padding-bottom: var(--section-y-md);
+  }
+}
+
+.secondary__panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: var(--r-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+@media (min-width: 860px) {
+  .secondary__panel {
+    grid-template-columns: 1.05fr 1fr;
+    padding: 2.25rem;
+    gap: 3rem;
+  }
+}
+
+.secondary__media {
+  position: relative;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  aspect-ratio: 5 / 4;
+  background: linear-gradient(145deg, rgba(213, 130, 113, 0.22), rgba(136, 138, 208, 0.28));
+}
+.secondary__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.secondary__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+.secondary__copy h2 {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.7rem, 3.3vw, 2.4rem);
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.secondary__copy p {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+.secondary__bullets {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.secondary__bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.96rem;
+  color: var(--ink);
+}
+.secondary__bullets li::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.18rem;
+  border-radius: 9999px;
+  background: linear-gradient(140deg, var(--accent), var(--accent-deep));
+  box-shadow: 0 0 0 4px rgba(241, 139, 93, 0.18);
+  background-image:
+    linear-gradient(140deg, var(--accent), var(--accent-deep)),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12l5 5L20 7'/></svg>");
+  background-blend-mode: normal;
+  background-size: cover, 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}

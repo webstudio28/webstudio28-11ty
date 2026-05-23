@@ -1,0 +1,264 @@
+/* ─────────────────────────────────────────────────────────────
+   Projects — replaces old testimonials slider
+   3-up grid on desktop + "Виж повече" button below
+   horizontal scroll on mobile + a "Виж повече" card at the end
+   ───────────────────────────────────────────────────────────── */
+
+.projects {
+  position: relative;
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
+}
+@media (min-width: 768px) {
+  .projects {
+    padding-top: var(--section-y-md);
+    padding-bottom: var(--section-y-md);
+  }
+}
+
+.projects__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+  max-width: 42rem;
+}
+.projects__head-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.projects__head .section-lead {
+  margin-top: 0.85rem;
+}
+.projects__cta-inline {
+  display: none;
+  flex: 0 0 auto;
+}
+@media (min-width: 768px) {
+  .projects__cta-inline { display: inline-flex; }
+}
+
+/* Grid (desktop) → scroller (mobile) */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 859px) {
+  .projects__grid {
+    /* Mobile: full-bleed horizontal scroller, snap, no scrollbar */
+    display: flex;
+    grid-template-columns: none;
+    gap: 1rem;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    touch-action: pan-x pan-y;
+    scroll-snap-type: x mandatory;
+    padding: 0.5rem max(1rem, calc((100vw - 80rem) / 2 + 1rem)) 1.25rem;
+    margin: 0 calc(max(1rem, (100vw - 80rem) / 2 + 1rem) * -1);
+    scroll-padding-left: max(1rem, calc((100vw - 80rem) / 2 + 1rem));
+    scroll-padding-right: max(1rem, calc((100vw - 80rem) / 2 + 1rem));
+  }
+  .projects__grid::-webkit-scrollbar { display: none; }
+}
+
+/* Project card */
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 260ms var(--ease-out),
+              box-shadow 260ms var(--ease-out),
+              border-color 220ms ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glass-shadow-lift);
+  border-color: rgba(255, 255, 255, 0.92);
+}
+
+@media (max-width: 859px) {
+  .project-card {
+    flex: 0 0 78%;
+    max-width: 22rem;
+    scroll-snap-align: start;
+  }
+}
+
+.project-card__media {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  background: linear-gradient(145deg, rgba(213, 130, 113, 0.18), rgba(136, 138, 208, 0.22));
+  overflow: hidden;
+}
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms var(--ease-out);
+}
+.project-card:hover .project-card__media img {
+  transform: scale(1.04);
+}
+.project-card__media-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(17, 45, 78, 0.45);
+}
+.project-card__media-fallback svg { width: 3rem; height: 3rem; }
+
+.project-card__tag {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.project-card__tag-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: var(--accent-deep);
+}
+
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 1.15rem 1.2rem 1.3rem;
+  flex: 1;
+}
+.project-card__title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.25;
+}
+.project-card__desc {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+  margin: 0;
+  /* Clamp to keep cards same height */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+}
+.project-card__foot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.55rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent-deep);
+}
+.project-card__foot svg {
+  width: 0.95em;
+  height: 0.95em;
+  transition: transform 220ms var(--ease-out);
+}
+.project-card:hover .project-card__foot svg {
+  transform: translateX(3px);
+}
+
+/* "Виж повече" card — mobile-only sibling at the end of the scroller */
+.project-card--more {
+  display: none;
+  background: linear-gradient(160deg, rgba(241, 139, 93, 0.18) 0%, rgba(136, 138, 208, 0.18) 100%);
+  align-items: stretch;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  border: 1px dashed rgba(17, 45, 78, 0.35);
+}
+@media (max-width: 859px) {
+  .project-card--more { display: flex; }
+}
+.project-card--more .project-card__media {
+  aspect-ratio: 16 / 11;
+  background: transparent;
+  display: grid;
+  place-items: center;
+}
+.project-card--more .project-card__media-fallback {
+  position: static;
+  inset: auto;
+}
+.project-card--more .project-card__media-fallback-circle {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  box-shadow: 0 12px 24px -10px rgba(17, 45, 78, 0.25);
+}
+.project-card--more .project-card__media-fallback-circle svg {
+  width: 1.6rem; height: 1.6rem;
+}
+.project-card--more .project-card__title {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.project-card--more .project-card__desc {
+  text-align: center;
+}
+.project-card--more .project-card__foot {
+  align-self: center;
+}
+
+/* Bottom CTA for desktop "Виж повече" — large, glass */
+.projects__cta-row {
+  display: none;
+}
+@media (min-width: 768px) {
+  .projects__cta-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+}
+@media (max-width: 767px) {
+  .projects__cta-row {
+    /* Already shown via mobile card; hide the row */
+    display: none;
+  }
+}
