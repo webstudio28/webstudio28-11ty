@@ -54,10 +54,10 @@
   background: linear-gradient(to right, transparent, var(--accent));
 }
 .press__label-sub {
-  font-size: 0.92rem;
+  font-size: var(--font-size-lead);
+  line-height: var(--line-height-lead);
   color: var(--ink);
   font-weight: 600;
-  line-height: 1.35;
 }
 
 .press__list {
@@ -66,6 +66,15 @@
   gap: 0.6rem;
 }
 @media (max-width: 720px) {
+  .press__label {
+    align-items: center;
+    text-align: center;
+  }
+
+  .press__label-top {
+    justify-content: center;
+  }
+
   .press__list {
     grid-template-columns: 1fr;
     gap: 0.55rem;
@@ -78,7 +87,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.7rem 0.95rem;
+  padding: 0.95rem 1.1rem;
   border-radius: var(--r-md);
   background: rgba(255, 255, 255, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.65);
@@ -96,22 +105,54 @@
   box-shadow: 0 18px 32px -18px rgba(17, 45, 78, 0.25);
 }
 
+.press__item-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.press__item-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 .press__item-logo {
   display: inline-flex;
   align-items: center;
   flex: 0 0 auto;
-  height: 1.25rem;
+  height: 2rem;
 }
 .press__item-logo img {
   height: 100%;
   width: auto;
   display: block;
-  max-width: 7rem;
+  max-width: 10rem;
   object-fit: contain;
 }
-.press__item-logo--nova img { height: 1.35rem; }
-.press__item-logo--euronews img { height: 1.2rem; }
-.press__item-logo--plovdiv24 img { height: 1.35rem; max-width: 8.5rem; }
+.press__item-logo--nova img { height: 2.1rem; max-width: 9rem; }
+.press__item-logo--euronews img { height: 1.9rem; max-width: 10.5rem; }
+.press__item-logo--plovdiv24 img { height: 2.15rem; max-width: 11.5rem; }
+
+@media (min-width: 768px) {
+  .press__item-logo { height: 2.35rem; }
+  .press__item-logo--nova img { height: 2.5rem; }
+  .press__item-logo--euronews img { height: 2.25rem; max-width: 11.5rem; }
+  .press__item-logo--plovdiv24 img { height: 2.5rem; max-width: 12.5rem; }
+  .press__item-name { font-size: 0.9rem; }
+}
+
+@media (max-width: 720px) {
+  .press__item-name {
+    white-space: normal;
+  }
+}
 
 .press__item-arrow {
   display: inline-flex;

@@ -55,29 +55,11 @@
 
   .hero__lead {
     max-width: 22rem;
-    font-size: 1rem;
   }
 
   .hero__visual {
     width: 100%;
     max-width: 100%;
-  }
-
-  .hero__actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.55rem;
-    width: 100%;
-    margin-top: 0.15rem;
-  }
-
-  .hero__actions .btn-primary,
-  .hero__actions .btn-glass {
-    width: 100%;
-    justify-content: center;
-    padding: 0.8rem 0.5rem;
-    font-size: clamp(0.78rem, 3.4vw, 0.92rem);
-    white-space: nowrap;
   }
 }
 
@@ -151,11 +133,11 @@
 }
 
 .hero__lead {
-  font-size: 1.08rem;
-  line-height: 1.65;
-  color: var(--text);
   margin: 0;
   max-width: 32rem;
+  font-size: var(--font-size-hero-lead);
+  line-height: var(--line-height-lead);
+  color: var(--text);
 }
 
 .hero__actions {
@@ -163,6 +145,37 @@
   flex-wrap: wrap;
   gap: 0.7rem;
   margin-top: 0.3rem;
+}
+
+/* Mobile CTAs: one row, full width; primary gets more space (must follow base .hero__actions) */
+@media (max-width: 959px) {
+  .hero__actions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+    width: 100%;
+    max-width: 100%;
+    align-self: stretch;
+    margin-top: 0.15rem;
+  }
+
+  .hero__actions .btn-primary {
+    flex: 1.45 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding: 0.82rem 0.5rem;
+    font-size: clamp(0.8rem, 3.6vw, 0.94rem);
+    white-space: nowrap;
+  }
+
+  .hero__actions .btn-glass {
+    flex: 0.9 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding: 0.8rem 0.55rem;
+    font-size: clamp(0.74rem, 3vw, 0.86rem);
+    white-space: nowrap;
+  }
 }
 
 /* Visual panel */

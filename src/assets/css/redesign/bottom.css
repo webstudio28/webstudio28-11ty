@@ -72,9 +72,6 @@
 
 .home-cta__lead {
   margin: 0;
-  font-size: 1.02rem;
-  line-height: 1.65;
-  color: var(--text);
   max-width: 34rem;
 }
 

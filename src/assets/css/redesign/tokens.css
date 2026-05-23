@@ -43,6 +43,20 @@
 
   /* Eases */
   --ease-out: cubic-bezier(.22, .61, .36, 1);
+
+  /* Typography — global copy scale */
+  --font-size-body:      1.0625rem; /* 17px — paragraphs, card descriptions */
+  --font-size-lead:      1.125rem;   /* 18px — intros under section titles */
+  --font-size-hero-lead: 1.2rem;     /* 19.2px — hero help text */
+  --font-size-sm:        0.9375rem;  /* 15px — labels, meta (when needed) */
+  --line-height-body: 1.6;
+  --line-height-lead: 1.65;
+}
+
+/* Base copy size (overrides 16px from base.css when tokens load after) */
+body {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 /* ── Reusable atoms ───────────────────────────────────────── */
@@ -79,10 +93,34 @@
 
 .section-lead {
   margin: 0.85rem 0 0;
-  font-size: 1.02rem;
-  line-height: 1.65;
+  font-size: var(--font-size-lead);
+  line-height: var(--line-height-lead);
   color: var(--text);
   max-width: 38rem;
+}
+
+/* Hero help text */
+.hero__lead {
+  font-size: var(--font-size-hero-lead);
+  line-height: var(--line-height-lead);
+  color: var(--text);
+}
+
+/* Section intros + CTA lead copy */
+.home-cta__lead,
+.secondary__copy p {
+  font-size: var(--font-size-lead);
+  line-height: var(--line-height-lead);
+  color: var(--text);
+}
+
+/* Card & block descriptions */
+.feature__desc,
+.standard__desc,
+.project-card__desc {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--text);
 }
 
 /* Glass surfaces */

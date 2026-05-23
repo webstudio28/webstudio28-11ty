@@ -90,7 +90,4 @@
 }
 .feature__desc {
   margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--text);
 }

@@ -77,9 +77,6 @@
 }
 .standard__desc {
   margin: 0;
-  font-size: 0.94rem;
-  line-height: 1.6;
-  color: var(--text);
 }
 .standard__icon {
   display: inline-flex;

@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────────────────────
    Projects — replaces old testimonials slider
-   3-up grid on desktop + "Виж повече" button below
+   3-up grid on desktop + optional bottom CTA
    horizontal scroll on mobile + a "Виж повече" card at the end
    ───────────────────────────────────────────────────────────── */
 
@@ -19,26 +19,14 @@
 .projects__head {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.6rem;
-  margin-bottom: 2.5rem;
+  margin: 0 auto 2.5rem;
   max-width: 42rem;
-}
-.projects__head-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  text-align: center;
 }
 .projects__head .section-lead {
   margin-top: 0.85rem;
-}
-.projects__cta-inline {
-  display: none;
-  flex: 0 0 auto;
-}
-@media (min-width: 768px) {
-  .projects__cta-inline { display: inline-flex; }
 }
 
 /* Grid (desktop) → scroller (mobile) */
@@ -168,7 +156,6 @@
   line-height: 1.25;
 }
 .project-card__desc {
-  font-size: 0.92rem;
   color: var(--text);
   line-height: 1.55;
   margin: 0;
