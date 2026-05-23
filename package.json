@@ -1,5 +1,5 @@
 {
-  "name": "webstudio28",
+  "name": "webstudio28-11ty",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,9 @@
     "start": "npm-run-all --parallel css:watch eleventy:serve",
     "eleventy:serve": "eleventy --serve",
     "build": "npm-run-all css:build eleventy:build",
-    "eleventy:build": "eleventy"
+    "eleventy:build": "eleventy",
+    "build:cpanel": "node scripts/deploy-cpanel.js",
+    "deploy": "echo 'Use GitHub Actions instead'"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
