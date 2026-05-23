@@ -281,11 +281,6 @@ background: linear-gradient(121deg, rgba(108,102,99,1) 0%, rgba(213,130,113,1) 2
     overflow: hidden; /* Hide the scrollbar but still allow scrolling */
 }
 
-/* Hides the scrollbar for Webkit browsers (Chrome, Safari, etc.) */
-.modal-content::-webkit-scrollbar {
-    display: none;
-}
-
 /* Modal image styles */
 .modal img {
     width: 100%;

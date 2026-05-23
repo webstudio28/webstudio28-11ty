@@ -109,32 +109,9 @@
   max-width: 7rem;
   object-fit: contain;
 }
-/* nova brand SVG is already blue; keep as-is */
-.press__item-logo--nova img { height: 1.1rem; }
-
-/* plovdiv24 logo file is white — render in brand-blue via filter so it sits on light glass */
-.press__item-logo--plovdiv24 img {
-  height: 1.25rem;
-  /* Brand blue (#28A0EB) — derived from CSS filter chain (white → blue) */
-  filter: brightness(0) saturate(100%) invert(48%) sepia(82%) saturate(2247%) hue-rotate(176deg) brightness(96%) contrast(91%);
-}
-
-/* Euronews wordmark — render with brand red text + outline */
-.press__item-wordmark {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.1rem;
-  font-weight: 800;
-  font-size: 0.95rem;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  color: #ed1c24;
-  text-transform: lowercase;
-  font-family: inherit;
-}
-.press__item-wordmark span {
-  color: var(--ink);
-}
+.press__item-logo--nova img { height: 1.35rem; }
+.press__item-logo--euronews img { height: 1.2rem; }
+.press__item-logo--plovdiv24 img { height: 1.35rem; max-width: 8.5rem; }
 
 .press__item-arrow {
   display: inline-flex;

@@ -12,6 +12,7 @@
 
 /* 2. Redesign tokens (must come right after base for var overrides) */
 @import "redesign/tokens.css";
+@import "redesign/modal.css";
 
 /* 3. Header */
 @import "redesign/header.css";
@@ -24,6 +25,7 @@
 @import "redesign/projects.css";
 @import "redesign/standards.css";
 @import "redesign/bottom.css";
+@import "redesign/consultation-modal.css";
 
 /* 5. Other pages (kept from previous implementation) */
 @import "base/footer/footer.css";

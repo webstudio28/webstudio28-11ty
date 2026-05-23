@@ -1,0 +1,102 @@
+<div
+  id="consult-modal"
+  class="consult-modal"
+  aria-hidden="true"
+  hidden
+  data-calendly-url="{{ site.calendly.url }}"
+  data-phone="{{ site.contact.phone | replace(' ', '') }}"
+>
+  <div class="consult-modal__backdrop" data-consult-close></div>
+
+  <div
+    class="consult-modal__panel modal-scroll"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="consult-modal-title"
+  >
+    <button type="button" class="consult-modal__close" data-consult-close aria-label="Затвори">&times;</button>
+
+    <div class="consult-modal__step consult-modal__step--choose" id="consult-step-choose">
+      <h2 id="consult-modal-title" class="consult-modal__title">Безплатна консултация</h2>
+      <p class="consult-modal__lead">Избери удобен за теб начин да се свържем.</p>
+
+      <div class="consult-modal__options" role="radiogroup" aria-label="Начин за контакт">
+        <label class="consult-option">
+          <input type="radio" name="consult-type" value="meeting" class="consult-option__input">
+          <span class="consult-option__card">
+            <span class="consult-option__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </span>
+            <span class="consult-option__label">Онлайн среща</span>
+          </span>
+        </label>
+
+        <label class="consult-option">
+          <input type="radio" name="consult-type" value="message" class="consult-option__input">
+          <span class="consult-option__card">
+            <span class="consult-option__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <span class="consult-option__label">Напиши ни съобщение</span>
+          </span>
+        </label>
+
+        <label class="consult-option">
+          <input type="radio" name="consult-type" value="call" class="consult-option__input">
+          <span class="consult-option__card">
+            <span class="consult-option__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            <span class="consult-option__label">Обади ни се</span>
+          </span>
+        </label>
+      </div>
+
+      <div class="consult-modal__confirm-wrap" id="consult-confirm-wrap">
+        <button type="button" class="btn-primary consult-modal__confirm" id="consult-confirm" disabled>
+          Потвърди избора
+        </button>
+      </div>
+    </div>
+
+    <div class="consult-modal__step consult-modal__step--form" id="consult-step-form" hidden>
+      <h2 class="consult-modal__title">Напиши ни съобщение</h2>
+      <p class="consult-modal__lead">Ще се свържем с теб възможно най-скоро.</p>
+
+      <form class="consult-modal__form" id="consult-form">
+        <input type="hidden" name="access_key" value="{{ site.forms.web3formsKey }}">
+        <input type="hidden" name="subject" value="Безплатна консултация — съобщение от начална страница">
+        <input type="checkbox" name="botcheck" class="consult-modal__honeypot" tabindex="-1" autocomplete="off">
+
+        <label class="consult-modal__field">
+          <span class="consult-modal__field-label">Име и фамилия <span class="consult-modal__required" aria-hidden="true">*</span></span>
+          <input type="text" name="name" required autocomplete="name" placeholder="Вашето име">
+        </label>
+        <label class="consult-modal__field">
+          <span class="consult-modal__field-label">Телефон <span class="consult-modal__required" aria-hidden="true">*</span></span>
+          <input type="tel" name="phone" required autocomplete="tel" placeholder="+359 …" inputmode="tel">
+        </label>
+        <label class="consult-modal__field">
+          <span class="consult-modal__field-label">Имейл <span class="consult-modal__required" aria-hidden="true">*</span></span>
+          <input type="email" name="email" required autocomplete="email" placeholder="email@example.com">
+        </label>
+        <label class="consult-modal__field">
+          <span class="consult-modal__field-label">Съобщение <span class="consult-modal__required" aria-hidden="true">*</span></span>
+          <textarea name="message" required rows="4" placeholder="Разкажи накратко за проекта си…"></textarea>
+        </label>
+
+        <button type="submit" class="btn-primary consult-modal__submit">Изпрати</button>
+        <button type="button" class="consult-modal__back" data-consult-back>← Назад</button>
+      </form>
+    </div>
+
+    <div class="consult-modal__step consult-modal__step--success" id="consult-step-success" hidden>
+      <div class="consult-modal__success-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      </div>
+      <h2 class="consult-modal__title">Съобщението е изпратено</h2>
+      <p class="consult-modal__lead">Благодарим ви! Ще се свържем с вас скоро.</p>
+      <button type="button" class="btn-primary" data-consult-close>Затвори</button>
+    </div>
+  </div>
+</div>

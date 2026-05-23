@@ -1,0 +1,36 @@
+/* ─────────────────────────────────────────────────────────────
+   Modals — hide scrollbars on scrollable modal regions (site-wide)
+   Scrolling still works (touch, wheel, keyboard).
+   Add class .modal-scroll to any overflow:auto/scroll area in a modal.
+   ───────────────────────────────────────────────────────────── */
+
+.modal-scroll,
+[class*="-modal__panel"],
+[class*="-modal__content"],
+[class*="-modal__body"],
+[class*="-modal-content"],
+.modal-content,
+[role="dialog"][aria-modal="true"] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-scroll::-webkit-scrollbar,
+[class*="-modal__panel"]::-webkit-scrollbar,
+[class*="-modal__content"]::-webkit-scrollbar,
+[class*="-modal__body"]::-webkit-scrollbar,
+[class*="-modal-content"]::-webkit-scrollbar,
+.modal-content::-webkit-scrollbar,
+[role="dialog"][aria-modal="true"]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* No default blue focus ring on modal shells (keyboard uses in-modal controls) */
+[role="dialog"][aria-modal="true"]:focus,
+[role="dialog"][aria-modal="true"]:focus-visible,
+.modal-scroll:focus,
+.modal-scroll:focus-visible {
+  outline: none;
+}

@@ -29,8 +29,10 @@
   --section-y:    4.5rem;
   --section-y-md: 7rem;
 
-  /* Header offsets */
-  --header-h:     5rem;
+  /* Header offsets (fixed pill: top gap + bar height + breathing room) */
+  --header-h:              5rem;
+  --header-offset:         calc(1rem + 3.25rem + 0.5rem);
+  --header-offset-mobile:  calc(1rem + 3.25rem + 0.45rem);
 
   /* Radii */
   --r-sm: 0.85rem;
@@ -119,9 +121,21 @@
     0 10px 24px -10px rgba(14, 36, 64, 0.55);
   text-decoration: none;
   cursor: pointer;
+  font-family: inherit;
   transition: transform 180ms var(--ease-out),
               box-shadow 180ms var(--ease-out),
               background 220ms ease;
+}
+button.btn-primary {
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-primary:focus {
+  outline: none;
+}
+.btn-primary:focus-visible {
+  outline: 2px solid rgba(241, 139, 93, 0.55);
+  outline-offset: 3px;
 }
 .btn-primary:hover {
   transform: translateY(-1px);
@@ -133,6 +147,7 @@
 .btn-primary svg { width: 1.05em; height: 1.05em; }
 
 .btn-glass {
+  -webkit-tap-highlight-color: transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -152,6 +167,16 @@
   transition: transform 180ms var(--ease-out),
               box-shadow 180ms var(--ease-out),
               background-color 200ms ease;
+}
+button.btn-glass {
+  appearance: none;
+}
+.btn-glass:focus {
+  outline: none;
+}
+.btn-glass:focus-visible {
+  outline: 2px solid rgba(241, 139, 93, 0.45);
+  outline-offset: 3px;
 }
 .btn-glass:hover {
   transform: translateY(-1px);

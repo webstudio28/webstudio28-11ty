@@ -20,6 +20,7 @@
 
   <link rel="stylesheet" href="/assets/css/tailwind-compiled.css">
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -47,16 +48,29 @@
 
 </div>
 
+{% include "consultation-modal.njk" %}
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script src="/assets/js/consultation-modal.js" defer></script>
+
 <script>
-  // Header glass-on-scroll
+  // Header: fixed while scrolling, solid white at top → glass when scrolled
   (function () {
     var surface = document.querySelector('.js-header-surface');
     if (!surface) return;
-    var onScroll = function () {
-      if (window.scrollY > 14) surface.classList.add('is-glassy');
-      else surface.classList.remove('is-glassy');
-    };
-    onScroll();
+    var threshold = 16;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      surface.classList.toggle('is-glassy', window.scrollY > threshold);
+    }
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
   })();
 
