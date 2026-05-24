@@ -5,37 +5,43 @@ title: Проекти
 description: Реализирани уебсайтове на WebStudio28 — портфолио от проекти за различни бизнеси.
 ---
 
-<div id="projects-page-wrapper">
+<div class="projects-page">
 
-    <div id="projects-hero-wrapper">
-        <div class="container-custom">
-            <div id="projects-hero">
-                <h1>Нашите проекти</h1>
-                <p>Реални сайтове за реални бизнеси — разгледайте част от работата ни.</p>
-            </div>
-        </div>
-    </div>
+  <section class="page-hero page-hero--center" aria-label="Нашите проекти">
+    <span class="page-hero__blob page-hero__blob--a" aria-hidden="true"></span>
+    <span class="page-hero__blob page-hero__blob--b" aria-hidden="true"></span>
 
-    <div class="container-custom">
-        <div id="projects-grid">
-            {% for project in projects %}
-            {% if project.active %}
-            <article class="project-card">
-                <a href="/projects/{{ project.slug }}/" class="project-card-image-link">
-                    <img src="{{ project.thumbnail }}" alt="{{ project.title }}" loading="lazy" onerror="this.src='/assets/images/projects/placeholder.svg'">
-                </a>
-                <div class="project-card-body">
-                    <h2><a href="/projects/{{ project.slug }}/">{{ project.title }}</a></h2>
-                    <p>{{ project.description }}</p>
-                    <div class="project-card-actions">
-                        <a href="/projects/{{ project.slug }}/" class="project-card-link">Виж детайли</a>
-                        <a href="{{ project.link }}" class="project-card-link project-card-link-external" target="_blank" rel="noopener noreferrer">Към сайта</a>
-                    </div>
-                </div>
-            </article>
-            {% endif %}
-            {% endfor %}
-        </div>
+    <div class="container-custom page-hero__inner">
+      <div class="page-hero__copy" data-reveal>
+        <span class="eyebrow">Портфолио</span>
+        <h1 class="page-hero__title">Нашите проекти</h1>
+        <p class="page-hero__lead">Реални сайтове за реални бизнеси — разгледайте част от работата ни.</p>
+      </div>
     </div>
+  </section>
+
+  <div class="container-custom">
+    <div class="projects-page__grid" data-reveal>
+      {% for project in projects %}
+      {% if project.active %}
+      <article class="portfolio-card">
+        <a href="/projects/{{ project.slug }}/" class="portfolio-card__media">
+          <img src="{{ project.thumbnail }}" alt="{{ project.title }}" loading="lazy" onerror="this.src='/assets/images/projects/placeholder.svg'">
+        </a>
+        <div class="portfolio-card__body">
+          <h2 class="portfolio-card__title">
+            <a href="/projects/{{ project.slug }}/">{{ project.title }}</a>
+          </h2>
+          <p class="portfolio-card__desc">{{ project.description }}</p>
+          <div class="portfolio-card__actions">
+            <a href="/projects/{{ project.slug }}/" class="btn-glass">Виж детайли</a>
+            <a href="{{ project.link }}" class="btn-primary" target="_blank" rel="noopener noreferrer">Към сайта</a>
+          </div>
+        </div>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
 
 </div>

@@ -1,30 +1,23 @@
-<div id="actions-wrapper">
+<section class="pricing-cta" aria-label="Свържете се с нас">
+  <div class="container-custom">
+    <div class="pricing-cta__panel" data-reveal>
 
-    <div class="container-custom">
-    <h1>Нека обсъдим твоя проект!</h1>
+      <h2 class="pricing-cta__title">Нека обсъдим твоя проект!</h2>
 
-    <div id="actions-section">
+      <div class="pricing-cta__actions">
+        <a href="tel:+359892907007" class="pricing-action">
+          <img class="pricing-action__icon" src="/assets/images/phone-contacts.png" alt="">
+          <p class="pricing-action__label">Обади ни се</p>
+          <span class="pricing-action__link">+359892907007</span>
+        </a>
 
-        <div class="action-card">
-
-            <div class="action-image"><img src="/assets/images/phone-contacts.png"></div>
-
-            <p>Обади ни се</p>
-            <a href="tel:+359892907007">+359892907007</a>
-
-        </div>
-
-        <div class="action-card">
-
-            <div class="action-image"><img src="/assets/images/calendar1.png"></div>
-
-            <p>Среща в нашия офис или Google Meet</p>
-            
-            <a href="" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andon-go6ev/30min'});return false;">Запази час</a>
-
-        </div>
+        <button type="button" class="pricing-action" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andon-go6ev/30min'});return false;">
+          <img class="pricing-action__icon" src="/assets/images/calendar1.png" alt="">
+          <p class="pricing-action__label">Среща в нашия офис или Google Meet</p>
+          <span class="pricing-action__link">Запази час</span>
+        </button>
+      </div>
 
     </div>
-    </div>
-
-</div>
+  </div>
+</section>

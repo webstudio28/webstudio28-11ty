@@ -5,14 +5,17 @@ title: Съобщение изпратено
 description: Вашето съобщение беше изпратено успешно до WebStudio28.
 ---
 
-<div id="message-page-wrapper">
-
-    <div class="container-custom">
-    <div id="message-page-container">
-
-        <h1>Съобщението е изпратено успешно!</h1>
-
+<section class="message-sent" aria-label="Съобщение изпратено">
+  <div class="container-custom">
+    <div class="message-sent__panel" data-reveal>
+      <span class="message-sent__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </span>
+      <h1 class="message-sent__title">Съобщението е изпратено успешно!</h1>
+      <div class="message-sent__actions">
+        <a href="/" class="btn-primary">Към началото</a>
+        <a href="/contacts/" class="btn-glass">Обратно към контакти</a>
+      </div>
     </div>
-    </div>
-
-</div>
+  </div>
+</section>

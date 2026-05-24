@@ -5,24 +5,15 @@ title: Услуги
 description: Изберете подходящото уеб решение за вашия бизнес — статичен, динамичен или индивидуален сайт.
 ---
 
-<div id="pricing-wrapper">
+{% include "sections/pricing-hero.njk" %}
 
-    {% include "sections/pricing-hero.njk" %}
-    
-    <div id="hand-written-wrapper">
-
-        <div class="container-custom">
-        <div id="hand-written-section">
-            
-            <h2>Всички сайтове са написани ръчно, за да гарантираме персонален и уникален изглед!</h2>
-            
-        </div>
-        </div>
-
+<section class="pricing-quote" aria-label="Ръчно изработени сайтове">
+  <div class="container-custom">
+    <div class="pricing-quote__panel" data-reveal>
+      <h2>Всички сайтове са написани ръчно, за да гарантираме персонален и уникален изглед!</h2>
     </div>
+  </div>
+</section>
 
-    {% include "sections/pricing-options.njk" %}
-
-    {% include "sections/pricing-actions.njk" %}
-
-</div>
+{% include "sections/pricing-options.njk" %}
+{% include "sections/pricing-actions.njk" %}

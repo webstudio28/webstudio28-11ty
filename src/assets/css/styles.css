@@ -27,17 +27,12 @@
 @import "redesign/bottom.css";
 @import "redesign/consultation-modal.css";
 
-/* 5. Other pages (kept from previous implementation) */
+/* 5. Inner pages (redesign — matches home glass / tokens) */
+@import "redesign/page-hero.css";
+@import "redesign/about-page.css";
+@import "redesign/pricing-page.css";
+@import "redesign/contacts-page.css";
+@import "redesign/projects-page.css";
+
+/* 6. Footer */
 @import "base/footer/footer.css";
-@import "common/about/about.css";
-@import "common/about/top-section.css";
-@import "common/about/work-road-section.css";
-@import "common/about/team.css";
-@import "common/pricing/pricing.css";
-@import "common/pricing/pricing-hero-section.css";
-@import "common/pricing/pricing-options.css";
-@import "common/pricing/actions-section.css";
-@import "common/contacts/contacts.css";
-@import "common/contacts/contacts-and-form.css";
-@import "common/contacts/meeting-section.css";
-@import "common/contacts/message-sent.css";

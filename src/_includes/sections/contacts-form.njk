@@ -1,77 +1,52 @@
-<div id="contacts-wrapper">
+<section class="contacts-page" aria-label="Контакти и форма">
+  <div class="container-custom">
+    <div class="contacts-page__layout" data-reveal>
 
-    <div class="container-custom">
-    <div id="contacts-ct">
+      <div class="contacts-info">
+        <img class="contacts-info__deco" src="/assets/images/standards1.png" alt="" aria-hidden="true">
+        <h1 class="contacts-info__title">Контакти</h1>
+        <div class="contacts-info__list">
 
-        <div id="contacts">
+          <div class="contact-item">
+            <h3>Телефон</h3>
+            <a href="tel:+359892907007">
+              <img src="/assets/images/f-phone.png" alt="">
+              +359892907007
+            </a>
+          </div>
 
-            <div id="contacts-phone"><img src="/assets/images/standards1.png"></div>
+          <div class="contact-item">
+            <h3>Имейл</h3>
+            <a href="mailto:bgwebstudio28@gmail.com">
+              <img src="/assets/images/f-email.png" alt="">
+              bgwebstudio28@gmail.com
+            </a>
+          </div>
 
-            <div id="contacts-inner-ct">
-
-                <h1>Контакти</h1>
-
-                <div id="contact-containers">
-
-                    <div class="contact-ct">
-
-                        <h3>Телефон</h3>
-                        <a href="tel:+359892907007"><img src="/assets/images/f-phone.png">+359892907007</a>
-
-                    </div>
-
-                    <div class="contact-ct">
-
-                        <h3>Имейл</h3>
-                        <a><img src="/assets/images/f-email.png">bgwebstudio28@gmail.com</a>
-
-                    </div>
-
-                    <div class="contact-ct">
-
-                        <h3>Адрес</h3>
-                        <a href="https://www.google.com/maps?q=Бул.+Васил+Априлов+49,+Пловдив" target="_blank">
-                            <img src="/assets/images/f-location.png" alt="Location">
-                            Бул. Васил Априлов 49, гр.Пловдив
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
+          <div class="contact-item">
+            <h3>Адрес</h3>
+            <a href="https://www.google.com/maps?q=Бул.+Васил+Априлов+49,+Пловдив" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/images/f-location.png" alt="">
+              Бул. Васил Априлов 49, гр.Пловдив
+            </a>
+          </div>
 
         </div>
+      </div>
 
-        <div id="contact-form-ct">
-
-            <div id="contacts-form-left-ct"></div>
-
-            <div id="contact-form-ct-inner">
-
-                <h1>Връзка с нас</h1>
-
-                <form action="https://api.web3forms.com/submit" method="POST">
-
-                    <input type="hidden" name="access_key" value="{{ site.forms.web3formsKey }}">
-
-                    <input type="text" name="name" required placeholder="Име и фамилия">
-                    <input type="email" name="email" required placeholder="Имейл">
-                    <textarea name="message" required placeholder="Съобщение"></textarea>
-
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <input type="hidden" name="redirect" value="{{ site.forms.redirectUrl }}">
-
-                    <button type="submit">Изпрати</button>
-
-                </form>
-
-            </div>
-
-        </div>
+      <div class="contacts-form-panel">
+        <h2 class="contacts-form-panel__title">Връзка с нас</h2>
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="{{ site.forms.web3formsKey }}">
+          <input type="text" name="name" required placeholder="Име и фамилия" autocomplete="name">
+          <input type="email" name="email" required placeholder="Имейл" autocomplete="email">
+          <textarea name="message" required placeholder="Съобщение"></textarea>
+          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+          <input type="hidden" name="redirect" value="{{ site.forms.redirectUrl }}">
+          <button type="submit" class="btn-primary">Изпрати</button>
+        </form>
+      </div>
 
     </div>
-    </div>
-
-</div>
+  </div>
+</section>

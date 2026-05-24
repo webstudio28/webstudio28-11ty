@@ -1,45 +1,26 @@
-<div id="meeting-wrapper">
+<section class="contacts-meeting" aria-label="Запази час за консултация">
+  <div class="container-custom">
+    <div class="contacts-meeting__panel" data-reveal>
 
-    <div class="container-custom">
-    <div id="meeting-section">
+      <div class="contacts-meeting__bg" aria-hidden="true">
+        <img src="/assets/images/meetings-bg.jpg" alt="">
+      </div>
 
-        <div id="meeting-options">
+      <div class="contacts-meeting__inner">
+        <p class="contacts-meeting__text">Запишете час за <span>безплатна</span> консултация в нашия офис или в Google Meet</p>
 
-            <div id="meeting-text">
-
-                <p>Запишете час за <span>безплатна</span> консултация в нашия офис или в Google Meet</p>
-
-            </div>
-
-            <div id="meeting-images">
-                
-                <div id="meeting-bg">
-                    
-                    <img src="/assets/images/meetings-bg.jpg">
-                    
-                </div>
-
-                <div class="meeting-image-section">
-
-                    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andon-go6ev/30min'});return false;"><img src="/assets/images/live-meeting.png"></a>
-                    
-                    <p>В нашия офис</p>
-
-                </div>
-
-                <div class="meeting-image-section">
-
-                    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andon-go6ev/30min'});return false;"><img src="/assets/images/remote-meeting.png"></a>
-                    
-                    <p>Google meet</p>
-
-                </div>
-
-            </div>
-
+        <div class="contacts-meeting__options">
+          <a href="#" class="meeting-option" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andon-go6ev/30min'});return false;">
+            <img src="/assets/images/live-meeting.png" alt="">
+            <p>В нашия офис</p>
+          </a>
+          <a href="#" class="meeting-option" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/andon-go6ev/30min'});return false;">
+            <img src="/assets/images/remote-meeting.png" alt="">
+            <p>Google meet</p>
+          </a>
         </div>
+      </div>
 
     </div>
-    </div>
-
-</div>
+  </div>
+</section>
