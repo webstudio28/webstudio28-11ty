@@ -27,7 +27,14 @@
     "phone": "+359892907007",
     "email": "bgwebstudio28@gmail.com",
     "address": "Бул. Васил Априлов 49, гр.Пловдив",
-    "mapsUrl": "https://www.google.com/maps?q=Бул.+Васил+Априлов+49,+Пловдив"
+    "mapsUrl": "https://www.google.com/maps?q=Бул.+Васил+Априлов+49,+Пловдив",
+    "whatsapp": "https://wa.me/359892907007",
+    "viber": "viber://chat?number=%2B359892907007"
+  },
+  "social": {
+    "tiktok": "https://www.tiktok.com/@webstudio28",
+    "facebook": "https://www.facebook.com/profile.php?id=61578641398876",
+    "instagram": "https://www.instagram.com/p/DL6n0hYt7q2/"
   },
   "analytics": {
     "gaId": "G-R3DVEX9Z67"

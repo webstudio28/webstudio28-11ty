@@ -14,12 +14,12 @@
       </nav>
 
       <div class="site-header__end">
-        <a href="/contacts/" class="site-header__cta">
-          Свържи се
+        <button type="button" class="site-header__cta" data-open-consult>
+          Безплатна консултация
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M5 12h14M13 5l7 7-7 7"/>
           </svg>
-        </a>
+        </button>
 
         <button
           type="button"
@@ -48,6 +48,6 @@
     {% for item in nav %}
       <a href="{{ item.url }}" class="menu-link"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
     {% endfor %}
-    <a href="/contacts/" class="menu-link menu-link--cta">Свържи се</a>
+    <button type="button" class="menu-link menu-link--cta" data-open-consult>Безплатна консултация</button>
   </nav>
 </aside>

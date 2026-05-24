@@ -79,6 +79,21 @@ body {
   background: linear-gradient(to right, transparent, var(--accent));
 }
 
+/* Centered heads — decorative line on both sides of the label */
+.eyebrow--centered::after,
+.features__head .eyebrow::after,
+.standards__head .eyebrow::after,
+.projects__head .eyebrow::after,
+.about-process__head .eyebrow::after,
+.about-team__head .eyebrow::after,
+.page-hero--center .eyebrow::after,
+.home-cta__panel .eyebrow::after {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: linear-gradient(to left, transparent, var(--accent));
+}
+
 .section-title {
   font-size: clamp(1.85rem, 3.6vw, 2.75rem);
   line-height: 1.08;

@@ -37,22 +37,6 @@
   flex-direction: column;
   gap: 0.35rem;
 }
-.press__label-top {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-}
-.press__label-top::before {
-  content: "";
-  width: 22px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--accent));
-}
 .press__label-sub {
   font-size: var(--font-size-lead);
   line-height: var(--line-height-lead);
@@ -71,8 +55,11 @@
     text-align: center;
   }
 
-  .press__label-top {
-    justify-content: center;
+  .press__label .eyebrow::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--accent));
   }
 
   .press__list {

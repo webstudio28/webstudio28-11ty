@@ -137,6 +137,8 @@
     0 1px 0 rgba(255, 255, 255, 0.12) inset,
     0 6px 16px -6px rgba(14, 36, 64, 0.55);
   text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
   transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
 }
 @media (min-width: 768px) {
@@ -288,6 +290,9 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   box-shadow: 0 10px 24px -10px rgba(14, 36, 64, 0.55);
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
 }
 .menu-link--cta:hover {
   background: linear-gradient(140deg, #23496c 0%, #1a3a55 55%, #122a4a 100%);
