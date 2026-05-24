@@ -8,7 +8,7 @@
       <a href="/projects/">← Всички проекти</a>
     </nav>
 
-    <header class="project-detail__header" data-reveal>
+    <header class="project-detail__header">
       <h1 class="project-detail__title">{{ project.title }}</h1>
       <p class="project-detail__lead">{{ project.description }}</p>
       <a href="{{ project.link }}" class="btn-primary" target="_blank" rel="noopener noreferrer">
@@ -17,12 +17,12 @@
       </a>
     </header>
 
-    <div class="project-detail__hero-img" data-reveal>
+    <div class="project-detail__hero-img">
       <img src="{{ project.thumbnail }}" alt="{{ project.title }}" onerror="this.src='/assets/images/projects/placeholder.svg'">
     </div>
 
     {% if project.gallery.length %}
-    <section aria-label="Галерия от проекта" data-reveal>
+    <section aria-label="Галерия от проекта">
       <h2 class="project-detail__gallery-head">Снимки от проекта</h2>
       <div class="project-detail__gallery" id="project-gallery">
         {% for image in project.gallery %}

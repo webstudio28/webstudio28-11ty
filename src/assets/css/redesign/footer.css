@@ -90,18 +90,17 @@ footer.site-footer {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  padding: 0.45rem 0.65rem;
-  border-radius: var(--r-sm);
-  background: rgba(255, 255, 255, 0.95);
+  padding: 0;
+  background: none;
   text-decoration: none;
-  transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+  transition: transform 180ms var(--ease-out), opacity 180ms var(--ease-out);
 }
 .site-footer__logo:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.35);
+  opacity: 0.9;
 }
 .site-footer__logo img {
-  height: 1.45rem;
+  height: 3rem;
   width: auto;
   display: block;
 }
@@ -149,11 +148,13 @@ footer.site-footer {
 .site-footer__links a:hover {
   color: #fff;
 }
-.site-footer__links a svg {
+.site-footer__links a svg,
+.site-footer__links a img {
   width: 1.05rem;
   height: 1.05rem;
   flex-shrink: 0;
   margin-top: 0.12rem;
+  object-fit: contain;
   opacity: 0.85;
 }
 

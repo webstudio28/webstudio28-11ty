@@ -1,13 +1,13 @@
 <section class="projects" id="projects" aria-label="Избрани проекти">
   <div class="container-custom">
 
-    <div class="projects__head" data-reveal>
+    <div class="projects__head">
       <span class="eyebrow">Избрани проекти</span>
       <h2 class="section-title">Сайтове, които <span>работят за клиентите ни</span></h2>
       <p class="section-lead">Малък поглед към последните ни проекти — от малки фирми до бизнеси с национален обхват.</p>
     </div>
 
-    <div class="projects__grid" data-reveal>
+    <div class="projects__grid">
       {% for project in projects %}{% if loop.index <= 3 %}
         <a class="project-card" href="{{ project.link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ project.title }} — отвори сайта">
           <div class="project-card__media">
