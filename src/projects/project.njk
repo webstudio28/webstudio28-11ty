@@ -1,6 +1,8 @@
 ---
 ---
 
+{% set heroSrc = project.cover or project.thumbnail %}
+
 <div class="project-detail">
   <div class="container-custom">
 
@@ -11,74 +13,154 @@
     <header class="project-detail__header">
       <h1 class="project-detail__title">{{ project.title }}</h1>
       <p class="project-detail__lead">{{ project.description }}</p>
-      <a href="{{ project.link }}" class="btn-primary" target="_blank" rel="noopener noreferrer">
-        Посети сайта
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
-      </a>
     </header>
 
-    <div class="project-detail__hero-img">
-      <img src="{{ project.thumbnail }}" alt="{{ project.title }}" onerror="this.src='/assets/images/projects/placeholder.svg'">
-    </div>
-
-    {% if project.gallery.length %}
-    <section aria-label="Галерия от проекта">
-      <h2 class="project-detail__gallery-head">Снимки от проекта</h2>
-      <div class="project-detail__gallery" id="project-gallery">
-        {% for image in project.gallery %}
-        <button type="button" class="project-gallery-item" data-src="{{ image }}" aria-label="Увеличи снимка {{ loop.index }}">
-          <img src="{{ image }}" alt="{{ project.title }} — снимка {{ loop.index }}" loading="lazy" onerror="this.src='/assets/images/projects/placeholder.svg'">
-        </button>
-        {% endfor %}
-      </div>
-    </section>
+    {% if heroSrc %}
+    <button type="button" class="project-detail__hero-trigger" data-gallery-open aria-label="Галерия">
+      <img src="{{ heroSrc }}" alt="{{ project.title }}" onerror="this.src='/assets/images/projects/placeholder.svg'">
+      <span class="project-detail__hero-overlay" aria-hidden="true">
+        <span class="project-detail__hero-cta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.6l-1.6-2H10.2L8.6 7H5a2 2 0 0 0-2 2"/><circle cx="12" cy="13" r="3.4"/></svg>
+          Галерия
+        </span>
+      </span>
+    </button>
     {% endif %}
+
+    <p class="project-detail__site-link-row">
+      <a href="{{ project.link }}" class="project-detail__site-link" target="_blank" rel="noopener noreferrer">
+        Посети сайта
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
+      </a>
+    </p>
+
+    <div class="project-detail__gallery-data" hidden aria-hidden="true">
+      {% if heroSrc %}<span data-gallery-src="{{ heroSrc }}" data-gallery-device="desktop" data-gallery-alt="{{ project.title }} — десктоп изглед"></span>{% endif %}
+      {% if project.mobile %}<span data-gallery-src="{{ project.mobile }}" data-gallery-device="mobile" data-gallery-alt="{{ project.title }} — мобилен изглед"></span>{% endif %}
+      {% for image in project.gallery %}<span data-gallery-src="{{ image }}" data-gallery-alt="{{ project.title }} — снимка {{ loop.index }}"></span>{% endfor %}
+    </div>
 
   </div>
 </div>
 
-<div id="project-gallery-modal" class="project-gallery-modal" hidden>
-  <div class="project-gallery-modal-backdrop"></div>
-  <div class="project-gallery-modal-content">
-    <button type="button" class="project-gallery-modal-close" aria-label="Затвори">×</button>
-    <img src="" alt="" id="project-gallery-modal-image">
+<div id="project-gallery-modal" class="project-gallery-modal" role="dialog" aria-modal="true" aria-label="Галерия от проекта" hidden>
+  <div class="project-gallery-modal__backdrop" data-gallery-close></div>
+  <div class="project-gallery-modal__panel">
+    <button type="button" class="project-gallery-modal__close" data-gallery-close aria-label="Затвори галерията">&times;</button>
+    <button type="button" class="project-gallery-modal__arrow project-gallery-modal__arrow--prev" data-gallery-prev aria-label="Предишна снимка">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 12 16 21 24" vector-effect="non-scaling-stroke"/></svg>
+    </button>
+    <div class="project-gallery-modal__stage" data-gallery-stage>
+      <div class="project-gallery-modal__clip">
+        <span class="project-gallery-modal__device-label" data-gallery-device-label hidden></span>
+        <img class="project-gallery-modal__image" data-gallery-image src="" alt="">
+      </div>
+    </div>
+    <button type="button" class="project-gallery-modal__arrow project-gallery-modal__arrow--next" data-gallery-next aria-label="Следваща снимка">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11 8 20 16 11 24" vector-effect="non-scaling-stroke"/></svg>
+    </button>
   </div>
 </div>
 
 <script>
 (function () {
-  const gallery = document.getElementById("project-gallery");
-  const modal = document.getElementById("project-gallery-modal");
-  if (!gallery || !modal) return;
+  var modal = document.getElementById("project-gallery-modal");
+  if (!modal) return;
 
-  const modalImage = document.getElementById("project-gallery-modal-image");
-  const closeBtn = modal.querySelector(".project-gallery-modal-close");
-  const backdrop = modal.querySelector(".project-gallery-modal-backdrop");
+  if (modal.parentNode !== document.body) {
+    document.body.appendChild(modal);
+  }
 
-  function openModal(src, alt) {
-    modalImage.src = src;
-    modalImage.alt = alt;
+  var nodes = document.querySelectorAll("[data-gallery-src]");
+  var items = [];
+  for (var i = 0; i < nodes.length; i++) {
+    items.push({
+      src: nodes[i].getAttribute("data-gallery-src"),
+      alt: nodes[i].getAttribute("data-gallery-alt") || "",
+      device: nodes[i].getAttribute("data-gallery-device") || null
+    });
+  }
+  if (!items.length) return;
+
+  var trigger = document.querySelector("[data-gallery-open]");
+  var image = modal.querySelector("[data-gallery-image]");
+  var label = modal.querySelector("[data-gallery-device-label]");
+  var stage = modal.querySelector("[data-gallery-stage]");
+  var closeBtns = modal.querySelectorAll("[data-gallery-close]");
+  var prevBtn = modal.querySelector("[data-gallery-prev]");
+  var nextBtn = modal.querySelector("[data-gallery-next]");
+  var index = 0;
+
+  if (items.length < 2) {
+    if (prevBtn) prevBtn.hidden = true;
+    if (nextBtn) nextBtn.hidden = true;
+  }
+
+  function render() {
+    var item = items[index];
+    image.src = item.src;
+    image.alt = item.alt;
+    if (item.device) {
+      label.textContent = item.device === "desktop" ? "Desktop" : "Mobile";
+      label.hidden = false;
+    } else {
+      label.textContent = "";
+      label.hidden = true;
+    }
+  }
+
+  var savedScrollY = 0;
+
+  function openAt(i) {
+    index = Math.max(0, Math.min(i | 0, items.length - 1));
+    render();
     modal.hidden = false;
-    document.body.style.overflow = "hidden";
+    savedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = "-" + savedScrollY + "px";
+    document.body.classList.add("gallery-modal-open");
   }
-
-  function closeModal() {
+  function close() {
     modal.hidden = true;
-    modalImage.src = "";
-    document.body.style.overflow = "";
+    image.src = "";
+    document.body.classList.remove("gallery-modal-open");
+    document.body.style.top = "";
+    window.scrollTo(0, savedScrollY);
+  }
+  function next() {
+    if (items.length < 2) return;
+    index = (index + 1) % items.length;
+    render();
+  }
+  function prev() {
+    if (items.length < 2) return;
+    index = (index - 1 + items.length) % items.length;
+    render();
   }
 
-  gallery.addEventListener("click", function (event) {
-    const item = event.target.closest(".project-gallery-item");
-    if (!item) return;
-    const img = item.querySelector("img");
-    openModal(item.dataset.src, img ? img.alt : "");
+  if (trigger) trigger.addEventListener("click", function () { openAt(0); });
+  for (var c = 0; c < closeBtns.length; c++) closeBtns[c].addEventListener("click", close);
+  if (prevBtn) prevBtn.addEventListener("click", prev);
+  if (nextBtn) nextBtn.addEventListener("click", next);
+
+  document.addEventListener("keydown", function (e) {
+    if (modal.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowRight") next();
+    else if (e.key === "ArrowLeft") prev();
   });
 
-  closeBtn.addEventListener("click", closeModal);
-  backdrop.addEventListener("click", closeModal);
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && !modal.hidden) closeModal();
-  });
+  var swipeStartX = null;
+  if (stage) {
+    stage.addEventListener("touchstart", function (e) {
+      if (e.touches && e.touches.length) swipeStartX = e.touches[0].clientX;
+    }, { passive: true });
+    stage.addEventListener("touchend", function (e) {
+      if (swipeStartX === null || !e.changedTouches || !e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - swipeStartX;
+      swipeStartX = null;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) next(); else prev();
+    });
+  }
 })();
 </script>

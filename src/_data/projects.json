@@ -1,14 +1,57 @@
 [
   {
+    "slug": "partydrinks",
+    "title": "Party Drinks",
+    "description": "Динамичен сайт за напитки и събития — продукти, дистрибуция и B2B запитвания.",
+    "link": "https://partydrinks.bg",
+    "cover": "/assets/images/projects/pd-cover.png",
+    "mobile": "/assets/images/projects/pd-mobile.png",
+    "thumbnail": "/assets/images/projects/pd-cover.png",
+    "gallery": [
+      "/assets/images/projects/pd-cetgories.png",
+      "/assets/images/projects/pd-login.png"
+    ],
+    "active": true
+  },
+  {
+    "slug": "airevest",
+    "title": "Airevest",
+    "description": "Платформа за инвестиции в имоти — ясно представяне на възможности и доверие към бранда.",
+    "link": "https://www.airevest.com",
+    "cover": "/assets/images/projects/ai-cover.png",
+    "mobile": "/assets/images/projects/ai-mobile.png",
+    "thumbnail": "/assets/images/projects/ai-cover.png",
+    "gallery": [
+      "/assets/images/projects/ai-property.png",
+      "/assets/images/projects/ai-display.png"
+    ],
+    "active": true
+  },
+  {
+    "slug": "valya-matovska",
+    "title": "Валя Матовска",
+    "description": "Личен професионален сайт — представяне, услуги и лесен контакт с посетителите.",
+    "link": "https://valyamatovska.bg",
+    "cover": "/assets/images/projects/vm-cover.png",
+    "mobile": "/assets/images/projects/vm-mobile.png",
+    "thumbnail": "/assets/images/projects/vm-cover.png",
+    "gallery": [
+      "/assets/images/projects/vm-gallery.png",
+      "/assets/images/projects/vm-za-men.png"
+    ],
+    "active": true
+  },
+  {
     "slug": "raboteriya",
     "title": "Работерия",
     "description": "Уебсайт за работилница и творчески пространства — ясен каталог услуги и лесен контакт с клиенти.",
     "link": "https://raboteriya.bg",
-    "thumbnail": "/assets/images/projects/raboteriya/thumbnail.jpg",
+    "cover": "/assets/images/projects/rbt-cover.png",
+    "mobile": "/assets/images/projects/rbt-mobile.png",
+    "thumbnail": "/assets/images/projects/rbt-cover.png",
     "gallery": [
-      "/assets/images/projects/raboteriya/gallery/01.jpg",
-      "/assets/images/projects/raboteriya/gallery/02.jpg",
-      "/assets/images/projects/raboteriya/gallery/03.jpg"
+      "/assets/images/projects/rbt-display.png",
+      "/assets/images/projects/rbt-contacts.png"
     ],
     "active": true
   },
@@ -17,12 +60,8 @@
     "title": "Microblading",
     "description": "Елегантен сайт за студио за перманентен грим — портфолио, цени и онлайн записване.",
     "link": "https://microblading.bg",
-    "thumbnail": "/assets/images/projects/microblading/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/microblading/gallery/01.jpg",
-      "/assets/images/projects/microblading/gallery/02.jpg",
-      "/assets/images/projects/microblading/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -30,12 +69,8 @@
     "title": "Dream Electric BG",
     "description": "Корпоративен сайт за електроуслуги — представяне на екип, обхват и бърза заявка за оферта.",
     "link": "https://dreamelectricbg.com",
-    "thumbnail": "/assets/images/projects/dreamelectricbg/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/dreamelectricbg/gallery/01.jpg",
-      "/assets/images/projects/dreamelectricbg/gallery/02.jpg",
-      "/assets/images/projects/dreamelectricbg/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -43,12 +78,8 @@
     "title": "Парк Раковски",
     "description": "Информационен сайт за парк и събития — карта, програма и актуални новини за посетители.",
     "link": "https://parkrakovski.bg",
-    "thumbnail": "/assets/images/projects/parkrakovski/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/parkrakovski/gallery/01.jpg",
-      "/assets/images/projects/parkrakovski/gallery/02.jpg",
-      "/assets/images/projects/parkrakovski/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -56,12 +87,8 @@
     "title": "Психолог Пловдив",
     "description": "Професионален сайт за психолог — доверие, услуги и удобен канал за първа консултация.",
     "link": "https://psiholog-plovdiv.bg",
-    "thumbnail": "/assets/images/projects/psiholog-plovdiv/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/psiholog-plovdiv/gallery/01.jpg",
-      "/assets/images/projects/psiholog-plovdiv/gallery/02.jpg",
-      "/assets/images/projects/psiholog-plovdiv/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -69,12 +96,8 @@
     "title": "Biovel",
     "description": "Презентационен сайт за козметична марка — продуктов каталог и акцент върху качеството.",
     "link": "https://biovel.bg",
-    "thumbnail": "/assets/images/projects/biovel/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/biovel/gallery/01.jpg",
-      "/assets/images/projects/biovel/gallery/02.jpg",
-      "/assets/images/projects/biovel/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -82,12 +105,8 @@
     "title": "Покрив Сервиз",
     "description": "Сайт за покривни услуги — ясни пакети, галерия с реализации и бърз контакт за оглед.",
     "link": "https://pokrivserviz.bg",
-    "thumbnail": "/assets/images/projects/pokrivserviz/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/pokrivserviz/gallery/01.jpg",
-      "/assets/images/projects/pokrivserviz/gallery/02.jpg",
-      "/assets/images/projects/pokrivserviz/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -95,12 +114,8 @@
     "title": "Адвокат Георгиев",
     "description": "Адвокатски сайт с фокус върху експертиза, практика и сигурен път до първа среща.",
     "link": "https://advokatgeorgiev.bg",
-    "thumbnail": "/assets/images/projects/advokatgeorgiev/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/advokatgeorgiev/gallery/01.jpg",
-      "/assets/images/projects/advokatgeorgiev/gallery/02.jpg",
-      "/assets/images/projects/advokatgeorgiev/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -108,12 +123,8 @@
     "title": "Добри практики",
     "description": "Образователен и консултантски сайт — структурирано съдържание и ясен призив за действие.",
     "link": "https://dobri-prakiti.bg",
-    "thumbnail": "/assets/images/projects/dobri-prakiti/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/dobri-prakiti/gallery/01.jpg",
-      "/assets/images/projects/dobri-prakiti/gallery/02.jpg",
-      "/assets/images/projects/dobri-prakiti/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -121,25 +132,8 @@
     "title": "Resto v Evro",
     "description": "Ресторантски сайт с меню, атмосфера и резервации — оптимизиран за мобилни посетители.",
     "link": "https://resto-v-evro.bg",
-    "thumbnail": "/assets/images/projects/resto-v-evro/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/resto-v-evro/gallery/01.jpg",
-      "/assets/images/projects/resto-v-evro/gallery/02.jpg",
-      "/assets/images/projects/resto-v-evro/gallery/03.jpg"
-    ],
-    "active": true
-  },
-  {
-    "slug": "partydrinks",
-    "title": "Party Drinks",
-    "description": "Динамичен сайт за напитки и събития — продукти, дистрибуция и B2B запитвания.",
-    "link": "https://partydrinks.bg",
-    "thumbnail": "/assets/images/projects/partydrinks/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/partydrinks/gallery/01.jpg",
-      "/assets/images/projects/partydrinks/gallery/02.jpg",
-      "/assets/images/projects/partydrinks/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -147,12 +141,8 @@
     "title": "Globus 89",
     "description": "Бизнес сайт с ясна визия, услуги и контакт — изграден за растеж в локалния пазар.",
     "link": "https://globus89.bg",
-    "thumbnail": "/assets/images/projects/globus89/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/globus89/gallery/01.jpg",
-      "/assets/images/projects/globus89/gallery/02.jpg",
-      "/assets/images/projects/globus89/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   },
   {
@@ -160,12 +150,8 @@
     "title": "DARS Имоти",
     "description": "Сайт за агенция за недвижими имоти — обяви, филтри и лесен контакт с брокер.",
     "link": "https://dars-imoti.bg",
-    "thumbnail": "/assets/images/projects/dars-imoti/thumbnail.jpg",
-    "gallery": [
-      "/assets/images/projects/dars-imoti/gallery/01.jpg",
-      "/assets/images/projects/dars-imoti/gallery/02.jpg",
-      "/assets/images/projects/dars-imoti/gallery/03.jpg"
-    ],
+    "thumbnail": "/assets/images/projects/placeholder.svg",
+    "gallery": [],
     "active": true
   }
 ]

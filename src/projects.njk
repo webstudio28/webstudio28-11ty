@@ -26,17 +26,17 @@ description: Реализирани уебсайтове на WebStudio28 — п
       {% if project.active %}
       <article class="portfolio-card">
         <a href="/projects/{{ project.slug }}/" class="portfolio-card__media">
-          <img src="{{ project.thumbnail }}" alt="{{ project.title }}" loading="lazy" onerror="this.src='/assets/images/projects/placeholder.svg'">
+          <img src="{{ project.cover or project.thumbnail }}" alt="{{ project.title }}" loading="lazy" onerror="this.src='/assets/images/projects/placeholder.svg'">
         </a>
         <div class="portfolio-card__body">
           <h2 class="portfolio-card__title">
             <a href="/projects/{{ project.slug }}/">{{ project.title }}</a>
           </h2>
           <p class="portfolio-card__desc">{{ project.description }}</p>
-          <div class="portfolio-card__actions">
-            <a href="/projects/{{ project.slug }}/" class="btn-glass">Виж детайли</a>
-            <a href="{{ project.link }}" class="btn-primary" target="_blank" rel="noopener noreferrer">Към сайта</a>
-          </div>
+          <span class="portfolio-card__foot">
+            Виж проекта
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
         </div>
       </article>
       {% endif %}
