@@ -82,3 +82,24 @@
   justify-content: center;
   margin-top: 0.4rem;
 }
+
+/* Bare variant — no panel chrome (background, border, shadow, glow blobs).
+   Used on contexts like project detail pages where the CTA should sit
+   plainly within the surrounding layout. */
+.home-cta--bare .home-cta__panel {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+          backdrop-filter: none;
+  border-radius: 0;
+  padding: 1rem 0 0.5rem;
+  overflow: visible;
+}
+.home-cta--bare .home-cta__panel::before,
+.home-cta--bare .home-cta__panel::after {
+  display: none;
+}
+@media (min-width: 768px) {
+  .home-cta--bare .home-cta__panel { padding: 1.25rem 0 0.75rem; }
+}

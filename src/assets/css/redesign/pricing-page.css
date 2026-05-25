@@ -31,6 +31,24 @@
   }
 }
 
+/* Mobile: tighten vertical breathing room around the Lottie animation
+   so the hero feels denser on small screens. The grid stacks as
+   head → visual → body, so a smaller row gap trims both above and
+   below the animation simultaneously. */
+@media (max-width: 899px) {
+  .pricing-hero__grid {
+    gap: 0.75rem;
+  }
+}
+
+/* Hero copy accents — mirrors the /about hero treatment.
+   The title's <span> is already tinted globally via .page-hero__title span;
+   here we only colour the in-lead emphases. */
+.pricing-hero .page-hero__lead span {
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
 .pricing-quote {
   padding: 0 0 var(--section-y);
 }
@@ -207,25 +225,6 @@
               border-color 320ms var(--ease-out);
 }
 
-/* Hairline baseline grid — barely visible draftsman's paper.
-   Sits behind everything, fades the lower portion via mask. */
-.pricing-tier::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 1.5rem,
-    rgba(17, 45, 78, 0.045) 1.5rem,
-    rgba(17, 45, 78, 0.045) calc(1.5rem + 1px)
-  );
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 95%);
-          mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 95%);
-  pointer-events: none;
-}
-
 /* Color-signature rail down the left edge */
 .pricing-tier::after {
   content: "";
@@ -266,7 +265,7 @@
   font-style: italic;
   line-height: 1;
   letter-spacing: -0.05em;
-  background: var(--tier-rail);
+  background: var(--tier-rail, linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 100%));
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -322,12 +321,14 @@
   border-left-color: var(--tier-ink, var(--accent-deep));
 }
 
-/* Head block */
+/* Head block — capped at 70% of the card's content width so the title
+   doesn't run into the decorative ordinal sitting in the top-right
+   corner. The features list below still uses the full card width. */
 .pricing-tier__head {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding-right: 4.5rem; /* leave room for the ordinal */
+  max-width: 70%;
 }
 
 .pricing-tier__title {
@@ -339,45 +340,34 @@
   letter-spacing: -0.01em;
 }
 
-.pricing-tier__intro {
-  margin: 0;
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
-  color: var(--text);
-}
-
 /* Features — clean, typographic vertical list with hairline dividers
    between rows. No bullets, no dots — just the words. */
 .pricing-tier__features {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 1rem 0 0;
+  padding: 0.85rem 0 0;
   list-style: none;
   flex: 1;
   border-top: 1px dashed rgba(17, 45, 78, 0.14);
 }
 
 .pricing-tier__feature {
-  padding: 0.55rem 0;
+  padding: 0.35rem 0;
   font-size: var(--font-size-body);
-  line-height: 1.45;
+  line-height: 1.35;
   color: var(--text);
-  border-bottom: 1px dashed rgba(17, 45, 78, 0.08);
-}
-.pricing-tier__feature:last-child {
-  border-bottom: 0;
 }
 
 /* ── Per-tier color signatures ──────────────────────────────── */
 
-.pricing-tier[data-tier="static"] {
+.pricing-tier[data-tier="business-presence"] {
   --tier-rail: linear-gradient(180deg, #F18B5D 0%, #d97548 100%);
   --tier-glow: rgba(241, 139, 93, 0.22);
   --tier-ink: #d97548;
   --tier-border-hover: rgba(217, 117, 72, 0.32);
 }
-.pricing-tier[data-tier="dynamic"] {
+.pricing-tier[data-tier="ecommerce"] {
   --tier-rail: linear-gradient(180deg, #d97548 0%, #c45f8e 50%, #6f6bc4 100%);
   --tier-glow: rgba(196, 95, 142, 0.22);
   --tier-ink: #c45f8e;
@@ -390,12 +380,11 @@
   --tier-border-hover: rgba(111, 107, 196, 0.32);
 }
 
-/* Small phones: tighten the card so the ordinal still has room to breathe */
+/* Small phones: tighten the card padding for denser layout */
 @media (max-width: 480px) {
   .pricing-tier {
     padding: 1.5rem 1.25rem 1.6rem 1.65rem;
   }
-  .pricing-tier__head { padding-right: 3.75rem; }
 }
 
 /* Reduce motion: drop the hover transforms */

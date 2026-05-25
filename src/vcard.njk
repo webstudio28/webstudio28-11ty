@@ -18,6 +18,7 @@ description: Дигитална визитка — запази контакта
     </div>
   </header>
 
+
   <hr class="vcard__rule" />
 
   <section class="vcard__hero">
@@ -42,70 +43,64 @@ description: Дигитална визитка — запази контакта
 
   <hr class="vcard__rule" />
 
-  <ol class="vcard__lines" aria-label="Контакти / Contact">
+  <ul class="vcard__lines vcard__lines--card" aria-label="Контакти / Contact">
 
     <li>
       <a class="vcard__line" href="tel:{{ site.contact.phone }}">
-        <span class="vcard__line-num">01</span>
         <span class="vcard__line-label">
           <span data-lang="bg">Телефон</span>
           <span data-lang="en">Phone</span>
         </span>
-        <span class="vcard__line-leader" aria-hidden="true"></span>
         <span class="vcard__line-value">+359 89 290 7007</span>
-        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
       </a>
     </li>
 
     <li>
       <a class="vcard__line" href="mailto:{{ site.contact.email }}">
-        <span class="vcard__line-num">02</span>
         <span class="vcard__line-label">
           <span data-lang="bg">Имейл</span>
           <span data-lang="en">Email</span>
         </span>
-        <span class="vcard__line-leader" aria-hidden="true"></span>
         <span class="vcard__line-value">{{ site.contact.email }}</span>
-        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
       </a>
     </li>
 
-    <li>
-      <a class="vcard__line" href="{{ site.social.instagram }}" target="_blank" rel="noopener noreferrer">
-        <span class="vcard__line-num">03</span>
-        <span class="vcard__line-label">Instagram</span>
-        <span class="vcard__line-leader" aria-hidden="true"></span>
-        <span class="vcard__line-value">@webstudio28</span>
-        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
-      </a>
-    </li>
+  </ul>
 
-    <li>
-      <a class="vcard__line" href="{{ site.social.tiktok }}" target="_blank" rel="noopener noreferrer">
-        <span class="vcard__line-num">04</span>
-        <span class="vcard__line-label">TikTok</span>
-        <span class="vcard__line-leader" aria-hidden="true"></span>
-        <span class="vcard__line-value">@webstudio28</span>
-        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
-      </a>
-    </li>
-
-    <li>
-      <a class="vcard__line" href="{{ site.social.facebook }}" target="_blank" rel="noopener noreferrer">
-        <span class="vcard__line-num">05</span>
-        <span class="vcard__line-label">Facebook</span>
-        <span class="vcard__line-leader" aria-hidden="true"></span>
-        <span class="vcard__line-value">WebStudio28</span>
-        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
-      </a>
-    </li>
-
-  </ol>
+  <nav class="vcard__socials" aria-label="Социални мрежи / Social media">
+    <a class="vcard__social vcard__social--instagram" href="{{ site.social.instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <defs>
+          <linearGradient id="vc-ig" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%"   stop-color="#FEDA77"/>
+            <stop offset="30%"  stop-color="#F58529"/>
+            <stop offset="60%"  stop-color="#DD2A7B"/>
+            <stop offset="100%" stop-color="#8134AF"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="url(#vc-ig)" stroke-width="2"/>
+        <circle cx="12" cy="12" r="4" fill="none" stroke="url(#vc-ig)" stroke-width="2"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="url(#vc-ig)"/>
+      </svg>
+    </a>
+    <a class="vcard__social vcard__social--tiktok" href="{{ site.social.tiktok }}" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.77 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+    </a>
+    <a class="vcard__social vcard__social--facebook" href="{{ site.social.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <a class="vcard__social vcard__social--whatsapp" href="{{ site.contact.whatsapp }}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+    <a class="vcard__social vcard__social--viber" href="{{ site.contact.viber }}" aria-label="Viber">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.4.034C9.473.06 5.331.378 3.013 2.502 1.291 4.214.688 6.728.624 9.841.561 12.954.481 18.785 6.105 20.366h.004l-.004 2.414s-.037.97.602 1.17c.776.245 1.231-.5 1.973-1.299.408-.442.971-1.093 1.395-1.587 3.857.323 6.82-.418 7.156-.526.781-.255 5.198-.823 5.917-6.682.741-6.043-.36-9.864-2.343-11.589C20.205 2.262 17.71.95 12.5.034c0 0-.4-.022-1.099-.022zM11.521 1.71c.59-.001 1.117.02 1.117.02 4.412.026 6.532 1.155 7.082 1.642 1.687 1.466 2.547 4.916 1.926 9.94-.612 4.96-3.572 5.265-4.232 5.479-.282.092-2.888.74-6.158.527 0 0-2.438 2.942-3.2 3.706-.119.123-.26.171-.353.149-.131-.033-.167-.187-.166-.413l.021-4.005c-4.755-1.32-4.477-6.302-4.426-8.909.054-2.607.541-4.743 1.998-6.182 1.94-1.692 5.328-1.95 6.39-1.954zm.13 2.677a.474.474 0 0 0 0 .947c1.451 0 2.604.469 3.49 1.357.886.888 1.357 2.041 1.357 3.49a.474.474 0 0 0 .947 0c0-1.7-.557-3.107-1.624-4.176-1.067-1.067-2.473-1.618-4.17-1.618zm-3.43 1.341a.864.864 0 0 0-.59.184l-.013.014c-.429.345-.788.761-1.039 1.275-.236.484-.378.973-.49 1.46-.06.263-.07.515-.05.733 0 0 .14 1.931 1.853 4.16.94 1.142 1.852 1.94 2.78 2.611.928.67 1.834 1.197 2.69 1.686 1.661.937 4.035 1.714 4.088 1.714a4.064 4.064 0 0 0 .822-.021c.46-.067.93-.226 1.366-.463.495-.27.86-.611 1.094-1.084.061-.117.181-.385.181-.385.15-.32.193-.578.193-.578-.06-.231-.39-.418-.79-.61-.402-.192-1.5-.69-2.026-.886a.491.491 0 0 0-.484.044l-.211.219c-.224.21-.597.474-.597.474s-.36.186-.6.186c-.348 0-.65-.117-.96-.234-.31-.118-.659-.234-1.094-.564-.435-.328-.79-.66-1.108-.989-.317-.328-.624-.768-.836-1.123-.21-.356-.327-.673-.327-1.026 0-.247.122-.6.122-.6s.244-.402.45-.622l.218-.21a.488.488 0 0 0 .044-.484c-.197-.526-.694-1.624-.886-2.025-.193-.401-.378-.731-.61-.79zm5.121 1.36a.474.474 0 0 0 0 .947c.83 0 1.498.234 1.997.737.5.5.737 1.167.737 1.997a.474.474 0 0 0 .947 0c0-1.054-.34-1.95-1.014-2.626-.674-.673-1.572-1.013-2.624-1.013zm.114 2.654a.473.473 0 0 0-.473.473.473.473 0 0 0 .473.473.473.473 0 0 1 .473.473.473.473 0 0 0 .947 0 1.42 1.42 0 0 0-1.42-1.42z"/></svg>
+    </a>
+  </nav>
 
   <hr class="vcard__rule" />
 
   <section class="vcard__save">
-    <a class="vcard__save-link"
+    <a class="vcard__save-btn"
        href="/assets/card/andon-goshev.vcf"
        download="Andon-Goshev-WebStudio28.vcf"
        data-vcard-save>
@@ -115,17 +110,15 @@ description: Дигитална визитка — запази контакта
         <span data-lang="en">Save my contact</span>
       </span>
     </a>
-    <p class="vcard__save-meta">
-      <span data-lang="bg">.vcf · телефон, имейл, снимка</span>
-      <span data-lang="en">.vcf · phone, email, photo</span>
-    </p>
   </section>
 
   <hr class="vcard__rule" />
 
   <footer class="vcard__foot">
     <a href="/" class="vcard__foot-link">
-      webstudio28.com <span aria-hidden="true">→</span>
+      <span data-lang="bg">Виж повече за Webstudio28</span>
+      <span data-lang="en">Learn more about Webstudio28</span>
+      <span aria-hidden="true" class="vcard__foot-arrow">→</span>
     </a>
   </footer>
 

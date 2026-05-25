@@ -77,14 +77,22 @@ main.vcard-page {
   margin: 1.4rem 0;
 }
 
-/* ── Top bar: wordmark + language toggle ──────────────────── */
+/* ── Top bar: wordmark centered, language toggle top-right ── */
 
 .vcard__top {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
+  min-height: 2.25rem;
+  text-align: center;
   animation: vc-fade 700ms ease-out both;
+}
+
+.vcard-lang {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .vcard__mark {
@@ -141,20 +149,22 @@ main.vcard-page {
   font-weight: 700;
 }
 
-/* ── Hero: asymmetric name + portrait ─────────────────────── */
+/* ── Hero: portrait above name, centered ──────────────────── */
 
 .vcard__hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1.5rem;
-  align-items: end;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  text-align: center;
   animation: vc-fade 800ms ease-out 80ms both;
 }
 
 .vcard__id {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.55rem;
   min-width: 0;
 }
@@ -209,7 +219,7 @@ main.vcard-page {
   filter: saturate(1.05) contrast(1.02);
 }
 
-/* ── Contact lines (table-of-contents style) ──────────────── */
+/* ── Contact lines (centered, label + value stacked) ─────── */
 
 .vcard__lines {
   list-style: none;
@@ -217,18 +227,30 @@ main.vcard-page {
   padding: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   animation: vc-fade 900ms ease-out 160ms both;
 }
-.vcard__lines > li + li {
-  border-top: 1px dashed rgba(17, 45, 78, 0.10);
+.vcard__lines > li {
+  width: 100%;
+}
+
+/* Grouped "mini section" card holding phone + email together,
+   no divider between them. */
+.vcard__lines--card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(17, 45, 78, 0.08);
+  border-radius: 1rem;
+  padding: 0.4rem 1.25rem;
+  box-shadow: 0 8px 24px -18px rgba(17, 45, 78, 0.25);
 }
 
 .vcard__line {
-  display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
-  align-items: baseline;
-  gap: 0.6rem;
-  padding: 0.85rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.95rem 0;
   text-decoration: none;
   color: var(--ink, #112D4E);
   transition: color 180ms ease;
@@ -238,26 +260,6 @@ main.vcard-page {
   outline: none;
   color: var(--accent-deep, #d97548);
 }
-.vcard__line:hover .vcard__line-arrow,
-.vcard__line:focus-visible .vcard__line-arrow {
-  transform: translate(2px, -2px);
-  color: var(--accent, #F18B5D);
-  opacity: 1;
-}
-.vcard__line:hover .vcard__line-leader,
-.vcard__line:focus-visible .vcard__line-leader {
-  opacity: 1;
-}
-
-.vcard__line-num {
-  font-feature-settings: "tnum", "lnum";
-  font-variant-numeric: tabular-nums lining-nums;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  color: var(--ink-mute, rgba(17, 45, 78, 0.45));
-  min-width: 1.5rem;
-}
 
 .vcard__line-label {
   font-size: 0.72rem;
@@ -265,154 +267,157 @@ main.vcard-page {
   text-transform: uppercase;
   font-weight: 600;
   color: var(--ink-soft, rgba(17, 45, 78, 0.78));
-  white-space: nowrap;
-}
-
-/* The "leader" — dotted line filling the space, like a TOC. */
-.vcard__line-leader {
-  display: block;
-  height: 1em;
-  align-self: center;
-  background-image: radial-gradient(circle, rgba(17, 45, 78, 0.30) 0.7px, transparent 1.2px);
-  background-size: 8px 1px;
-  background-repeat: repeat-x;
-  background-position: center;
-  opacity: 0.55;
-  min-width: 1rem;
-  transition: opacity 200ms ease;
 }
 
 .vcard__line-value {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 500;
   letter-spacing: -0.005em;
   color: var(--ink, #112D4E);
-  text-align: right;
-  white-space: nowrap;
+  word-break: break-word;
 }
 
-.vcard__line-arrow {
-  display: inline-block;
-  font-size: 0.95rem;
-  color: var(--ink-mute, rgba(17, 45, 78, 0.45));
-  opacity: 0.7;
-  transform: translate(0, 0);
-  transition: transform 220ms cubic-bezier(.22,.61,.36,1), color 200ms ease, opacity 200ms ease;
+/* ── Social icon row ─────────────────────────────────────── */
+
+.vcard__socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  animation: vc-fade 950ms ease-out 200ms both;
 }
 
-/* Narrow screens: stack label above value, hide leader (no room) */
-@media (max-width: 460px) {
-  .vcard__line {
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto;
-    row-gap: 0.15rem;
-    column-gap: 0.7rem;
-    padding: 0.85rem 0;
-  }
-  .vcard__line-num {
-    grid-row: 1 / span 2;
-    align-self: center;
-  }
-  .vcard__line-label {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .vcard__line-leader { display: none; }
-  .vcard__line-value {
-    grid-column: 2;
-    grid-row: 2;
-    text-align: left;
-    font-size: 1.02rem;
-    white-space: normal;
-    word-break: break-word;
-  }
-  .vcard__line-arrow {
-    grid-column: 3;
-    grid-row: 1 / span 2;
-    align-self: center;
-  }
+.vcard__social {
+  --social-color: var(--ink, #112D4E);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  color: var(--social-color);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(17, 45, 78, 0.08);
+  text-decoration: none;
+  box-shadow: 0 6px 16px -12px rgba(17, 45, 78, 0.3);
+  transition: transform 200ms cubic-bezier(.22,.61,.36,1),
+              color 180ms ease,
+              background 180ms ease,
+              border-color 180ms ease,
+              box-shadow 220ms ease;
+}
+.vcard__social svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.vcard__social:hover,
+.vcard__social:focus-visible {
+  outline: none;
+  transform: translateY(-2px);
+  color: #fff;
+  background: var(--social-color);
+  border-color: transparent;
+  box-shadow: 0 14px 24px -12px color-mix(in srgb, var(--social-color) 55%, transparent);
 }
 
-/* ── Save action — quiet but primary ──────────────────────── */
+/* Brand colors per network (also used as hover fill) */
+.vcard__social--instagram { --social-color: #DD2A7B; }
+.vcard__social--tiktok    { --social-color: #010101; }
+.vcard__social--facebook  { --social-color: #1877F2; }
+.vcard__social--whatsapp  { --social-color: #25D366; }
+.vcard__social--viber     { --social-color: #7360F2; }
+
+/* Instagram uses an inline SVG gradient — keep that visible on hover
+   by not forcing currentColor over the gradient. */
+.vcard__social--instagram:hover,
+.vcard__social--instagram:focus-visible {
+  background: linear-gradient(45deg,
+    #FEDA77 0%,
+    #F58529 25%,
+    #DD2A7B 60%,
+    #8134AF 90%);
+}
+.vcard__social--instagram:hover svg rect,
+.vcard__social--instagram:hover svg circle,
+.vcard__social--instagram:focus-visible svg rect,
+.vcard__social--instagram:focus-visible svg circle {
+  stroke: #fff;
+  fill: transparent;
+}
+.vcard__social--instagram:hover svg circle:last-child,
+.vcard__social--instagram:focus-visible svg circle:last-child {
+  fill: #fff;
+}
+
+/* ── Save action — solid pill button ──────────────────────── */
 
 .vcard__save {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
   animation: vc-fade 1000ms ease-out 240ms both;
 }
 
-.vcard__save-link {
-  position: relative;
+.vcard__save-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0.2rem 0;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.7rem;
+  border-radius: 999px;
   text-decoration: none;
-  color: var(--ink, #112D4E);
-  font-size: clamp(1.5rem, 5vw, 2.1rem);
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
+  color: #fff;
+  background: linear-gradient(140deg, #1d3f5e 0%, #16324A 55%, #0e2440 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.14) inset,
+    0 10px 24px -10px rgba(14, 36, 64, 0.55);
+  transition: transform 220ms cubic-bezier(.22,.61,.36,1), box-shadow 220ms ease, background 220ms ease;
 }
-.vcard__save-link::after {
-  content: "";
-  position: absolute;
-  left: 2.4rem;
-  right: 0.2rem;
-  bottom: 0;
-  height: 2px;
-  background: linear-gradient(to right, var(--accent, #F18B5D), var(--accent-deep, #d97548));
-  transform: scaleX(0.4);
-  transform-origin: left center;
-  transition: transform 380ms cubic-bezier(.22,.61,.36,1);
-  border-radius: 2px;
-}
-.vcard__save-link:hover::after,
-.vcard__save-link:focus-visible::after {
-  transform: scaleX(1);
-}
-.vcard__save-link:focus-visible {
+.vcard__save-btn:hover,
+.vcard__save-btn:focus-visible {
   outline: none;
+  transform: translateY(-2px);
+  background: linear-gradient(140deg, #23496c 0%, #1a3a55 55%, #122a4a 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 16px 30px -12px rgba(14, 36, 64, 0.7);
+}
+.vcard__save-btn:active {
+  transform: translateY(0);
 }
 
 .vcard__save-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
+  width: 1.4rem;
+  height: 1.4rem;
   border-radius: 50%;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   color: #fff;
-  background: linear-gradient(140deg, var(--accent, #F18B5D), var(--accent-deep, #d97548));
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.22) inset,
-    0 8px 18px -8px rgba(217, 117, 72, 0.55);
+  background: rgba(255, 255, 255, 0.16);
   animation: vc-bob 2.4s ease-in-out infinite;
 }
 
-.vcard__save-text { display: inline-block; }
-
-.vcard__save-meta {
-  margin: 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--ink-mute, rgba(17, 45, 78, 0.55));
-  padding-left: 2.7rem;
-}
+.vcard__save-text { display: inline-block; color: #fff; }
 
 /* ── Footer ───────────────────────────────────────────────── */
 
 .vcard__foot {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   animation: vc-fade 1100ms ease-out 320ms both;
 }
 .vcard__foot-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-size: 0.72rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -421,11 +426,11 @@ main.vcard-page {
   color: var(--ink-mute, rgba(17, 45, 78, 0.55));
   transition: color 200ms ease;
 }
-.vcard__foot-link span { transition: transform 220ms ease; display: inline-block; }
+.vcard__foot-arrow { transition: transform 220ms ease; display: inline-block; }
 .vcard__foot-link:hover {
   color: var(--ink, #112D4E);
 }
-.vcard__foot-link:hover span {
+.vcard__foot-link:hover .vcard__foot-arrow {
   transform: translateX(3px);
 }
 
