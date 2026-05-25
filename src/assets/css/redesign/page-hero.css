@@ -4,7 +4,11 @@
 
 .page-hero {
   position: relative;
-  overflow: hidden;
+  /* Allow the blurred blobs to bleed vertically into the next section so the
+     warm tint fades out smoothly instead of being cut by a hard horizontal
+     line at the section's bottom. `overflow-x: clip` keeps the layout safe
+     horizontally without re-introducing the vertical clip. */
+  overflow-x: clip;
   padding: 1.5rem 0 2.5rem;
 }
 @media (min-width: 960px) {

@@ -2,6 +2,35 @@
    Pricing / services page
    ───────────────────────────────────────────────────────────── */
 
+/* Hero layout: mobile order is title → visual → lead via DOM order.
+   Desktop pins the visual to the right column spanning both rows so
+   the title + lead read as one column of copy with the animation
+   alongside. */
+@media (min-width: 900px) {
+  .pricing-hero__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    grid-template-rows: auto auto;
+    column-gap: 3rem;
+    row-gap: 1rem;
+    align-items: start;
+  }
+  .pricing-hero__head {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+  }
+  .pricing-hero__visual {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+  .pricing-hero__body {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
+}
+
 .pricing-quote {
   padding: 0 0 var(--section-y);
 }

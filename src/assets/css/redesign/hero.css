@@ -7,7 +7,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  /* Let the soft blobs bleed vertically into adjacent sections so the
+     page tint fades smoothly instead of stopping at a hard horizontal line.
+     `overflow-x: clip` still prevents a horizontal scrollbar from blobs
+     positioned past the viewport edges. */
+  overflow-x: clip;
   box-sizing: border-box;
 }
 
