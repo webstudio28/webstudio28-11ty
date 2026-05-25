@@ -215,6 +215,7 @@
 }
 .hero__visual-card img {
   object-fit: cover;
+  filter: contrast(0.9) saturate(0.9);
 }
 
 /* Soft background blobs for the hero only — adds dimension under glass */
