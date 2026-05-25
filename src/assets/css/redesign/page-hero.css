@@ -5,11 +5,11 @@
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: calc(var(--header-offset-mobile) + 1.25rem) 0 2.5rem;
+  padding: 1.5rem 0 2.5rem;
 }
 @media (min-width: 960px) {
   .page-hero {
-    padding: calc(var(--header-offset) + 1.5rem) 0 3rem;
+    padding: calc(var(--header-offset) + 0.75rem) 0 3rem;
   }
 }
 

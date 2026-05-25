@@ -3,7 +3,7 @@
    ───────────────────────────────────────────────────────────── */
 
 .contacts-page {
-  padding: calc(var(--header-offset-mobile) + 1rem) 0 var(--section-y);
+  padding: 0.75rem 0 var(--section-y);
 }
 @media (min-width: 960px) {
   .contacts-page {
