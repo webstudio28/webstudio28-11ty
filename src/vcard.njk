@@ -1,0 +1,132 @@
+---
+layout: vcard.njk
+permalink: /vcard/
+title: Андон Гошев · Основател WebStudio28
+description: Дигитална визитка — запази контакта ми с едно докосване.
+---
+
+<article class="vcard">
+
+  <header class="vcard__top">
+    <a class="vcard__mark" href="/" aria-label="Web Studio 28">
+      <img src="/assets/images/webstudio28-logo2.png" alt="Web Studio 28" width="160" height="40">
+    </a>
+    <div class="vcard-lang" role="group" aria-label="Език / Language">
+      <button type="button" class="vcard-lang__btn" data-set-lang="bg" aria-pressed="true">BG</button>
+      <span class="vcard-lang__sep" aria-hidden="true">·</span>
+      <button type="button" class="vcard-lang__btn" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <hr class="vcard__rule" />
+
+  <section class="vcard__hero">
+    <div class="vcard__id">
+      <span class="vcard__eyebrow">
+        <span data-lang="bg">— Дигитална визитка</span>
+        <span data-lang="en">— Digital business card</span>
+      </span>
+      <h1 class="vcard__name">
+        <span data-lang="bg"><em>Андон</em><br>Гошев</span>
+        <span data-lang="en"><em>Andon</em><br>Goshev</span>
+      </h1>
+      <p class="vcard__role">
+        <span data-lang="bg">Основател · WebStudio28</span>
+        <span data-lang="en">Founder · WebStudio28</span>
+      </p>
+    </div>
+    <div class="vcard__portrait">
+      <img src="/assets/images/andon.jpg" alt="Андон Гошев" width="200" height="200">
+    </div>
+  </section>
+
+  <hr class="vcard__rule" />
+
+  <ol class="vcard__lines" aria-label="Контакти / Contact">
+
+    <li>
+      <a class="vcard__line" href="tel:{{ site.contact.phone }}">
+        <span class="vcard__line-num">01</span>
+        <span class="vcard__line-label">
+          <span data-lang="bg">Телефон</span>
+          <span data-lang="en">Phone</span>
+        </span>
+        <span class="vcard__line-leader" aria-hidden="true"></span>
+        <span class="vcard__line-value">+359 89 290 7007</span>
+        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="vcard__line" href="mailto:{{ site.contact.email }}">
+        <span class="vcard__line-num">02</span>
+        <span class="vcard__line-label">
+          <span data-lang="bg">Имейл</span>
+          <span data-lang="en">Email</span>
+        </span>
+        <span class="vcard__line-leader" aria-hidden="true"></span>
+        <span class="vcard__line-value">{{ site.contact.email }}</span>
+        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="vcard__line" href="{{ site.social.instagram }}" target="_blank" rel="noopener noreferrer">
+        <span class="vcard__line-num">03</span>
+        <span class="vcard__line-label">Instagram</span>
+        <span class="vcard__line-leader" aria-hidden="true"></span>
+        <span class="vcard__line-value">@webstudio28</span>
+        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="vcard__line" href="{{ site.social.tiktok }}" target="_blank" rel="noopener noreferrer">
+        <span class="vcard__line-num">04</span>
+        <span class="vcard__line-label">TikTok</span>
+        <span class="vcard__line-leader" aria-hidden="true"></span>
+        <span class="vcard__line-value">@webstudio28</span>
+        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+
+    <li>
+      <a class="vcard__line" href="{{ site.social.facebook }}" target="_blank" rel="noopener noreferrer">
+        <span class="vcard__line-num">05</span>
+        <span class="vcard__line-label">Facebook</span>
+        <span class="vcard__line-leader" aria-hidden="true"></span>
+        <span class="vcard__line-value">WebStudio28</span>
+        <span class="vcard__line-arrow" aria-hidden="true">↗</span>
+      </a>
+    </li>
+
+  </ol>
+
+  <hr class="vcard__rule" />
+
+  <section class="vcard__save">
+    <a class="vcard__save-link"
+       href="/assets/card/andon-goshev.vcf"
+       download="Andon-Goshev-WebStudio28.vcf"
+       data-vcard-save>
+      <span class="vcard__save-arrow" aria-hidden="true">↓</span>
+      <span class="vcard__save-text">
+        <span data-lang="bg">Запази контакта</span>
+        <span data-lang="en">Save my contact</span>
+      </span>
+    </a>
+    <p class="vcard__save-meta">
+      <span data-lang="bg">.vcf · телефон, имейл, снимка</span>
+      <span data-lang="en">.vcf · phone, email, photo</span>
+    </p>
+  </section>
+
+  <hr class="vcard__rule" />
+
+  <footer class="vcard__foot">
+    <a href="/" class="vcard__foot-link">
+      webstudio28.com <span aria-hidden="true">→</span>
+    </a>
+  </footer>
+
+</article>

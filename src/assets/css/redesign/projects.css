@@ -49,7 +49,6 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     touch-action: pan-x pan-y;
-    scroll-snap-type: x mandatory;
     padding: 0.5rem max(1rem, calc((100vw - 80rem) / 2 + 1rem)) 1.25rem;
     margin: 0 calc(max(1rem, (100vw - 80rem) / 2 + 1rem) * -1);
     scroll-padding-left: max(1rem, calc((100vw - 80rem) / 2 + 1rem));
@@ -76,7 +75,6 @@
   .project-card {
     flex: 0 0 78%;
     max-width: 22rem;
-    scroll-snap-align: start;
   }
 }
 

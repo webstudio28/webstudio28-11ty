@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="bg" data-lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a1322">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="bg_BG">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:title" content="{% if title %}{{ title }}{% else %}Андон Гошев · WebStudio28{% endif %}">
+  <meta property="og:description" content="{% if description %}{{ description }}{% else %}Дигитална визитка — запази контакта ми с едно докосване.{% endif %}">
+  <meta property="og:url" content="{{ site.seo.siteUrl }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.brand.name }}">
+  <meta property="og:image" content="{{ site.seo.siteUrl }}{{ site.seo.ogImage }}">
+  <meta name="description" content="{% if description %}{{ description }}{% else %}Дигитална визитка — запази контакта ми с едно докосване.{% endif %}">
+
+  <link rel="canonical" href="{{ site.seo.siteUrl }}{{ page.url }}">
+  <title>{% if title %}{{ title }}{% else %}Андон Гошев · WebStudio28{% endif %}</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap">
+
+  <link rel="stylesheet" href="/assets/css/main.bundle.css">
+
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('vcard-lang');
+        if (stored === 'en' || stored === 'bg') {
+          document.documentElement.setAttribute('data-lang', stored);
+          document.documentElement.setAttribute('lang', stored);
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+
+<body class="vcard-body">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.gaId }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', '{{ site.analytics.gaId }}');
+</script>
+
+<main class="vcard-page">
+  {{ content | safe }}
+</main>
+
+<script>
+  (function () {
+    var html = document.documentElement;
+    var toggle = document.querySelector('.vcard-lang');
+    if (!toggle) return;
+
+    function setLang(lang) {
+      html.setAttribute('data-lang', lang);
+      html.setAttribute('lang', lang);
+      toggle.querySelectorAll('.vcard-lang__btn').forEach(function (btn) {
+        var on = btn.getAttribute('data-set-lang') === lang;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      try { localStorage.setItem('vcard-lang', lang); } catch (e) {}
+    }
+
+    toggle.querySelectorAll('.vcard-lang__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        setLang(btn.getAttribute('data-set-lang'));
+      });
+    });
+
+    setLang(html.getAttribute('data-lang') || 'bg');
+  })();
+
+  (function () {
+    var saveBtn = document.querySelector('[data-vcard-save]');
+    if (!saveBtn || typeof gtag !== 'function') return;
+    saveBtn.addEventListener('click', function () {
+      gtag('event', 'vcard_save', {
+        event_category: 'engagement',
+        event_label: 'andon-goshev'
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

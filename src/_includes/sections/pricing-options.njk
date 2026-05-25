@@ -1,47 +1,25 @@
 <section class="pricing-tiers" aria-label="Видове уебсайтове">
   <div class="container-custom">
     <div class="pricing-tiers__grid">
+      {% for tier in pricingTiers %}
+      <article class="pricing-tier" data-tier="{{ tier.slug }}">
+        <span class="pricing-tier__ordinal" aria-hidden="true">{{ tier.ordinal }}</span>
 
-      <article class="pricing-tier">
-        <h2 class="pricing-tier__title">Статичен уебсайт</h2>
-        <p class="pricing-tier__intro">Идеален за представяне на услуги, продукти и контактна информация.</p>
-        <ul class="pricing-tier__features">
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Персонален и уникален дизайн</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Кратки срокове за изработка</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Бързина на сайта</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Базова SEO оптимизация</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Контактна форма</li>
+        <header class="pricing-tier__head">
+          <h2 class="pricing-tier__title">{{ tier.title }}</h2>
+          <p class="pricing-tier__intro">{{ tier.intro }}</p>
+        </header>
+
+        <ul class="pricing-tier__features" aria-label="Включено в {{ tier.title }}">
+          {% for feature in tier.features %}
+          <li class="pricing-tier__feature">{{ feature }}</li>
+          {% endfor %}
         </ul>
-      </article>
 
-      <article class="pricing-tier pricing-tier--featured">
-        <h2 class="pricing-tier__title">Динамичен уебсайт</h2>
-        <p class="pricing-tier__intro">За тези, които искат повече контрол и редовно обновяване на информацията.</p>
-        <ul class="pricing-tier__features">
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Персонален и уникален дизайн</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Кратки срокове за изработка</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Бързина на сайта</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Базова SEO оптимизация</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Контактна форма</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Админ панел</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Галерия (снимки/видеа)</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Ще можете автоматично да добавяте снимки и контент</li>
-        </ul>
+        <span class="pricing-tier__bracket pricing-tier__bracket--tr" aria-hidden="true"></span>
+        <span class="pricing-tier__bracket pricing-tier__bracket--bl" aria-hidden="true"></span>
       </article>
-
-      <article class="pricing-tier">
-        <h2 class="pricing-tier__title">Индивидуален</h2>
-        <p class="pricing-tier__intro">Персонализирани уеб решения за бизнеси с конкретни цели и изисквания.</p>
-        <ul class="pricing-tier__features">
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Поддръжка</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Dashboard</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Онлайн магазин</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Онлайн плащания</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Уеб приложения</li>
-          <li><span class="pricing-tier__check" aria-hidden="true">✓</span> Разширена SEO оптимизация</li>
-        </ul>
-      </article>
-
+      {% endfor %}
     </div>
   </div>
 </section>

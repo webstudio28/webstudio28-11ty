@@ -140,7 +140,6 @@
   display: flex;
   gap: 1.15rem;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   padding: 0.5rem var(--container-pad, 1rem) 1rem;
   margin: -0.5rem calc(var(--container-pad, 1rem) * -1) 0;
@@ -155,7 +154,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.25rem;
     overflow: visible;
-    scroll-snap-type: none;
     padding: 0;
     margin: 0;
   }
@@ -178,7 +176,6 @@
   transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
   flex: 0 0 78%;
   min-width: 0;
-  scroll-snap-align: center;
 }
 @media (min-width: 768px) {
   .process-card {

@@ -1,0 +1,464 @@
+/* ─────────────────────────────────────────────────────────────
+   /vcard/ — Andon Goshev · digital business card
+   Editorial minimalism. No boxes, no glass panels.
+   Hairlines + typography + table-of-contents leader rows.
+   Cream gradient + Jost (display + body) + a quiet orange accent.
+   ───────────────────────────────────────────────────────────── */
+
+.vcard-body {
+  margin: 0;
+  min-height: 100svh;
+  font-family: 'Jost', system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink, #112D4E);
+
+  /* Same warm cream / lavender gradient mix as the rest of the site */
+  background:
+    radial-gradient(120% 100% at 10% 0%,  rgba(213, 130, 113, 0.32) 0%, transparent 55%),
+    radial-gradient(110% 90%  at 90% 10%, rgba(136, 138, 208, 0.42) 0%, transparent 55%),
+    radial-gradient(140% 120% at 50% 100%, rgba(204, 129, 196, 0.22) 0%, transparent 60%),
+    linear-gradient(180deg, #f4f1ee 0%, #ece9ed 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle grain — same overlay the site uses */
+.vcard-body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.45 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: overlay;
+}
+
+/* ── Language toggle visibility ───────────────────────────── */
+
+html[data-lang="bg"] [data-lang="en"],
+html[data-lang="en"] [data-lang="bg"] {
+  display: none !important;
+}
+
+/* ── Page wrapper ─────────────────────────────────────────── */
+
+main.vcard-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  /* Override base.css `main { padding-top: var(--header-offset) }` — no site header here. */
+  padding: env(safe-area-inset-top, 0) 1.25rem env(safe-area-inset-bottom, 0);
+  color: var(--ink, #112D4E);
+}
+
+.vcard {
+  width: 100%;
+  max-width: 36rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0 2.5rem;
+}
+
+/* ── Hairline rule ────────────────────────────────────────── */
+
+.vcard__rule {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(to right,
+    rgba(17, 45, 78, 0) 0%,
+    rgba(17, 45, 78, 0.14) 12%,
+    rgba(17, 45, 78, 0.14) 88%,
+    rgba(17, 45, 78, 0) 100%);
+  margin: 1.4rem 0;
+}
+
+/* ── Top bar: wordmark + language toggle ──────────────────── */
+
+.vcard__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  animation: vc-fade 700ms ease-out both;
+}
+
+.vcard__mark {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 0;
+  /* Reset the hover lift transition baseline */
+  transition: opacity 200ms ease;
+}
+.vcard__mark img {
+  display: block;
+  height: 2rem;
+  width: auto;
+  max-width: 9.5rem;
+  object-fit: contain;
+}
+.vcard__mark:hover { opacity: 0.78; }
+@media (min-width: 720px) {
+  .vcard__mark img { height: 2.25rem; max-width: 11rem; }
+}
+
+.vcard-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.vcard-lang__sep {
+  color: var(--ink-mute, rgba(17, 45, 78, 0.45));
+}
+.vcard-lang__btn {
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  border: 0;
+  background: transparent;
+  padding: 0.3rem 0.1rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  font-weight: 500;
+  color: var(--ink-mute, rgba(17, 45, 78, 0.45));
+  transition: color 200ms ease;
+}
+.vcard-lang__btn:hover {
+  color: var(--ink, #112D4E);
+}
+.vcard-lang__btn.is-active {
+  color: var(--ink, #112D4E);
+  font-weight: 700;
+}
+
+/* ── Hero: asymmetric name + portrait ─────────────────────── */
+
+.vcard__hero {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: end;
+  animation: vc-fade 800ms ease-out 80ms both;
+}
+
+.vcard__id {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.vcard__eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-mute, rgba(17, 45, 78, 0.55));
+}
+
+.vcard__name {
+  margin: 0;
+  font-family: inherit;
+  font-weight: 200;
+  font-size: clamp(2.8rem, 11vw, 4.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  color: var(--ink, #112D4E);
+}
+.vcard__name em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent, #F18B5D);
+}
+
+.vcard__role {
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft, rgba(17, 45, 78, 0.78));
+}
+
+.vcard__portrait {
+  width: clamp(76px, 22vw, 108px);
+  aspect-ratio: 1;
+  border-radius: 4px;
+  overflow: hidden;
+  background: rgba(17, 45, 78, 0.06);
+  /* A subtle frame — no big shadow, no big card, just a 1px hairline edge */
+  outline: 1px solid rgba(17, 45, 78, 0.10);
+  outline-offset: 0;
+}
+.vcard__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* ── Contact lines (table-of-contents style) ──────────────── */
+
+.vcard__lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  animation: vc-fade 900ms ease-out 160ms both;
+}
+.vcard__lines > li + li {
+  border-top: 1px dashed rgba(17, 45, 78, 0.10);
+}
+
+.vcard__line {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.85rem 0;
+  text-decoration: none;
+  color: var(--ink, #112D4E);
+  transition: color 180ms ease;
+}
+.vcard__line:hover,
+.vcard__line:focus-visible {
+  outline: none;
+  color: var(--accent-deep, #d97548);
+}
+.vcard__line:hover .vcard__line-arrow,
+.vcard__line:focus-visible .vcard__line-arrow {
+  transform: translate(2px, -2px);
+  color: var(--accent, #F18B5D);
+  opacity: 1;
+}
+.vcard__line:hover .vcard__line-leader,
+.vcard__line:focus-visible .vcard__line-leader {
+  opacity: 1;
+}
+
+.vcard__line-num {
+  font-feature-settings: "tnum", "lnum";
+  font-variant-numeric: tabular-nums lining-nums;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--ink-mute, rgba(17, 45, 78, 0.45));
+  min-width: 1.5rem;
+}
+
+.vcard__line-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-soft, rgba(17, 45, 78, 0.78));
+  white-space: nowrap;
+}
+
+/* The "leader" — dotted line filling the space, like a TOC. */
+.vcard__line-leader {
+  display: block;
+  height: 1em;
+  align-self: center;
+  background-image: radial-gradient(circle, rgba(17, 45, 78, 0.30) 0.7px, transparent 1.2px);
+  background-size: 8px 1px;
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.55;
+  min-width: 1rem;
+  transition: opacity 200ms ease;
+}
+
+.vcard__line-value {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink, #112D4E);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.vcard__line-arrow {
+  display: inline-block;
+  font-size: 0.95rem;
+  color: var(--ink-mute, rgba(17, 45, 78, 0.45));
+  opacity: 0.7;
+  transform: translate(0, 0);
+  transition: transform 220ms cubic-bezier(.22,.61,.36,1), color 200ms ease, opacity 200ms ease;
+}
+
+/* Narrow screens: stack label above value, hide leader (no room) */
+@media (max-width: 460px) {
+  .vcard__line {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    row-gap: 0.15rem;
+    column-gap: 0.7rem;
+    padding: 0.85rem 0;
+  }
+  .vcard__line-num {
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+  .vcard__line-label {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .vcard__line-leader { display: none; }
+  .vcard__line-value {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: left;
+    font-size: 1.02rem;
+    white-space: normal;
+    word-break: break-word;
+  }
+  .vcard__line-arrow {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+}
+
+/* ── Save action — quiet but primary ──────────────────────── */
+
+.vcard__save {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  animation: vc-fade 1000ms ease-out 240ms both;
+}
+
+.vcard__save-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.2rem 0;
+  text-decoration: none;
+  color: var(--ink, #112D4E);
+  font-size: clamp(1.5rem, 5vw, 2.1rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.vcard__save-link::after {
+  content: "";
+  position: absolute;
+  left: 2.4rem;
+  right: 0.2rem;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent, #F18B5D), var(--accent-deep, #d97548));
+  transform: scaleX(0.4);
+  transform-origin: left center;
+  transition: transform 380ms cubic-bezier(.22,.61,.36,1);
+  border-radius: 2px;
+}
+.vcard__save-link:hover::after,
+.vcard__save-link:focus-visible::after {
+  transform: scaleX(1);
+}
+.vcard__save-link:focus-visible {
+  outline: none;
+}
+
+.vcard__save-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  font-size: 1.05rem;
+  color: #fff;
+  background: linear-gradient(140deg, var(--accent, #F18B5D), var(--accent-deep, #d97548));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.22) inset,
+    0 8px 18px -8px rgba(217, 117, 72, 0.55);
+  animation: vc-bob 2.4s ease-in-out infinite;
+}
+
+.vcard__save-text { display: inline-block; }
+
+.vcard__save-meta {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-mute, rgba(17, 45, 78, 0.55));
+  padding-left: 2.7rem;
+}
+
+/* ── Footer ───────────────────────────────────────────────── */
+
+.vcard__foot {
+  display: flex;
+  justify-content: flex-end;
+  animation: vc-fade 1100ms ease-out 320ms both;
+}
+.vcard__foot-link {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink-mute, rgba(17, 45, 78, 0.55));
+  transition: color 200ms ease;
+}
+.vcard__foot-link span { transition: transform 220ms ease; display: inline-block; }
+.vcard__foot-link:hover {
+  color: var(--ink, #112D4E);
+}
+.vcard__foot-link:hover span {
+  transform: translateX(3px);
+}
+
+/* ── Animations ───────────────────────────────────────────── */
+
+@keyframes vc-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes vc-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-2px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vcard__top,
+  .vcard__hero,
+  .vcard__lines,
+  .vcard__save,
+  .vcard__foot,
+  .vcard__save-arrow {
+    animation: none !important;
+  }
+}
+
+/* ── Tablet+ ──────────────────────────────────────────────── */
+
+@media (min-width: 720px) {
+  .vcard {
+    padding: 3rem 0 3.5rem;
+    max-width: 38rem;
+  }
+  .vcard__rule { margin: 1.8rem 0; }
+  .vcard__hero { gap: 2rem; }
+  .vcard__line { gap: 0.9rem; }
+}

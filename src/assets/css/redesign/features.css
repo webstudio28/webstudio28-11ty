@@ -50,8 +50,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     touch-action: pan-x pan-y;
-    scroll-snap-type: x mandatory;
-    padding: 0.5rem max(1rem, calc((100vw - 80rem) / 2 + 1rem)) 1.25rem;
+    padding: 0.75rem max(1rem, calc((100vw - 80rem) / 2 + 1rem)) 2.25rem;
     margin: 0 calc(max(1rem, (100vw - 80rem) / 2 + 1rem) * -1);
     scroll-padding-left: max(1rem, calc((100vw - 80rem) / 2 + 1rem));
     scroll-padding-right: max(1rem, calc((100vw - 80rem) / 2 + 1rem));
@@ -92,7 +91,8 @@
   .feature {
     flex: 0 0 78%;
     max-width: 18rem;
-    scroll-snap-align: start;
+    box-shadow: 0 10px 22px -14px rgba(17, 45, 78, 0.28),
+                0 1px 0 rgba(255, 255, 255, 0.65) inset;
   }
 }
 

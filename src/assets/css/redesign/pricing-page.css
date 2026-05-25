@@ -133,7 +133,22 @@
   box-shadow: 0 0 0 3px rgba(241, 139, 93, 0.18);
 }
 
-/* Pricing tiers */
+/* ─────────────────────────────────────────────────────────────
+   Pricing tiers — "Editorial trio"
+
+   Three equal-width cards that feel like magazine spreads.
+   Each tier carries its own color signature (left rail + ordinal
+   tint + feature dots), so the eye can tell them apart instantly
+   while comparison stays easy.
+
+   - Color rail (3px gradient) on the left edge
+   - Italic ordinal (01/02/03) bleeding off the top-right corner
+   - Personality eyebrow above the title (Основа / Движение / По мярка)
+   - Features rendered as a wrapping chip-flow, not a checklist
+   - Designer's corner brackets that ink in on hover
+   - Hairline baseline grid faintly visible inside the card surface
+   ───────────────────────────────────────────────────────────── */
+
 .pricing-tiers {
   padding-top: var(--section-y);
   padding-bottom: var(--section-y);
@@ -145,49 +160,183 @@
   }
 }
 
+/* Mobile: free horizontal scroll (no snap) — cards become a strip the user
+   can flick through, with the next card peeking on the right edge as a hint. */
 .pricing-tiers__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.15rem;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(82%, 22rem);
+  gap: 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.75rem 0 1.25rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
 }
+.pricing-tiers__grid::-webkit-scrollbar { display: none; }
+
 @media (min-width: 900px) {
   .pricing-tiers__grid {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
+    gap: 1.5rem;
+    overflow: visible;
+    padding: 0;
     align-items: stretch;
   }
 }
 
 .pricing-tier {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.5rem 1.35rem 1.6rem;
+  gap: 1.25rem;
+  padding: 1.75rem 1.5rem 1.85rem 1.85rem;
   border-radius: var(--r-lg);
-  background: var(--glass-bg);
+  background: var(--glass-bg-strong);
   border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: var(--glass-blur);
           backdrop-filter: var(--glass-blur);
   box-shadow: var(--glass-shadow);
-  transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out);
+  transition: transform 320ms var(--ease-out),
+              box-shadow 320ms var(--ease-out),
+              border-color 320ms var(--ease-out);
 }
+
+/* Hairline baseline grid — barely visible draftsman's paper.
+   Sits behind everything, fades the lower portion via mask. */
+.pricing-tier::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 1.5rem,
+    rgba(17, 45, 78, 0.045) 1.5rem,
+    rgba(17, 45, 78, 0.045) calc(1.5rem + 1px)
+  );
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 95%);
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 95%);
+  pointer-events: none;
+}
+
+/* Color-signature rail down the left edge */
+.pricing-tier::after {
+  content: "";
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 0.75rem;
+  width: 3px;
+  border-radius: 9999px;
+  background: var(--tier-rail, linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 100%));
+  box-shadow: 0 0 14px -2px var(--tier-glow, rgba(241, 139, 93, 0.35));
+  transition: width 320ms var(--ease-out),
+              top 320ms var(--ease-out),
+              bottom 320ms var(--ease-out);
+  pointer-events: none;
+}
+
 .pricing-tier:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   box-shadow: var(--glass-shadow-lift);
+  border-color: var(--tier-border-hover, var(--glass-border));
 }
-.pricing-tier--featured {
-  background:
-    linear-gradient(160deg, rgba(241, 139, 93, 0.12) 0%, rgba(136, 138, 208, 0.12) 100%),
-    var(--glass-bg-strong);
-  border-color: rgba(241, 139, 93, 0.35);
+.pricing-tier:hover::after {
+  width: 5px;
+  top: 0.9rem;
+  bottom: 0.9rem;
+}
+
+/* Editorial ordinal — italic Jost, tinted with the tier gradient.
+   Bleeds slightly toward the corner so it reads as a magazine
+   chapter mark, not a price. */
+.pricing-tier__ordinal {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.9rem;
+  font-size: clamp(4.25rem, 7vw, 5.75rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: var(--tier-rail);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  opacity: 0.22;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out);
+  transform-origin: top right;
+}
+.pricing-tier:hover .pricing-tier__ordinal {
+  opacity: 0.38;
+  transform: scale(1.04);
+}
+
+/* Designer's corner brackets — ink in on hover, like a layout callout */
+.pricing-tier__bracket {
+  position: absolute;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1.5px solid transparent;
+  pointer-events: none;
+  transition: border-color 320ms var(--ease-out),
+              inset 320ms var(--ease-out);
+}
+.pricing-tier__bracket--tr {
+  top: 0.65rem;
+  right: 0.65rem;
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-top-right-radius: 8px;
+  border-left: 0;
+  border-bottom: 0;
+}
+.pricing-tier__bracket--bl {
+  bottom: 0.65rem;
+  left: 0.65rem;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-bottom-left-radius: 8px;
+  border-top: 0;
+  border-right: 0;
+}
+.pricing-tier:hover .pricing-tier__bracket--tr {
+  top: 0.45rem;
+  right: 0.45rem;
+  border-top-color: var(--tier-ink, var(--accent-deep));
+  border-right-color: var(--tier-ink, var(--accent-deep));
+}
+.pricing-tier:hover .pricing-tier__bracket--bl {
+  bottom: 0.45rem;
+  left: 0.45rem;
+  border-bottom-color: var(--tier-ink, var(--accent-deep));
+  border-left-color: var(--tier-ink, var(--accent-deep));
+}
+
+/* Head block */
+.pricing-tier__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-right: 4.5rem; /* leave room for the ordinal */
 }
 
 .pricing-tier__title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--ink);
-  line-height: 1.2;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
 }
 
 .pricing-tier__intro {
@@ -195,40 +344,70 @@
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   color: var(--text);
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(17, 45, 78, 0.08);
 }
 
+/* Features — clean, typographic vertical list with hairline dividers
+   between rows. No bullets, no dots — just the words. */
 .pricing-tier__features {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
   margin: 0;
-  padding: 0;
+  padding: 1rem 0 0;
   list-style: none;
   flex: 1;
+  border-top: 1px dashed rgba(17, 45, 78, 0.14);
 }
-.pricing-tier__features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
+
+.pricing-tier__feature {
+  padding: 0.55rem 0;
   font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
+  line-height: 1.45;
   color: var(--text);
+  border-bottom: 1px dashed rgba(17, 45, 78, 0.08);
 }
-.pricing-tier__check {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-top: 0.15rem;
-  border-radius: 9999px;
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: #fff;
-  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-deep) 100%);
+.pricing-tier__feature:last-child {
+  border-bottom: 0;
+}
+
+/* ── Per-tier color signatures ──────────────────────────────── */
+
+.pricing-tier[data-tier="static"] {
+  --tier-rail: linear-gradient(180deg, #F18B5D 0%, #d97548 100%);
+  --tier-glow: rgba(241, 139, 93, 0.22);
+  --tier-ink: #d97548;
+  --tier-border-hover: rgba(217, 117, 72, 0.32);
+}
+.pricing-tier[data-tier="dynamic"] {
+  --tier-rail: linear-gradient(180deg, #d97548 0%, #c45f8e 50%, #6f6bc4 100%);
+  --tier-glow: rgba(196, 95, 142, 0.22);
+  --tier-ink: #c45f8e;
+  --tier-border-hover: rgba(196, 95, 142, 0.32);
+}
+.pricing-tier[data-tier="custom"] {
+  --tier-rail: linear-gradient(180deg, #6f6bc4 0%, #2b466a 60%, #16324A 100%);
+  --tier-glow: rgba(111, 107, 196, 0.22);
+  --tier-ink: #6f6bc4;
+  --tier-border-hover: rgba(111, 107, 196, 0.32);
+}
+
+/* Small phones: tighten the card so the ordinal still has room to breathe */
+@media (max-width: 480px) {
+  .pricing-tier {
+    padding: 1.5rem 1.25rem 1.6rem 1.65rem;
+  }
+  .pricing-tier__head { padding-right: 3.75rem; }
+}
+
+/* Reduce motion: drop the hover transforms */
+@media (prefers-reduced-motion: reduce) {
+  .pricing-tier,
+  .pricing-tier::after,
+  .pricing-tier__ordinal,
+  .pricing-tier__bracket {
+    transition: none;
+  }
+  .pricing-tier:hover { transform: none; }
+  .pricing-tier:hover .pricing-tier__ordinal { transform: none; }
 }
 
 /* Pricing CTA */

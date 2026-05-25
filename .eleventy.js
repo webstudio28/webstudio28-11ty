@@ -2,6 +2,7 @@ module.exports = function (eleventyConfig) {
   // Pass through images and JS as-is.
   eleventyConfig.addPassthroughCopy({ "src/assets/images": "assets/images" });
   eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/card": "assets/card" });
 
   // Only ship the single bundled stylesheet — not the individual source CSS
   // files that get inlined into it by PostCSS.
