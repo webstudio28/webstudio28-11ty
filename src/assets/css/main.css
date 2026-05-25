@@ -1,0 +1,14 @@
+/* ─────────────────────────────────────────────────────────────
+   Web Studio 28 — main.css (PostCSS bundle entry)
+
+   This file is the single CSS entry that PostCSS processes into
+   one bundled, minified file (`main.bundle.css`) served to the
+   browser. Order matters:
+     1. Tailwind directives (components + utilities + @apply layer)
+     2. Site styles (base, redesign tokens, sections, footer …)
+   The site styles come second so they win specificity by source
+   order when class names overlap with Tailwind utilities.
+   ───────────────────────────────────────────────────────────── */
+
+@import "./tailwind.css";
+@import "./styles.css";

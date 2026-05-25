@@ -10,26 +10,98 @@
 }
 
 .pricing-quote__panel {
+  position: relative;
   text-align: center;
-  padding: 1.75rem 1.5rem;
+  padding: 2.5rem 1.5rem 2.25rem;
   border-radius: var(--r-lg);
   background:
-    linear-gradient(135deg, rgba(241, 139, 93, 0.14) 0%, rgba(136, 138, 208, 0.14) 100%),
+    radial-gradient(120% 90% at 50% 0%, rgba(241, 139, 93, 0.16) 0%, transparent 55%),
+    radial-gradient(120% 90% at 50% 100%, rgba(136, 138, 208, 0.16) 0%, transparent 55%),
     var(--glass-bg-strong);
   border: 1px solid var(--glass-border);
   -webkit-backdrop-filter: var(--glass-blur);
           backdrop-filter: var(--glass-blur);
-  box-shadow: var(--glass-shadow);
+  box-shadow: var(--glass-shadow-lift);
+  overflow: hidden;
 }
-.pricing-quote__panel h2 {
-  margin: 0;
-  font-size: clamp(1.1rem, 2.8vw, 1.45rem);
-  font-weight: 700;
-  line-height: 1.45;
+@media (min-width: 768px) {
+  .pricing-quote__panel {
+    padding: 3rem 2.5rem 2.75rem;
+  }
+}
+
+/* Slim accent stripe anchored at the top — quiet, premium "section anchor" */
+.pricing-quote__panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(220px, 55%);
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent) 35%,
+    var(--accent-deep) 65%,
+    transparent 100%
+  );
+}
+
+.pricing-quote__title {
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.55rem, 3.4vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--ink);
-  max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
+}
+.pricing-quote__title span {
+  background: linear-gradient(120deg, #d97548 0%, #c45f8e 60%, #6f6bc4 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+.pricing-quote__body {
+  margin: 1rem auto 0;
+  font-size: var(--font-size-lead);
+  line-height: var(--line-height-lead);
+  color: var(--text);
+  max-width: 52rem;
+}
+
+.pricing-quote__chips {
+  list-style: none;
+  margin: 1.65rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+.pricing-quote__chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--r-pill);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+}
+.pricing-quote__chips li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+  flex-shrink: 0;
+  box-shadow: 0 0 0 3px rgba(241, 139, 93, 0.18);
 }
 
 /* Pricing tiers */

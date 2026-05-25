@@ -18,9 +18,22 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
-  <link rel="stylesheet" href="/assets/css/tailwind-compiled.css">
-  <link rel="stylesheet" href="/assets/css/styles.css">
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  {# Google Fonts: preconnect first so the TLS handshake overlaps with HTML parse,
+     then load the stylesheet directly (no CSS @import chain). #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap">
+
+  {# Single bundled + minified stylesheet (Tailwind + all redesign CSS).
+     Replaces 21+ render-blocking requests with one. #}
+  <link rel="stylesheet" href="/assets/css/main.bundle.css">
+
+  {# Calendly widget styles — kept site-wide per product requirement.
+     Loaded non-blocking: switch from print → all once downloaded so it
+     doesn't delay first paint. #}
+  <link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -51,8 +64,18 @@
 {% include "consultation-modal.njk" %}
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js" defer></script>
 <script src="/assets/js/consultation-modal.js" defer></script>
+
+{# Per-page extra scripts (e.g. Lottie only on /pricing/).
+   Pages set this in front matter:
+     extraScripts:
+       - https://unpkg.com/@lottiefiles/lottie-player@2.0.8/…/lottie-player.js
+#}
+{% if extraScripts %}
+  {% for src in extraScripts %}
+<script src="{{ src }}" defer></script>
+  {% endfor %}
+{% endif %}
 
 <script>
   // Header: fixed while scrolling, solid white at top → glass when scrolled

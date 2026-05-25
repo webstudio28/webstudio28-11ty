@@ -3,14 +3,23 @@ layout: base.njk
 permalink: /pricing/
 title: Услуги
 description: Изберете подходящото уеб решение за вашия бизнес — статичен, динамичен или индивидуален сайт.
+extraScripts:
+  - https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js
 ---
 
 {% include "sections/pricing-hero.njk" %}
 
-<section class="pricing-quote" aria-label="Ръчно изработени сайтове">
+<section class="pricing-quote" aria-label="Нашият подход">
   <div class="container-custom">
     <div class="pricing-quote__panel">
-      <h2>Всички сайтове са написани ръчно, за да гарантираме персонален и уникален изглед!</h2>
+      <span class="eyebrow eyebrow--centered">Нашият подход</span>
+      <h2 class="pricing-quote__title">Леки, бързи и <span>видими в Google</span></h2>
+      <p class="pricing-quote__body">Разработваме сайтове изцяло от нулата, без тежки платформи и излишен код. Това ни позволява да създаваме изключително леки и бързо зареждащи се уебсайтове, които се отварят мигновено и са оптимизирани за силно SEO представяне в Google още от самото начало.</p>
+      <ul class="pricing-quote__chips" aria-label="Ключови предимства">
+        <li>Без излишен код</li>
+        <li>Мигновено зареждане</li>
+        <li>SEO готовност от старта</li>
+      </ul>
     </div>
   </div>
 </section>

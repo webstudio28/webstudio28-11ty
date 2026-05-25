@@ -1,5 +1,14 @@
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  // Pass through images and JS as-is.
+  eleventyConfig.addPassthroughCopy({ "src/assets/images": "assets/images" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/js": "assets/js" });
+
+  // Only ship the single bundled stylesheet — not the individual source CSS
+  // files that get inlined into it by PostCSS.
+  eleventyConfig.addPassthroughCopy({
+    "src/assets/css/main.bundle.css": "assets/css/main.bundle.css",
+  });
+
   eleventyConfig.addPassthroughCopy({ "src/favicon.png": "favicon.png" });
 
   eleventyConfig.addGlobalData("buildDate", () =>

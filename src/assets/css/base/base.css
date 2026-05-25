@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+/* Jost font is loaded via <link> in base.njk so it isn't an
+   @import inside CSS (which creates an extra blocking request chain). */
 
 /* Fallback container gutters — used if Tailwind bundle isn't loaded yet */
 .container-custom {

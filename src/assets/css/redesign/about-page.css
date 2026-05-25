@@ -14,7 +14,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 14rem;
+}
+@media (min-width: 900px) {
+  .about-mission__visual-wrap {
+    min-height: 28rem;
+  }
+}
+
+/* Desktop: pin the visual to the right column spanning both rows, so the
+   eyebrow+title sit above it and the lead below — visually it reads as
+   one left column of copy with the animation alongside. */
+@media (min-width: 900px) {
+  .about-mission__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    grid-template-rows: auto auto;
+    column-gap: 3rem;
+    row-gap: 1rem;
+    align-items: start;
+  }
+  .about-mission__head {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: end;
+  }
+  .about-mission__visual-wrap {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+  .about-mission__body {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+  }
 }
 .about-mission__bg {
   position: absolute;
@@ -22,25 +54,54 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.75;
   pointer-events: none;
 }
-.about-mission__bg img {
+.about-mission__bg img,
+.about-mission__bg lottie-player {
+  display: block;
   width: 100%;
-  max-width: 22rem;
+  max-width: 32rem;
   height: auto;
+  background: transparent;
+}
+@media (min-width: 900px) {
+  .about-mission__bg img,
+  .about-mission__bg lottie-player {
+    max-width: 40rem;
+  }
 }
 .about-mission__rocket {
   position: relative;
   z-index: 1;
-  width: 55%;
-  max-width: 11rem;
+  width: 70%;
+  max-width: 16rem;
+  animation: about-mission-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+@media (min-width: 900px) {
+  .about-mission__rocket {
+    max-width: 20rem;
+  }
 }
 .about-mission__rocket img {
   width: 100%;
   height: auto;
   display: block;
   filter: drop-shadow(0 18px 28px rgba(17, 45, 78, 0.2));
+}
+
+@keyframes about-mission-float {
+  0%   { transform: translate3d(0, 0, 0)            rotate(0deg);   }
+  25%  { transform: translate3d(-1.2%, -3.5%, 0)    rotate(-1.6deg); }
+  50%  { transform: translate3d(1.5%, -1.5%, 0)     rotate(1.2deg);  }
+  75%  { transform: translate3d(0.6%, -4%, 0)       rotate(-0.6deg); }
+  100% { transform: translate3d(0, 0, 0)            rotate(0deg);   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-mission__rocket {
+    animation: none;
+  }
 }
 
 .about-mission .page-hero__lead span {
