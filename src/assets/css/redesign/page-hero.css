@@ -53,6 +53,31 @@
   }
 }
 
+/* Mobile: center the copy in split heroes (Услуги, За нас) */
+@media (max-width: 899px) {
+  .page-hero__grid--split {
+    justify-items: center;
+    text-align: center;
+  }
+  .page-hero__grid--split .page-hero__copy {
+    align-items: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-hero__grid--split .page-hero__lead {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* Mirror the eyebrow's left line on the right when centered */
+  .page-hero__grid--split .eyebrow::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--accent));
+  }
+}
+
 .page-hero__copy {
   display: flex;
   flex-direction: column;
@@ -124,4 +149,32 @@
   width: auto;
   margin: 0 auto;
   object-fit: contain;
+}
+
+/* Transparent variant — for Lottie/SVG animations that should sit
+   directly on the page background (no white card, no shadow). */
+.page-hero__visual-card--transparent {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  max-width: none;
+}
+.page-hero__visual-card--transparent lottie-player {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  margin: 0 auto;
+  background: transparent;
+}
+@media (min-width: 900px) {
+  .page-hero__visual-card--transparent lottie-player {
+    max-width: 40rem;
+  }
+}
+@media (min-width: 1200px) {
+  .page-hero__visual-card--transparent lottie-player {
+    max-width: 44rem;
+  }
 }
