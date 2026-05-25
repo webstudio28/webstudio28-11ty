@@ -179,7 +179,10 @@
 }
 
 /* Mobile: free horizontal scroll (no snap) — cards become a strip the user
-   can flick through, with the next card peeking on the right edge as a hint. */
+   can flick through, with the next card peeking on the right edge as a hint.
+   Bottom padding is generous enough to accommodate the card's drop shadow,
+   since `overflow-y: hidden` (required to keep scroll horizontal-only) would
+   otherwise clip the shadow at the bottom. */
 .pricing-tiers__grid {
   display: grid;
   grid-auto-flow: column;
@@ -187,7 +190,7 @@
   gap: 1.25rem;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.75rem 0 1.25rem;
+  padding: 0.75rem 0 2rem;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
@@ -378,6 +381,18 @@
   --tier-glow: rgba(111, 107, 196, 0.22);
   --tier-ink: #6f6bc4;
   --tier-border-hover: rgba(111, 107, 196, 0.32);
+}
+
+/* Mobile: replace the lifted glass shadow with a smaller, tighter one so
+   it fits inside the horizontally-scrolling grid (which has overflow-y:
+   hidden and would clip the larger desktop shadow at the bottom). The
+   inset top-highlight is preserved for the same frosted-glass feel. */
+@media (max-width: 899px) {
+  .pricing-tier {
+    box-shadow:
+      0 10px 22px -10px rgba(17, 45, 78, 0.22),
+      0 1px 0 rgba(255, 255, 255, 0.65) inset;
+  }
 }
 
 /* Small phones: tighten the card padding for denser layout */

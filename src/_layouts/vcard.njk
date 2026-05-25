@@ -57,24 +57,20 @@
 <script>
   (function () {
     var html = document.documentElement;
-    var toggle = document.querySelector('.vcard-lang');
+    var toggle = document.querySelector('[data-toggle-lang]');
     if (!toggle) return;
 
     function setLang(lang) {
       html.setAttribute('data-lang', lang);
       html.setAttribute('lang', lang);
-      toggle.querySelectorAll('.vcard-lang__btn').forEach(function (btn) {
-        var on = btn.getAttribute('data-set-lang') === lang;
-        btn.classList.toggle('is-active', on);
-        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
+      toggle.setAttribute('data-lang', lang);
+      toggle.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
       try { localStorage.setItem('vcard-lang', lang); } catch (e) {}
     }
 
-    toggle.querySelectorAll('.vcard-lang__btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        setLang(btn.getAttribute('data-set-lang'));
-      });
+    toggle.addEventListener('click', function () {
+      var current = html.getAttribute('data-lang') || 'bg';
+      setLang(current === 'bg' ? 'en' : 'bg');
     });
 
     setLang(html.getAttribute('data-lang') || 'bg');
