@@ -48,6 +48,22 @@
     0 1px 0 rgba(255, 255, 255, 0.55) inset,
     0 16px 40px -14px rgba(17, 45, 78, 0.22);
 }
+/* On touch/mobile: skip the backdrop-filter glass effect.
+   Animating blur on every scroll event is very expensive on mobile GPUs.
+   Use a solid white header instead — same visual clarity, zero repaint cost. */
+@media (hover: none) and (pointer: coarse) {
+  .site-header__surface {
+    transition:
+      background-color 320ms var(--ease-out),
+      border-color 320ms var(--ease-out),
+      box-shadow 320ms var(--ease-out);
+  }
+  .site-header__surface.is-glassy {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
 
 .site-header__brand {
   display: inline-flex;

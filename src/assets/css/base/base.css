@@ -28,7 +28,6 @@ html, body {
     margin: 0 auto;
     font: 16px/1.5 "Jost", sans-serif;
     min-height: 100%;
-    scroll-behavior: smooth;
     overflow-x: hidden;
     color: #404040;
     -webkit-font-smoothing: antialiased;
