@@ -62,22 +62,42 @@
   }
 }
 
-/* Full-bleed milky "stage" band — matches the projects/features/process
-   pattern. Replaces the previous glass panel so this section reads as a
-   chapter, not as a card sitting on the page. */
+/* Full-bleed "panel" band — reincarnation of the old pricing-quote glass
+   panel, now spanning edge-to-edge with no rounded corners. Solid white
+   wash + soft accent + lavender radials at top/bottom give the section a
+   premium "anchor chapter" feel while still belonging to the page rhythm. */
 .pricing-quote::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
   background:
-    linear-gradient(180deg,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(255, 255, 255, 0.68) 14%,
-      rgba(255, 255, 255, 0.72) 50%,
-      rgba(255, 255, 255, 0.68) 86%,
-      rgba(255, 255, 255, 0.3) 100%);
+    radial-gradient(40rem 16rem at 50% 0%, rgba(241, 139, 93, 0.2) 0%, transparent 70%),
+    radial-gradient(40rem 16rem at 50% 100%, rgba(136, 138, 208, 0.2) 0%, transparent 70%),
+    rgba(255, 255, 255, 0.72);
+}
+
+/* Slim accent stripe at the top edge of the band — the same anchor the
+   old panel had, now spanning across the full-width section. */
+.pricing-quote::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(220px, 35%);
+  height: 3px;
+  z-index: -1;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent) 35%,
+    var(--accent-deep) 65%,
+    transparent 100%
+  );
 }
 
 .pricing-quote__panel {
