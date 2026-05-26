@@ -1,8 +1,6 @@
 ---
 ---
 
-{% set heroSrc = project.cover or project.thumbnail %}
-
 <div class="project-detail">
   <div class="container-custom">
 
@@ -15,16 +13,10 @@
       <p class="project-detail__lead">{{ project.description }}</p>
     </header>
 
-    {% if heroSrc %}
-    <button type="button" class="project-detail__hero-trigger" data-gallery-open aria-label="Галерия">
-      <img src="{{ heroSrc }}" alt="{{ project.title }}" onerror="this.src='/assets/images/projects/placeholder.svg'">
-      <span class="project-detail__hero-overlay" aria-hidden="true">
-        <span class="project-detail__hero-cta">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.6l-1.6-2H10.2L8.6 7H5a2 2 0 0 0-2 2"/><circle cx="12" cy="13" r="3.4"/></svg>
-          Галерия
-        </span>
-      </span>
-    </button>
+    {% if project.desktop or project.cover or project.thumbnail %}
+    <figure class="project-detail__shot project-detail__shot--desktop">
+      <img src="{{ project.desktop or project.cover or project.thumbnail }}" alt="{{ project.title }} — десктоп изглед" loading="lazy">
+    </figure>
     {% endif %}
 
     <p class="project-detail__site-link-row">
@@ -34,11 +26,18 @@
       </a>
     </p>
 
-    <div class="project-detail__gallery-data" hidden aria-hidden="true">
-      {% if heroSrc %}<span data-gallery-src="{{ heroSrc }}" data-gallery-device="desktop" data-gallery-alt="{{ project.title }} — десктоп изглед"></span>{% endif %}
-      {% if project.mobile %}<span data-gallery-src="{{ project.mobile }}" data-gallery-device="mobile" data-gallery-alt="{{ project.title }} — мобилен изглед"></span>{% endif %}
-      {% for image in project.gallery %}<span data-gallery-src="{{ image }}" data-gallery-alt="{{ project.title }} — снимка {{ loop.index }}"></span>{% endfor %}
-    </div>
+    {% if project.mobile %}
+    <figure class="project-detail__shot project-detail__shot--mobile">
+      <img src="{{ project.mobile }}" alt="{{ project.title }} — мобилен изглед" loading="lazy">
+    </figure>
+    {% endif %}
+
+    {% if project.tablet %}
+    <figure class="project-detail__shot project-detail__shot--tablet">
+      <img src="{{ project.tablet }}" alt="{{ project.title }} — таблет изглед" loading="lazy">
+    </figure>
+    {% endif %}
+
   </div>
 </div>
 
@@ -63,125 +62,3 @@
     </div>
   </div>
 </section>
-
-<div id="project-gallery-modal" class="project-gallery-modal" role="dialog" aria-modal="true" aria-label="Галерия от проекта" hidden>
-  <div class="project-gallery-modal__backdrop" data-gallery-close></div>
-  <div class="project-gallery-modal__panel">
-    <button type="button" class="project-gallery-modal__close" data-gallery-close aria-label="Затвори галерията">&times;</button>
-    <button type="button" class="project-gallery-modal__arrow project-gallery-modal__arrow--prev" data-gallery-prev aria-label="Предишна снимка">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 12 16 21 24" vector-effect="non-scaling-stroke"/></svg>
-    </button>
-    <div class="project-gallery-modal__stage" data-gallery-stage>
-      <div class="project-gallery-modal__clip">
-        <span class="project-gallery-modal__device-label" data-gallery-device-label hidden></span>
-        <img class="project-gallery-modal__image" data-gallery-image src="" alt="">
-      </div>
-    </div>
-    <button type="button" class="project-gallery-modal__arrow project-gallery-modal__arrow--next" data-gallery-next aria-label="Следваща снимка">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11 8 20 16 11 24" vector-effect="non-scaling-stroke"/></svg>
-    </button>
-  </div>
-</div>
-
-<script>
-(function () {
-  var modal = document.getElementById("project-gallery-modal");
-  if (!modal) return;
-
-  if (modal.parentNode !== document.body) {
-    document.body.appendChild(modal);
-  }
-
-  var nodes = document.querySelectorAll("[data-gallery-src]");
-  var items = [];
-  for (var i = 0; i < nodes.length; i++) {
-    items.push({
-      src: nodes[i].getAttribute("data-gallery-src"),
-      alt: nodes[i].getAttribute("data-gallery-alt") || "",
-      device: nodes[i].getAttribute("data-gallery-device") || null
-    });
-  }
-  if (!items.length) return;
-
-  var trigger = document.querySelector("[data-gallery-open]");
-  var image = modal.querySelector("[data-gallery-image]");
-  var label = modal.querySelector("[data-gallery-device-label]");
-  var stage = modal.querySelector("[data-gallery-stage]");
-  var closeBtns = modal.querySelectorAll("[data-gallery-close]");
-  var prevBtn = modal.querySelector("[data-gallery-prev]");
-  var nextBtn = modal.querySelector("[data-gallery-next]");
-  var index = 0;
-
-  if (items.length < 2) {
-    if (prevBtn) prevBtn.hidden = true;
-    if (nextBtn) nextBtn.hidden = true;
-  }
-
-  function render() {
-    var item = items[index];
-    image.src = item.src;
-    image.alt = item.alt;
-    if (item.device) {
-      label.textContent = item.device === "desktop" ? "Desktop" : "Mobile";
-      label.hidden = false;
-    } else {
-      label.textContent = "";
-      label.hidden = true;
-    }
-  }
-
-  var savedScrollY = 0;
-
-  function openAt(i) {
-    index = Math.max(0, Math.min(i | 0, items.length - 1));
-    render();
-    modal.hidden = false;
-    savedScrollY = window.scrollY || window.pageYOffset || 0;
-    document.body.style.top = "-" + savedScrollY + "px";
-    document.body.classList.add("gallery-modal-open");
-  }
-  function close() {
-    modal.hidden = true;
-    image.src = "";
-    document.body.classList.remove("gallery-modal-open");
-    document.body.style.top = "";
-    window.scrollTo(0, savedScrollY);
-  }
-  function next() {
-    if (items.length < 2) return;
-    index = (index + 1) % items.length;
-    render();
-  }
-  function prev() {
-    if (items.length < 2) return;
-    index = (index - 1 + items.length) % items.length;
-    render();
-  }
-
-  if (trigger) trigger.addEventListener("click", function () { openAt(0); });
-  for (var c = 0; c < closeBtns.length; c++) closeBtns[c].addEventListener("click", close);
-  if (prevBtn) prevBtn.addEventListener("click", prev);
-  if (nextBtn) nextBtn.addEventListener("click", next);
-
-  document.addEventListener("keydown", function (e) {
-    if (modal.hidden) return;
-    if (e.key === "Escape") close();
-    else if (e.key === "ArrowRight") next();
-    else if (e.key === "ArrowLeft") prev();
-  });
-
-  var swipeStartX = null;
-  if (stage) {
-    stage.addEventListener("touchstart", function (e) {
-      if (e.touches && e.touches.length) swipeStartX = e.touches[0].clientX;
-    }, { passive: true });
-    stage.addEventListener("touchend", function (e) {
-      if (swipeStartX === null || !e.changedTouches || !e.changedTouches.length) return;
-      var dx = e.changedTouches[0].clientX - swipeStartX;
-      swipeStartX = null;
-      if (Math.abs(dx) < 40) return;
-      if (dx < 0) next(); else prev();
-    });
-  }
-})();
-</script>
