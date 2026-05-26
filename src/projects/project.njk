@@ -1,6 +1,8 @@
 ---
 ---
 
+{% set heroSrc = project.desktop or project.cover or project.thumbnail %}
+
 <div class="project-detail">
   <div class="container-custom">
 
@@ -13,11 +15,137 @@
       <p class="project-detail__lead">{{ project.description }}</p>
     </header>
 
-    {% if project.desktop or project.cover or project.thumbnail %}
-    <figure class="project-detail__shot project-detail__shot--desktop">
-      <img src="{{ project.desktop or project.cover or project.thumbnail }}" alt="{{ project.title }} — десктоп изглед" loading="lazy">
-    </figure>
+    {% if project.results and project.results.length %}
+    <section class="project-results" aria-label="Резултати от проекта">
+      <div class="project-results__head">
+        <span class="eyebrow eyebrow--centered">Резултати</span>
+        <h2 class="project-results__title">Какво постигнахме</h2>
+      </div>
+
+      <ul class="project-results__list" role="list">
+        {% for result in project.results %}
+        {% set isObj = result.text is defined %}
+        {% set text = result.text if isObj else result %}
+        {% set links = result.links if isObj else null %}
+        <li class="project-results__item">
+          <span class="project-results__marker" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.5 10 17.5 19 7"/>
+            </svg>
+          </span>
+          <div class="project-results__body">
+            <p class="project-results__text">{{ text }}</p>
+            {% if links and links.length %}
+            <div class="project-results__links">
+              {% for link in links %}
+              <a class="project-results__link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                <span>{{ link.label }}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
     {% endif %}
+
+    <div class="project-gallery" data-gallery>
+
+      <div class="project-gallery__viewport">
+
+        <button
+          type="button"
+          class="project-gallery__arrow project-gallery__arrow--prev"
+          data-gallery-prev
+          aria-label="Предишна снимка"
+        >
+          <svg class="project-gallery__arrow-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="82" y1="50" x2="22" y2="50" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+            <polyline points="38 30 16 50 38 70" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="project-gallery__stage"
+          data-gallery-open
+          aria-label="Отвори галерия"
+        >
+          {% if heroSrc %}
+          <img
+            class="project-gallery__slide is-active"
+            data-slide-src="{{ heroSrc }}"
+            data-slide-device="Desktop"
+            data-slide-alt="{{ project.title }} — десктоп изглед"
+            src="{{ heroSrc }}"
+            alt="{{ project.title }} — десктоп изглед"
+            loading="lazy"
+          >
+          {% endif %}
+          {% if project.mobile %}
+          <img
+            class="project-gallery__slide"
+            data-slide-src="{{ project.mobile }}"
+            data-slide-device="Mobile"
+            data-slide-alt="{{ project.title }} — мобилен изглед"
+            src="{{ project.mobile }}"
+            alt="{{ project.title }} — мобилен изглед"
+            loading="lazy"
+          >
+          {% endif %}
+          {% if project.tablet %}
+          <img
+            class="project-gallery__slide"
+            data-slide-src="{{ project.tablet }}"
+            data-slide-device="Tablet"
+            data-slide-alt="{{ project.title }} — таблет изглед"
+            src="{{ project.tablet }}"
+            alt="{{ project.title }} — таблет изглед"
+            loading="lazy"
+          >
+          {% endif %}
+
+          <span class="project-gallery__zoom-hint" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg>
+          </span>
+        </button>
+
+        <button
+          type="button"
+          class="project-gallery__arrow project-gallery__arrow--next"
+          data-gallery-next
+          aria-label="Следваща снимка"
+        >
+          <svg class="project-gallery__arrow-icon" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="50" x2="78" y2="50" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+            <polyline points="62 30 84 50 62 70" stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+          </svg>
+        </button>
+
+      </div>
+
+      <div class="project-gallery__thumbs" data-gallery-thumbs role="tablist" aria-label="Изгледи">
+        {% if heroSrc %}
+        <button type="button" class="project-gallery__thumb is-active" data-thumb-index="0" aria-label="Десктоп изглед" role="tab" aria-selected="true">
+          <img src="{{ heroSrc }}" alt="" loading="lazy">
+        </button>
+        {% endif %}
+        {% if project.mobile %}
+        <button type="button" class="project-gallery__thumb" data-thumb-index="1" aria-label="Мобилен изглед" role="tab" aria-selected="false">
+          <img src="{{ project.mobile }}" alt="" loading="lazy">
+        </button>
+        {% endif %}
+        {% if project.tablet %}
+        <button type="button" class="project-gallery__thumb" data-thumb-index="2" aria-label="Таблет изглед" role="tab" aria-selected="false">
+          <img src="{{ project.tablet }}" alt="" loading="lazy">
+        </button>
+        {% endif %}
+      </div>
+
+    </div>
 
     <p class="project-detail__site-link-row">
       <a href="{{ project.link }}" class="project-detail__site-link" target="_blank" rel="noopener noreferrer">
@@ -25,18 +153,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
       </a>
     </p>
-
-    {% if project.mobile %}
-    <figure class="project-detail__shot project-detail__shot--mobile">
-      <img src="{{ project.mobile }}" alt="{{ project.title }} — мобилен изглед" loading="lazy">
-    </figure>
-    {% endif %}
-
-    {% if project.tablet %}
-    <figure class="project-detail__shot project-detail__shot--tablet">
-      <img src="{{ project.tablet }}" alt="{{ project.title }} — таблет изглед" loading="lazy">
-    </figure>
-    {% endif %}
 
   </div>
 </div>
@@ -62,3 +178,253 @@
     </div>
   </div>
 </section>
+
+<div id="project-gallery-modal" class="project-gallery-modal" role="dialog" aria-modal="true" aria-label="Галерия на проекта" hidden>
+  <div class="project-gallery-modal__backdrop" data-gallery-modal-close></div>
+  <div class="project-gallery-modal__panel">
+    <button type="button" class="project-gallery-modal__close" data-gallery-modal-close aria-label="Затвори галерията">&times;</button>
+    <button type="button" class="project-gallery-modal__arrow project-gallery-modal__arrow--prev" data-gallery-modal-prev aria-label="Предишна снимка">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="21 8 12 16 21 24" vector-effect="non-scaling-stroke"/></svg>
+    </button>
+    <div class="project-gallery-modal__stage" data-gallery-modal-stage>
+      <span class="project-gallery-modal__device-label" data-gallery-modal-label hidden></span>
+      <img class="project-gallery-modal__image" data-gallery-modal-image src="" alt="">
+    </div>
+    <button type="button" class="project-gallery-modal__arrow project-gallery-modal__arrow--next" data-gallery-modal-next aria-label="Следваща снимка">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11 8 20 16 11 24" vector-effect="non-scaling-stroke"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var root = document.querySelector("[data-gallery]");
+  var modal = document.getElementById("project-gallery-modal");
+  if (!root || !modal) return;
+
+  if (modal.parentNode !== document.body) document.body.appendChild(modal);
+
+  var slides = Array.prototype.slice.call(root.querySelectorAll(".project-gallery__slide"));
+  var thumbs = Array.prototype.slice.call(root.querySelectorAll(".project-gallery__thumb"));
+  var prevBtn = root.querySelector("[data-gallery-prev]");
+  var nextBtn = root.querySelector("[data-gallery-next]");
+  var stageBtn = root.querySelector("[data-gallery-open]");
+
+  if (!slides.length) return;
+
+  // Hide arrows + thumbs if there's only one image
+  if (slides.length < 2) {
+    if (prevBtn) prevBtn.hidden = true;
+    if (nextBtn) nextBtn.hidden = true;
+    root.classList.add("project-gallery--single");
+  }
+
+  var current = 0;
+
+  // ── Aspect-aware stage sizing ────────────────────────────────────────
+  // The stage's height is sized to whatever slide is currently active so
+  // its rounded corners always line up with the visible image instead of
+  // letterboxing.
+  var ratios = slides.map(function () { return null; });
+
+  function registerRatio(img, idx) {
+    if (img.naturalWidth && img.naturalHeight) {
+      ratios[idx] = img.naturalWidth / img.naturalHeight;
+      if (idx === current) syncStageHeight();
+    }
+  }
+  slides.forEach(function (s, idx) {
+    if (s.complete) registerRatio(s, idx);
+    else s.addEventListener("load", function () { registerRatio(s, idx); }, { once: true });
+  });
+
+  function syncStageHeight() {
+    if (!stageBtn) return;
+    var ratio = ratios[current];
+    if (!ratio) return;
+    var w = stageBtn.clientWidth;
+    if (!w) return;
+    stageBtn.style.height = (w / ratio) + "px";
+  }
+
+  var resizeRaf = null;
+  window.addEventListener("resize", function () {
+    if (resizeRaf) cancelAnimationFrame(resizeRaf);
+    resizeRaf = requestAnimationFrame(function () {
+      // Skip the height transition on resize — width is changing too,
+      // and a smooth height interpolation would look laggy.
+      var prevTransition = stageBtn.style.transition;
+      stageBtn.style.transition = "none";
+      syncStageHeight();
+      // Force reflow then restore transition for future slide changes.
+      void stageBtn.offsetHeight;
+      stageBtn.style.transition = prevTransition;
+    });
+  });
+
+  // Directional slide: incoming enters from one side, outgoing exits the
+  // opposite side. dir = 1 → forward (incoming from right). dir = -1 →
+  // backward (incoming from left). When dir is omitted (thumb jumps), we
+  // pick the natural direction from the index delta.
+  function setActive(index, dir) {
+    var newIndex = ((index % slides.length) + slides.length) % slides.length;
+
+    if (typeof dir !== "number") {
+      var diff = newIndex - current;
+      if (slides.length > 2 && Math.abs(diff) > slides.length / 2) {
+        dir = diff > 0 ? -1 : 1; // shortest path across the wrap
+      } else {
+        dir = diff >= 0 ? 1 : -1;
+      }
+    }
+
+    if (newIndex === current) {
+      syncStageHeight();
+      return;
+    }
+
+    var startX = dir > 0 ? 5 : -5;   // incoming entry offset (%)
+    var exitX  = dir > 0 ? -5 : 5;   // outgoing exit offset (%)
+
+    var incoming = slides[newIndex];
+    var outgoing = slides[current];
+
+    // Snap incoming to its entry position (no transition), then re-enable
+    // transitions so adding .is-active animates it to centre.
+    incoming.style.transition = "none";
+    incoming.style.setProperty("--slide-x", startX + "%");
+    incoming.style.setProperty("--slide-o", "0");
+    void incoming.offsetWidth; // commit the starting state
+    incoming.style.transition = "";
+
+    // Outgoing transitions toward its exit target.
+    outgoing.style.setProperty("--slide-x", exitX + "%");
+    outgoing.style.setProperty("--slide-o", "0");
+
+    outgoing.classList.remove("is-active");
+    incoming.classList.add("is-active");
+
+    // Clear incoming inline vars so .is-active alone defines its rest state.
+    incoming.style.removeProperty("--slide-x");
+    incoming.style.removeProperty("--slide-o");
+
+    thumbs.forEach(function (t, i) {
+      var on = i === newIndex;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+    });
+
+    current = newIndex;
+    syncStageHeight();
+  }
+  function next() { setActive(current + 1, 1); }
+  function prev() { setActive(current - 1, -1); }
+
+  if (prevBtn) prevBtn.addEventListener("click", prev);
+  if (nextBtn) nextBtn.addEventListener("click", next);
+  thumbs.forEach(function (t, i) {
+    t.addEventListener("click", function () { setActive(i); });
+  });
+
+  // ── Modal ────────────────────────────────────────────────────────────────
+  var modalImage = modal.querySelector("[data-gallery-modal-image]");
+  var modalLabel = modal.querySelector("[data-gallery-modal-label]");
+  var modalStage = modal.querySelector("[data-gallery-modal-stage]");
+  var modalPrev = modal.querySelector("[data-gallery-modal-prev]");
+  var modalNext = modal.querySelector("[data-gallery-modal-next]");
+  var modalCloseBtns = modal.querySelectorAll("[data-gallery-modal-close]");
+
+  if (slides.length < 2) {
+    if (modalPrev) modalPrev.hidden = true;
+    if (modalNext) modalNext.hidden = true;
+  }
+
+  var savedScrollY = 0;
+  var modalIndex = 0;
+
+  function renderModal() {
+    var s = slides[modalIndex];
+    if (!s) return;
+    var src = s.getAttribute("data-slide-src") || s.getAttribute("src");
+    var alt = s.getAttribute("data-slide-alt") || s.getAttribute("alt") || "";
+    var device = s.getAttribute("data-slide-device");
+    modalImage.src = src;
+    modalImage.alt = alt;
+    if (device) {
+      modalLabel.textContent = device;
+      modalLabel.hidden = false;
+    } else {
+      modalLabel.textContent = "";
+      modalLabel.hidden = true;
+    }
+  }
+  function openModalAt(i) {
+    modalIndex = Math.max(0, Math.min(i | 0, slides.length - 1));
+    renderModal();
+    modal.hidden = false;
+    savedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.style.top = "-" + savedScrollY + "px";
+    document.body.classList.add("gallery-modal-open");
+  }
+  function closeModal() {
+    modal.hidden = true;
+    modalImage.src = "";
+    document.body.classList.remove("gallery-modal-open");
+    document.body.style.top = "";
+    window.scrollTo(0, savedScrollY);
+  }
+  function modalNextSlide() {
+    if (slides.length < 2) return;
+    modalIndex = (modalIndex + 1) % slides.length;
+    renderModal();
+  }
+  function modalPrevSlide() {
+    if (slides.length < 2) return;
+    modalIndex = (modalIndex - 1 + slides.length) % slides.length;
+    renderModal();
+  }
+
+  if (stageBtn) stageBtn.addEventListener("click", function () { openModalAt(current); });
+  if (modalPrev) modalPrev.addEventListener("click", modalPrevSlide);
+  if (modalNext) modalNext.addEventListener("click", modalNextSlide);
+  modalCloseBtns.forEach(function (el) { el.addEventListener("click", closeModal); });
+
+  document.addEventListener("keydown", function (e) {
+    if (modal.hidden) return;
+    if (e.key === "Escape") closeModal();
+    else if (e.key === "ArrowRight") modalNextSlide();
+    else if (e.key === "ArrowLeft") modalPrevSlide();
+  });
+
+  // Swipe on the modal stage
+  var swipeStartX = null;
+  if (modalStage) {
+    modalStage.addEventListener("touchstart", function (e) {
+      if (e.touches && e.touches.length) swipeStartX = e.touches[0].clientX;
+    }, { passive: true });
+    modalStage.addEventListener("touchend", function (e) {
+      if (swipeStartX === null || !e.changedTouches || !e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - swipeStartX;
+      swipeStartX = null;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) modalNextSlide(); else modalPrevSlide();
+    });
+  }
+
+  // Swipe on the inline stage (mobile users)
+  var inlineSwipeStartX = null;
+  if (stageBtn) {
+    stageBtn.addEventListener("touchstart", function (e) {
+      if (e.touches && e.touches.length) inlineSwipeStartX = e.touches[0].clientX;
+    }, { passive: true });
+    stageBtn.addEventListener("touchend", function (e) {
+      if (inlineSwipeStartX === null || !e.changedTouches || !e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - inlineSwipeStartX;
+      inlineSwipeStartX = null;
+      if (Math.abs(dx) < 40) return;
+      e.preventDefault();
+      if (dx < 0) next(); else prev();
+    });
+  }
+})();
+</script>

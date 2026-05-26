@@ -2,46 +2,71 @@
   {
     "slug": "partydrinks",
     "title": "partydrinks.bg",
-    "description": "Динамичен сайт за напитки и събития — продукти, дистрибуция и B2B запитвания.",
+    "description": "Редизайн на един от най-големите онлайн магазини за алкохол в България.",
     "link": "https://partydrinks.bg",
     "cover": "/assets/images/projects/pd-cover.png",
     "desktop": "/assets/images/projects/pd-desktop.png",
     "mobile": "/assets/images/projects/pd-mobile.png",
     "tablet": "/assets/images/projects/pd-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Изцяло нов, интуитивен дизайн.",
+      "Подобрено потребителско изживяване.",
+      "Отчетлив ръст на онлайн поръчките."
+    ]
   },
   {
     "slug": "airevest",
     "title": "airevest.com",
-    "description": "Платформа за инвестиции в имоти — ясно представяне на възможности и доверие към бранда.",
+    "description": "Първата българска платформа за инвестиции в части от имоти.",
     "link": "https://airevest.com",
     "cover": "/assets/images/projects/ai-cover.png",
     "desktop": "/assets/images/projects/ai-desktop.png",
     "mobile": "/assets/images/projects/ai-mobile.png",
     "tablet": "/assets/images/projects/ai-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Цялостен дизайн на уебсайта и инвестиционната платформа.",
+      "Интегрирана сигурна система за онлайн плащания.",
+      "Разработен вътрешен маркетинг инструмент за привличане на инвеститори."
+    ]
   },
   {
     "slug": "valya-matovska",
     "title": "valyamatovska.com",
-    "description": "Личен професионален сайт — представяне, услуги и лесен контакт с посетителите.",
+    "description": "Сайт в сферата на красотата с фокус върху намирането на локални клиенти.",
     "link": "https://valyamatovska.com",
     "cover": "/assets/images/projects/vm-cover.png",
     "desktop": "/assets/images/projects/vm-desktop.png",
     "mobile": "/assets/images/projects/vm-mobile.png",
     "tablet": "/assets/images/projects/vm-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Модерен дизайн с интуитивна и лесна навигация.",
+      {
+        "text": "Създадени две специализирани лендинг страници (за микроблейдинг и ламиниране), тясно фокусирани върху превръщането на посетителите в реални клиенти.",
+        "links": [
+          { "label": "Микроблейдинг", "url": "https://valyamatovska.bg/microblading" },
+          { "label": "Ламиниране", "url": "https://valyamatovska.bg/laminirane" }
+        ]
+      }
+    ]
   },
   {
     "slug": "raboteriya",
     "title": "raboteriya.com",
-    "description": "Уебсайт за работилница и творчески пространства — ясен каталог услуги и лесен контакт с клиенти.",
+    "description": "Сайт за Coworking space в Пловдив.",
     "link": "https://raboteriya.com",
     "cover": "/assets/images/projects/rbt-cover.png",
     "desktop": "/assets/images/projects/rbt-desktop.png",
     "mobile": "/assets/images/projects/rbt-mobile.png",
     "tablet": "/assets/images/projects/rbt-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Изчистен дизайн, който предава усещане за уют и продуктивност.",
+      "Добре структурирана и лесно откриваема информация.",
+      "Внедрена техническа оптимизация за по-добро индексиране от AI търсачки."
+    ]
   },
   {
     "slug": "microblading",
@@ -57,13 +82,17 @@
   {
     "slug": "dreamelectricbg",
     "title": "dreamelectric.bg",
-    "description": "Корпоративен сайт за електроуслуги — представяне на екип, обхват и бърза заявка за оферта.",
+    "description": "Фирмен сайт за локален бизнес с голям обем информация.",
     "link": "https://dreamelectric.bg",
     "cover": "/assets/images/projects/de-cover.png",
     "desktop": "/assets/images/projects/de-desktop.png",
     "mobile": "/assets/images/projects/de-mobile.png",
     "tablet": "/assets/images/projects/de-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Отлично подреждане на съдържанието в ясни за разглеждане категории (услуги, проекти, продукти).",
+      "Успешна локална SEO оптимизация, целяща по-лесно и предно класиране при търсене на фотоволтаични системи в Google за конкретния регион."
+    ]
   },
   {
     "slug": "parkrakovski",
@@ -79,89 +108,121 @@
   {
     "slug": "psiholog-plovdiv",
     "title": "psiholog-plovdiv.com",
-    "description": "Професионален сайт за психолог — доверие, услуги и удобен канал за първа консултация.",
+    "description": "Проект за терапевт и психолог.",
     "link": "https://psiholog-plovdiv.com",
     "cover": "/assets/images/projects/pp-cover.png",
     "desktop": "/assets/images/projects/pp-desktop.png",
     "mobile": "/assets/images/projects/pp-mobile.png",
     "tablet": "/assets/images/projects/pp-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Внимателно и прецизно структурирана информация, вдъхваща доверие у клиентите.",
+      "Вграден динамичен модул за статии и новини в сферата на психологията."
+    ]
   },
   {
     "slug": "biovel",
     "title": "biovel.bg",
-    "description": "Презентационен сайт за козметична марка — продуктов каталог и акцент върху качеството.",
+    "description": "Онлайн магазин, плюс модул за представяне на услуги.",
     "link": "https://biovel.bg",
     "cover": "/assets/images/projects/bv-cover.png",
     "desktop": "/assets/images/projects/bv-desktop.png",
     "mobile": "/assets/images/projects/bv-mobile.png",
     "tablet": "/assets/images/projects/bv-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Дизайн, съобразен със специфичната холистична насоченост на дейността.",
+      "Разработена индивидуална система за лесни и бързи поръчки."
+    ]
   },
   {
     "slug": "pokrivserviz",
     "title": "pokrivserviz.com",
-    "description": "Сайт за покривни услуги — ясни пакети, галерия с реализации и бърз контакт за оглед.",
+    "description": "Сайт за ремонт на покриви със силна локална оптимизация.",
     "link": "https://pokrivserviz.com",
     "cover": "/assets/images/projects/ps-cover.png",
     "desktop": "/assets/images/projects/ps-desktop.png",
     "mobile": "/assets/images/projects/ps-mobile.png",
     "tablet": "/assets/images/projects/ps-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Модерно и ясно представяне на портфолиото от услуги.",
+      "Лидерска позиция (1-во място) в органичните резултати на Google при ключово търсене „Ремонт на покриви Пазарджик“, генериращо постоянен поток от локални запитвания."
+    ]
   },
   {
     "slug": "advokatgeorgiev",
     "title": "advokatgeorgiev.com",
-    "description": "Адвокатски сайт с фокус върху експертиза, практика и сигурен път до първа среща.",
+    "description": "Сайт за адвокатски услуги.",
     "link": "https://advokatgeorgiev.com",
     "cover": "/assets/images/projects/ag-cover.png",
     "desktop": "/assets/images/projects/ag-desktop.png",
     "mobile": "/assets/images/projects/ag-mobile.png",
     "tablet": "/assets/images/projects/ag-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Сериозен, корпоративен и изчистен дизайн.",
+      "Изграждане на висок професионален имидж, който вдъхва авторитет и доверие у потенциалните клиенти."
+    ]
   },
   {
     "slug": "dobri-prakiti",
     "title": "dobripraktiki.com",
-    "description": "Образователен и консултантски сайт — структурирано съдържание и ясен призив за действие.",
+    "description": "Сайт за нишови услуги в хранителната индустрия.",
     "link": "https://dobripraktiki.com",
     "cover": "/assets/images/projects/dp-cover.png",
     "desktop": "/assets/images/projects/dp-desktop.png",
     "mobile": "/assets/images/projects/dp-mobile.png",
     "tablet": "/assets/images/projects/dp-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Ясно и директно комуникиране на конкретните проблеми, които бизнесът решава за своите клиенти.",
+      "Специализирана оптимизация за откриваемост при AI търсене."
+    ]
   },
   {
     "slug": "resto-v-evro",
     "title": "resto26.eu",
-    "description": "Ресторантски сайт с меню, атмосфера и резервации — оптимизиран за мобилни посетители.",
+    "description": "Личен проект на Webstudio28, който беше полезен над 200 хиляди пъти. Уеб приложение за превалутиране на ресто в евро.",
     "link": "https://resto26.eu",
     "cover": "/assets/images/projects/re-cover.png",
     "desktop": "/assets/images/projects/re-desktop.png",
     "mobile": "/assets/images/projects/re-mobile.png",
     "tablet": "/assets/images/projects/re-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Генерирани над 200 000 успешни използвания на платформата.",
+      "Широко медийно отразяване на национално ниво (Нова телевизия, Euronews, БНР и над 20 водещи новинарски сайта)."
+    ]
   },
   {
     "slug": "globus89",
     "title": "globus89.com",
-    "description": "Бизнес сайт с ясна визия, услуги и контакт — изграден за растеж в локалния пазар.",
+    "description": "Сайт за подови замазки с фокус върху намирането на локални клиенти.",
     "link": "https://globus89.com",
     "cover": "/assets/images/projects/g89-cover.png",
     "desktop": "/assets/images/projects/g89-desktop.png",
     "mobile": "/assets/images/projects/g89-mobile.png",
     "tablet": "/assets/images/projects/g89-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Доминиращо локално SEO присъствие с 1-во място в Google за висококонвертиращи ключови думи като „полагане замазки Пловдив“ и „машинно полагане на замазки Пловдив“.",
+      "Стабилно 2-ро място в Google за силно конкурентното търсене „подови замазки Пловдив“, осигуряващо видимост пред ключовата целева аудитория в региона."
+    ]
   },
   {
     "slug": "dars-imoti",
     "title": "darsimoti.com",
-    "description": "Сайт за агенция за недвижими имоти — обяви, филтри и лесен контакт с брокер.",
+    "description": "Сайт на агенция за недвижими имоти.",
     "link": "https://darsimoti.com",
     "cover": "/assets/images/projects/di-cover.png",
     "desktop": "/assets/images/projects/di-desktop.png",
     "mobile": "/assets/images/projects/di-mobile.png",
     "tablet": "/assets/images/projects/di-tablet.png",
-    "active": true
+    "active": true,
+    "results": [
+      "Модерен и динамичен дизайн с интегрирани леки анимации.",
+      "UI/UX решения и цветова гама, изцяло съобразени с корпоративната идентичност и марката на бизнеса."
+    ]
   }
 ]
