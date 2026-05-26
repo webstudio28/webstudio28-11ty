@@ -32,6 +32,22 @@
     ]
   },
   {
+    "slug": "raboteriya",
+    "title": "raboteriya.com",
+    "description": "Сайт за Coworking space в Пловдив.",
+    "link": "https://raboteriya.com",
+    "cover": "/assets/images/projects/rbt-cover.png",
+    "desktop": "/assets/images/projects/rbt-desktop.png",
+    "mobile": "/assets/images/projects/rbt-mobile.png",
+    "tablet": "/assets/images/projects/rbt-tablet.png",
+    "active": true,
+    "results": [
+      "Изчистен дизайн, който предава усещане за уют и продуктивност.",
+      "Добре структурирана и лесно откриваема информация.",
+      "Внедрена техническа оптимизация за по-добро индексиране от AI търсачки."
+    ]
+  },
+  {
     "slug": "valya-matovska",
     "title": "valyamatovska.bg",
     "description": "Сайт в сферата на красотата с фокус върху намирането на локални клиенти.",
@@ -50,22 +66,6 @@
           { "label": "Ламиниране", "url": "https://valyamatovska.bg/laminirane" }
         ]
       }
-    ]
-  },
-  {
-    "slug": "raboteriya",
-    "title": "raboteriya.com",
-    "description": "Сайт за Coworking space в Пловдив.",
-    "link": "https://raboteriya.com",
-    "cover": "/assets/images/projects/rbt-cover.png",
-    "desktop": "/assets/images/projects/rbt-desktop.png",
-    "mobile": "/assets/images/projects/rbt-mobile.png",
-    "tablet": "/assets/images/projects/rbt-tablet.png",
-    "active": true,
-    "results": [
-      "Изчистен дизайн, който предава усещане за уют и продуктивност.",
-      "Добре структурирана и лесно откриваема информация.",
-      "Внедрена техническа оптимизация за по-добро индексиране от AI търсачки."
     ]
   },
   {
