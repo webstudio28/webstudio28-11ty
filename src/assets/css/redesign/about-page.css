@@ -111,6 +111,8 @@
 
 /* Process */
 .about-process {
+  position: relative;
+  isolation: isolate;
   padding-top: var(--section-y);
   padding-bottom: var(--section-y);
 }
@@ -119,6 +121,24 @@
     padding-top: var(--section-y-md);
     padding-bottom: var(--section-y-md);
   }
+}
+
+/* Full-bleed milky "stage" band — softer than the projects/features bands
+   on purpose: this section is a quiet pause between mission and team, so
+   the wash only needs to be strong enough to mark a chapter break. */
+.about-process::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.68) 14%,
+      rgba(255, 255, 255, 0.72) 50%,
+      rgba(255, 255, 255, 0.68) 86%,
+      rgba(255, 255, 255, 0.3) 100%);
 }
 
 .about-process__head {

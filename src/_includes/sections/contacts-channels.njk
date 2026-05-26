@@ -56,31 +56,42 @@
 
       <div class="contacts-form-block">
 
-        <form class="contacts-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <h2 class="contacts-form__title">Връзка с нас</h2>
+
+        <form
+          class="contacts-form"
+          id="contacts-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          data-phone="{{ site.contact.phone | replace(' ', '') }}"
+          novalidate
+        >
           <input type="hidden" name="access_key" value="{{ site.forms.web3formsKey }}">
-          <input type="hidden" name="redirect" value="{{ site.forms.redirectUrl }}">
+          <input type="hidden" name="subject" value="Контактна форма — съобщение от страница Контакти">
           <input type="checkbox" name="botcheck" class="contacts-form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
           <label class="contacts-field">
-            <input class="contacts-field__input" type="text" name="name" required placeholder=" " autocomplete="name">
-            <span class="contacts-field__label">Име и фамилия</span>
-            <span class="contacts-field__line" aria-hidden="true"></span>
+            <span class="contacts-field__label">Име и фамилия <span class="contacts-field__required" aria-hidden="true">*</span></span>
+            <input class="contacts-field__input" type="text" name="name" required autocomplete="name" placeholder="Вашето име">
           </label>
 
           <label class="contacts-field">
-            <input class="contacts-field__input" type="email" name="email" required placeholder=" " autocomplete="email">
-            <span class="contacts-field__label">Имейл</span>
-            <span class="contacts-field__line" aria-hidden="true"></span>
+            <span class="contacts-field__label">Имейл <span class="contacts-field__required" aria-hidden="true">*</span></span>
+            <input class="contacts-field__input" type="email" name="email" required autocomplete="email" placeholder="email@example.com">
+          </label>
+
+          <label class="contacts-field">
+            <span class="contacts-field__label">Телефон <span class="contacts-field__required" aria-hidden="true">*</span></span>
+            <input class="contacts-field__input" type="tel" name="phone" required autocomplete="tel" inputmode="tel" placeholder="+359 …">
           </label>
 
           <label class="contacts-field contacts-field--area">
-            <textarea class="contacts-field__input contacts-field__input--area" name="message" required placeholder=" " rows="4"></textarea>
-            <span class="contacts-field__label">Съобщение</span>
-            <span class="contacts-field__line" aria-hidden="true"></span>
+            <span class="contacts-field__label">Съобщение <span class="contacts-field__required" aria-hidden="true">*</span></span>
+            <textarea class="contacts-field__input contacts-field__input--area" name="message" required rows="5" placeholder="Разкажи накратко за проекта си…"></textarea>
           </label>
 
           <button type="submit" class="btn-primary contacts-form__submit">
-            Изпрати съобщението
+            Изпрати
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </button>
         </form>
@@ -90,3 +101,105 @@
     </div>
   </div>
 </section>
+
+{# Success modal — mirrors the consult-modal success step visually,
+   shown after the contacts form is submitted successfully. #}
+<div
+  id="contacts-success-modal"
+  class="consult-modal"
+  aria-hidden="true"
+  hidden
+>
+  <div class="consult-modal__backdrop" data-contacts-success-close></div>
+
+  <div
+    class="consult-modal__panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="contacts-success-title"
+  >
+    <button type="button" class="consult-modal__close" data-contacts-success-close aria-label="Затвори">&times;</button>
+
+    <div class="consult-modal__step consult-modal__step--success">
+      <div class="consult-modal__success-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+      </div>
+      <h2 id="contacts-success-title" class="consult-modal__title">Съобщението е изпратено</h2>
+      <p class="consult-modal__lead">Благодарим ви! Ще се свържем с вас скоро.</p>
+      <button type="button" class="btn-primary" data-contacts-success-close>Затвори</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var form = document.getElementById("contacts-form");
+  var modal = document.getElementById("contacts-success-modal");
+  if (!form || !modal) return;
+
+  var phone = form.getAttribute("data-phone") || "";
+  var lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("consult-modal-open");
+    if (lastFocus && typeof lastFocus.blur === "function") lastFocus.blur();
+  }
+  function closeModal() {
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("consult-modal-open");
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+  }
+
+  modal.querySelectorAll("[data-contacts-success-close]").forEach(function (el) {
+    el.addEventListener("click", closeModal);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modal.hidden) closeModal();
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitLabel = submitBtn ? submitBtn.innerHTML : null;
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Изпращане…";
+    }
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" }
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          form.reset();
+          openModal();
+        } else {
+          throw new Error(data.message || "submit failed");
+        }
+      })
+      .catch(function () {
+        alert(
+          "Възникна проблем при изпращането. Моля, опитайте отново или се обадете на " +
+            (phone || "нас")
+        );
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          if (submitLabel !== null) submitBtn.innerHTML = submitLabel;
+        }
+      });
+  });
+})();
+</script>

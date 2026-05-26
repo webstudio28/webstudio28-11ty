@@ -1,5 +1,11 @@
 <section class="pricing-tiers" aria-label="Видове уебсайтове">
   <div class="container-custom">
+
+    <div class="pricing-tiers__head">
+      <span class="eyebrow eyebrow--centered">Пакети</span>
+      <h2 class="section-title">Намерете <span>своя пакет</span></h2>
+    </div>
+
     <div class="pricing-tiers__grid">
       {% for tier in pricingTiers %}
       <article class="pricing-tier" data-tier="{{ tier.slug }}">

@@ -50,50 +50,40 @@
 }
 
 .pricing-quote {
-  padding: 0 0 var(--section-y);
+  position: relative;
+  isolation: isolate;
+  padding-top: var(--section-y);
+  padding-bottom: var(--section-y);
 }
 @media (min-width: 768px) {
-  .pricing-quote { padding-bottom: var(--section-y-md); }
+  .pricing-quote {
+    padding-top: var(--section-y-md);
+    padding-bottom: var(--section-y-md);
+  }
+}
+
+/* Full-bleed milky "stage" band — matches the projects/features/process
+   pattern. Replaces the previous glass panel so this section reads as a
+   chapter, not as a card sitting on the page. */
+.pricing-quote::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.68) 14%,
+      rgba(255, 255, 255, 0.72) 50%,
+      rgba(255, 255, 255, 0.68) 86%,
+      rgba(255, 255, 255, 0.3) 100%);
 }
 
 .pricing-quote__panel {
   position: relative;
   text-align: center;
-  padding: 2.5rem 1.5rem 2.25rem;
-  border-radius: var(--r-lg);
-  background:
-    radial-gradient(120% 90% at 50% 0%, rgba(241, 139, 93, 0.16) 0%, transparent 55%),
-    radial-gradient(120% 90% at 50% 100%, rgba(136, 138, 208, 0.16) 0%, transparent 55%),
-    var(--glass-bg-strong);
-  border: 1px solid var(--glass-border);
-  -webkit-backdrop-filter: var(--glass-blur);
-          backdrop-filter: var(--glass-blur);
-  box-shadow: var(--glass-shadow-lift);
-  overflow: hidden;
-}
-@media (min-width: 768px) {
-  .pricing-quote__panel {
-    padding: 3rem 2.5rem 2.75rem;
-  }
-}
-
-/* Slim accent stripe anchored at the top — quiet, premium "section anchor" */
-.pricing-quote__panel::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(220px, 55%);
-  height: 3px;
-  border-radius: 9999px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--accent) 35%,
-    var(--accent-deep) 65%,
-    transparent 100%
-  );
+  padding: 0;
 }
 
 .pricing-quote__title {
@@ -176,6 +166,16 @@
     padding-top: var(--section-y-md);
     padding-bottom: var(--section-y-md);
   }
+}
+
+.pricing-tiers__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 auto 2.5rem;
+  max-width: 42rem;
+  text-align: center;
 }
 
 /* Mobile: free horizontal scroll (no snap) — cards become a strip the user
