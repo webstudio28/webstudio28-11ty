@@ -132,7 +132,8 @@ footer.site-footer {
   color: var(--accent);
 }
 
-.site-footer__links a {
+.site-footer__links a,
+.site-footer__links .site-footer__link-static {
   display: inline-flex;
   align-items: flex-start;
   gap: 0.55rem;
@@ -146,8 +147,13 @@ footer.site-footer {
 .site-footer__links a:hover {
   color: #fff;
 }
+.site-footer__links .site-footer__link-static {
+  cursor: default;
+}
 .site-footer__links a svg,
-.site-footer__links a img {
+.site-footer__links a img,
+.site-footer__links .site-footer__link-static svg,
+.site-footer__links .site-footer__link-static img {
   width: 1.05rem;
   height: 1.05rem;
   flex-shrink: 0;
@@ -237,7 +243,8 @@ footer.site-footer {
     align-items: center;
   }
 
-  .site-footer__links a {
+  .site-footer__links a,
+  .site-footer__links .site-footer__link-static {
     justify-content: center;
     text-align: left;
   }

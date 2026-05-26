@@ -117,6 +117,12 @@
   outline: none;
   color: var(--accent-deep);
 }
+.contacts-line--static,
+.contacts-line--static:hover,
+.contacts-line--static:focus-visible {
+  cursor: default;
+  color: var(--ink);
+}
 @media (min-width: 720px) {
   .contacts-line {
     gap: 0.35rem;

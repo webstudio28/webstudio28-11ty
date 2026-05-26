@@ -285,6 +285,12 @@ button.vcard-lang:focus-visible {
   outline: none;
   color: var(--accent-deep, #d97548);
 }
+.vcard__line--static,
+.vcard__line--static:hover,
+.vcard__line--static:focus-visible {
+  cursor: default;
+  color: var(--ink, #112D4E);
+}
 
 .vcard__line-label {
   font-size: 0.72rem;
