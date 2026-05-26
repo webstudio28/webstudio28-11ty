@@ -212,15 +212,40 @@
        heavier body copy. The whole block reads like a printed
        case-study spread sitting under the gallery. ──────────────── */
 
+/* Full-bleed wash: the section's content stays inside the page
+   container, but a ::before pseudo-element extends the soft white
+   background edge-to-edge so the results read as their own quiet
+   horizontal band on the page. */
 .project-results {
-  max-width: 56rem;
-  margin: 2rem auto 2.25rem;
-  padding: 0;
+  position: relative;
+  isolation: isolate;
+  margin: 2.5rem 0;
+  padding: 2.5rem 0 2.75rem;
   text-align: center;
+}
+.project-results::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.45);
+  border-top: 1px solid rgba(17, 45, 78, 0.05);
+  border-bottom: 1px solid rgba(17, 45, 78, 0.05);
+  pointer-events: none;
 }
 @media (min-width: 768px) {
   .project-results {
-    margin: 3rem auto 3rem;
+    margin: 3.5rem 0;
+    padding: 4rem 0 4.25rem;
+  }
+}
+@media (min-width: 1100px) {
+  .project-results {
+    padding: 5rem 0 5.25rem;
   }
 }
 
@@ -243,68 +268,101 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid rgba(17, 45, 78, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .project-results__list {
+    gap: 1.25rem;
+  }
 }
 
-/* Centered row: the numeral + text pair sits as a centered unit, with
-   the numeral column a fixed width so ordinals line up vertically
-   across items. The text column has a sensible max-width so long
-   results don't stretch edge-to-edge. */
+/* Editorial card "каре" — transparent fill, dotted hairline border,
+   with a large italic gradient-clipped ordinal bleeding off the
+   top-right corner like a magazine chapter mark. Borrows the
+   ordinal treatment from the pricing tier cards so the language
+   feels consistent across the site. One card per row, centered. */
 .project-results__item {
-  display: grid;
-  grid-template-columns: auto minmax(0, 38rem);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  width: 100%;
+  max-width: 48rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: baseline;
-  gap: 1.1rem;
-  padding: 1.4rem 0.25rem;
-  border-bottom: 1px solid rgba(17, 45, 78, 0.12);
-  text-align: left;
+  gap: 0.85rem;
+  padding: 2.1rem 1.4rem 1.6rem;
+  border-radius: var(--r-lg);
+  background: transparent;
+  border: 1px dashed rgba(17, 45, 78, 0.22);
+  text-align: center;
+  transition: transform 320ms var(--ease-out),
+              border-color 320ms var(--ease-out);
+}
+.project-results__item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(17, 45, 78, 0.42);
 }
 @media (min-width: 768px) {
   .project-results__item {
-    gap: 2rem;
-    padding: 1.8rem 0.5rem;
-  }
-}
-@media (min-width: 960px) {
-  .project-results__item {
-    gap: 2.75rem;
-    padding: 2.1rem 0.5rem;
+    gap: 1rem;
+    padding: 2.4rem 2rem 1.85rem;
+    border-radius: var(--r-xl, 1.25rem);
   }
 }
 
-/* Large, muted, light-weight ordinal. Acts as a typographic anchor
-   without competing with the body copy. */
+/* Editorial ordinal — italic, ultra-bold, gradient-clipped, sat in
+   the top-right corner at low opacity. Mirrors `.pricing-tier__ordinal`. */
 .project-results__num {
-  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
-  font-weight: 300;
-  line-height: 1;
-  color: var(--ink-mute);
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.02em;
-  position: relative;
-  padding-right: 0.9rem;
-}
-.project-results__num::after {
-  content: "";
   position: absolute;
-  right: 0;
-  top: 0.15em;
-  width: 1px;
-  height: 1.1em;
-  background: rgba(17, 45, 78, 0.18);
+  top: 0.25rem;
+  right: 0.85rem;
+  font-size: clamp(3.5rem, 6vw, 5rem);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  opacity: 0.22;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: opacity 320ms var(--ease-out),
+              transform 320ms var(--ease-out);
+  transform-origin: top right;
 }
-@media (min-width: 768px) {
-  .project-results__num {
-    padding-right: 1.4rem;
-  }
+.project-results__item:hover .project-results__num {
+  opacity: 0.38;
+  transform: scale(1.04);
 }
 
 .project-results__body {
+  position: relative;
+  z-index: 1;
   min-width: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.85rem;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-results__item,
+  .project-results__num {
+    transition: none;
+  }
+  .project-results__item:hover { transform: none; }
+  .project-results__item:hover .project-results__num { transform: none; }
 }
 
 .project-results__text {
@@ -331,6 +389,7 @@
 .project-results__links {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 1.25rem;
   margin-top: 0.15rem;
 }

@@ -110,9 +110,16 @@
 
     </div>
 
+    <p class="project-detail__site-link-row">
+      <a href="{{ project.link }}" class="project-detail__site-link" target="_blank" rel="noopener noreferrer">
+        Посети сайта
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
+      </a>
+    </p>
+
     {% if project.results and project.results.length %}
     <section class="project-results" aria-label="Резултати от проекта">
-      <h2 class="project-results__title">Резултати</h2>
+      <h2 class="project-results__title">Постигнати резултати</h2>
       <ol class="project-results__list" role="list">
         {% for result in project.results %}
         {% set isObj = result.text is defined %}
@@ -138,13 +145,6 @@
       </ol>
     </section>
     {% endif %}
-
-    <p class="project-detail__site-link-row">
-      <a href="{{ project.link }}" class="project-detail__site-link" target="_blank" rel="noopener noreferrer">
-        Посети сайта
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
-      </a>
-    </p>
 
   </div>
 </div>
