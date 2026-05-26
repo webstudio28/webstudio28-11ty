@@ -206,231 +206,183 @@
   }
 }
 
-/* ── Project results — premium "what we achieved" panel that sits
-       between the project header and the gallery. Centered eyebrow +
-       title, then a grid of glass result cards each with an accent
-       check-mark and optional inline links. ──────────────────────────── */
+/* ── Project results — editorial case-study list, centered. No card,
+       no glass, no icons. A confident centered title, then hairline
+       rules between items with a large muted ordinal sitting beside
+       heavier body copy. The whole block reads like a printed
+       case-study spread sitting under the gallery. ──────────────── */
 
 .project-results {
-  position: relative;
-  max-width: 64rem;
-  margin: 0 auto 2rem;
-  padding: 1.6rem 1.1rem 1.7rem;
-  border-radius: var(--r-lg);
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  -webkit-backdrop-filter: var(--glass-blur);
-          backdrop-filter: var(--glass-blur);
-  box-shadow: var(--glass-shadow);
-  isolation: isolate;
-  overflow: hidden;
+  max-width: 56rem;
+  margin: 2rem auto 2.25rem;
+  padding: 0;
+  text-align: center;
 }
-
-/* Soft brand-tinted aurora glow sits behind everything — keeps the
-   panel from feeling flat and ties it to the page's overall gradient. */
-.project-results::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(80% 90% at 0% 0%, rgba(241, 139, 93, 0.16) 0%, transparent 60%),
-    radial-gradient(70% 90% at 100% 100%, rgba(136, 138, 208, 0.18) 0%, transparent 60%);
-  opacity: 0.85;
-}
-
 @media (min-width: 768px) {
   .project-results {
-    margin: 0 auto 3rem;
-    padding: 2.4rem 2.4rem 2.5rem;
-    border-radius: var(--r-xl);
-  }
-}
-
-.project-results__head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.55rem;
-  margin: 0 0 1.5rem;
-}
-@media (min-width: 768px) {
-  .project-results__head {
-    margin-bottom: 2rem;
+    margin: 3rem auto 3rem;
   }
 }
 
 .project-results__title {
-  margin: 0;
-  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
-  line-height: 1.15;
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.85rem, 3.6vw, 2.75rem);
+  line-height: 1.08;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--ink);
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .project-results__title {
+    margin-bottom: 2.25rem;
+  }
 }
 
-/* Auto-fit grid: 1 col on phones, 2 on tablets+ when there's room.
-   Single-item lists stay centered and narrow so they don't stretch. */
 .project-results__list {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.85rem;
-}
-@media (min-width: 720px) {
-  .project-results__list {
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    gap: 1.1rem;
-  }
+  border-top: 1px solid rgba(17, 45, 78, 0.12);
 }
 
-/* Odd-count safeguard: when the list has 3 items on a 2-col grid,
-   the last one stretches across both columns so it doesn't look
-   stranded in a half-row. */
-.project-results__list > .project-results__item:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-}
-/* Single-item lists stay centered & narrow rather than stretching wide. */
-.project-results__list > .project-results__item:only-child {
-  max-width: 36rem;
-  margin: 0 auto;
-}
-
+/* Centered row: the numeral + text pair sits as a centered unit, with
+   the numeral column a fixed width so ordinals line up vertically
+   across items. The text column has a sensible max-width so long
+   results don't stretch edge-to-edge. */
 .project-results__item {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  padding: 1rem 1.05rem;
-  border-radius: var(--r-md);
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 8px 22px -16px rgba(17, 45, 78, 0.28);
-  transition: transform 220ms var(--ease-out),
-              box-shadow 220ms var(--ease-out),
-              border-color 200ms ease;
-}
-.project-results__item:hover {
-  transform: translateY(-2px);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 14px 30px -16px rgba(17, 45, 78, 0.38);
-  border-color: #fff;
+  display: grid;
+  grid-template-columns: auto minmax(0, 38rem);
+  justify-content: center;
+  align-items: baseline;
+  gap: 1.1rem;
+  padding: 1.4rem 0.25rem;
+  border-bottom: 1px solid rgba(17, 45, 78, 0.12);
+  text-align: left;
 }
 @media (min-width: 768px) {
   .project-results__item {
-    padding: 1.15rem 1.25rem 1.2rem;
-    gap: 1rem;
+    gap: 2rem;
+    padding: 1.8rem 0.5rem;
+  }
+}
+@media (min-width: 960px) {
+  .project-results__item {
+    gap: 2.75rem;
+    padding: 2.1rem 0.5rem;
   }
 }
 
-/* Accent check-mark badge — gradient circle with a clean tick inside. */
-.project-results__marker {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 9999px;
-  color: #fff;
-  background: linear-gradient(140deg, var(--accent) 0%, var(--accent-deep) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.35) inset,
-    0 6px 14px -8px rgba(217, 117, 72, 0.55);
-  margin-top: 0.1rem;
+/* Large, muted, light-weight ordinal. Acts as a typographic anchor
+   without competing with the body copy. */
+.project-results__num {
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ink-mute);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-right: 0.9rem;
 }
-.project-results__marker svg {
-  width: 1.05rem;
-  height: 1.05rem;
-  display: block;
+.project-results__num::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0.15em;
+  width: 1px;
+  height: 1.1em;
+  background: rgba(17, 45, 78, 0.18);
 }
 @media (min-width: 768px) {
-  .project-results__marker {
-    width: 2.15rem;
-    height: 2.15rem;
-  }
-  .project-results__marker svg {
-    width: 1.15rem;
-    height: 1.15rem;
+  .project-results__num {
+    padding-right: 1.4rem;
   }
 }
 
 .project-results__body {
   min-width: 0;
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.85rem;
 }
 
 .project-results__text {
   margin: 0;
-  font-size: 0.98rem;
+  font-size: 1.0625rem;
   line-height: 1.55;
-  color: var(--text);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.005em;
 }
 @media (min-width: 768px) {
   .project-results__text {
-    font-size: 1.0125rem;
-    line-height: 1.6;
+    font-size: 1.15rem;
+    line-height: 1.55;
+  }
+}
+@media (min-width: 1100px) {
+  .project-results__text {
+    font-size: 1.2rem;
   }
 }
 
-/* Inline links (used by valyamatovska landing pages, future stat links). */
+/* Inline links — quiet underline-on-hover style with an arrow, not pills. */
 .project-results__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 1.25rem;
+  margin-top: 0.15rem;
 }
 
 .project-results__link {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 9999px;
-  background: rgba(17, 45, 78, 0.05);
-  border: 1px solid rgba(17, 45, 78, 0.12);
+  padding: 0;
+  background: none;
+  border: 0;
   color: var(--ink);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   text-decoration: none;
-  transition: background 180ms ease,
-              border-color 180ms ease,
-              color 180ms ease,
-              transform 180ms var(--ease-out);
+  position: relative;
+  transition: color 180ms ease;
+}
+.project-results__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 1.3em;
+  bottom: -0.2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transition: opacity 180ms ease, background-color 180ms ease;
 }
 .project-results__link:hover {
-  background: rgba(241, 139, 93, 0.12);
-  border-color: rgba(241, 139, 93, 0.45);
   color: var(--accent-deep);
-  transform: translateY(-1px);
+}
+.project-results__link:hover::after {
+  opacity: 1;
 }
 .project-results__link svg {
-  width: 0.85em;
-  height: 0.85em;
+  width: 0.95em;
+  height: 0.95em;
   color: var(--accent-deep);
-  transition: transform 180ms var(--ease-out);
+  transition: transform 200ms var(--ease-out);
 }
 .project-results__link:hover svg {
-  transform: translate(1px, -1px);
+  transform: translate(2px, -2px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-results__item,
-  .project-results__link {
+  .project-results__link,
+  .project-results__link svg {
     transition: none;
   }
-  .project-results__item:hover,
-  .project-results__link:hover {
+  .project-results__link:hover svg {
     transform: none;
   }
 }
@@ -497,7 +449,7 @@
   -webkit-appearance: none;
   aspect-ratio: 16 / 10;
   -webkit-tap-highlight-color: transparent;
-  transition: height 1050ms cubic-bezier(0.32, 0.72, 0.24, 1);
+  transition: height 1100ms cubic-bezier(0.45, 0, 0.25, 1);
 }
 @media (min-width: 768px) {
   .project-gallery__stage {
@@ -514,12 +466,8 @@
   outline-offset: 3px;
 }
 
-/* Slides transition with a soft directional horizontal slide. JS sets
-   --slide-x on the outgoing slide (its exit direction) and pre-positions
-   the incoming slide on the opposite side, so the two images cross-flow
-   gracefully rather than fading on top of each other.
-
-   Easing is a custom "premium ease-out" — slow finish, no snap. */
+/* Slides crossfade. No movement, no scale, no blur — a calm, gentle
+   dissolve on a slow ease-in-out so the eye relaxes into the change. */
 .project-gallery__slide {
   position: absolute;
   inset: 0;
@@ -527,32 +475,22 @@
   height: 100%;
   object-fit: contain;
   display: block;
-  opacity: var(--slide-o, 0);
-  transform: translate3d(var(--slide-x, 5%), 0, 0);
-  transition: opacity 900ms cubic-bezier(0.32, 0.72, 0.24, 1),
-              transform 1050ms cubic-bezier(0.32, 0.72, 0.24, 1);
+  opacity: 0;
+  transition: opacity 1100ms cubic-bezier(0.45, 0, 0.25, 1);
   pointer-events: none;
-  will-change: opacity, transform;
+  will-change: opacity;
 }
 .project-gallery__slide.is-active {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .project-gallery__slide {
-    transform: none;
-    transition: opacity 220ms ease;
-  }
-  .project-gallery__slide.is-active {
-    transform: none;
+    transition: opacity 200ms ease;
   }
   .project-gallery__stage {
     transition: none;
   }
-}
-.project-gallery__slide.is-active {
-  opacity: 1;
 }
 
 /* Tiny "zoom" affordance bottom-right of the stage. */

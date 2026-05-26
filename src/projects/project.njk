@@ -15,43 +15,6 @@
       <p class="project-detail__lead">{{ project.description }}</p>
     </header>
 
-    {% if project.results and project.results.length %}
-    <section class="project-results" aria-label="Резултати от проекта">
-      <div class="project-results__head">
-        <span class="eyebrow eyebrow--centered">Резултати</span>
-        <h2 class="project-results__title">Какво постигнахме</h2>
-      </div>
-
-      <ul class="project-results__list" role="list">
-        {% for result in project.results %}
-        {% set isObj = result.text is defined %}
-        {% set text = result.text if isObj else result %}
-        {% set links = result.links if isObj else null %}
-        <li class="project-results__item">
-          <span class="project-results__marker" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12.5 10 17.5 19 7"/>
-            </svg>
-          </span>
-          <div class="project-results__body">
-            <p class="project-results__text">{{ text }}</p>
-            {% if links and links.length %}
-            <div class="project-results__links">
-              {% for link in links %}
-              <a class="project-results__link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
-                <span>{{ link.label }}</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
-              </a>
-              {% endfor %}
-            </div>
-            {% endif %}
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-    </section>
-    {% endif %}
-
     <div class="project-gallery" data-gallery>
 
       <div class="project-gallery__viewport">
@@ -146,6 +109,35 @@
       </div>
 
     </div>
+
+    {% if project.results and project.results.length %}
+    <section class="project-results" aria-label="Резултати от проекта">
+      <h2 class="project-results__title">Резултати</h2>
+      <ol class="project-results__list" role="list">
+        {% for result in project.results %}
+        {% set isObj = result.text is defined %}
+        {% set text = result.text if isObj else result %}
+        {% set links = result.links if isObj else null %}
+        <li class="project-results__item">
+          <span class="project-results__num" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+          <div class="project-results__body">
+            <p class="project-results__text">{{ text }}</p>
+            {% if links and links.length %}
+            <div class="project-results__links">
+              {% for link in links %}
+              <a class="project-results__link" href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+                <span>{{ link.label }}</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
 
     <p class="project-detail__site-link-row">
       <a href="{{ project.link }}" class="project-detail__site-link" target="_blank" rel="noopener noreferrer">
@@ -262,63 +254,18 @@
     });
   });
 
-  // Directional slide: incoming enters from one side, outgoing exits the
-  // opposite side. dir = 1 → forward (incoming from right). dir = -1 →
-  // backward (incoming from left). When dir is omitted (thumb jumps), we
-  // pick the natural direction from the index delta.
-  function setActive(index, dir) {
-    var newIndex = ((index % slides.length) + slides.length) % slides.length;
-
-    if (typeof dir !== "number") {
-      var diff = newIndex - current;
-      if (slides.length > 2 && Math.abs(diff) > slides.length / 2) {
-        dir = diff > 0 ? -1 : 1; // shortest path across the wrap
-      } else {
-        dir = diff >= 0 ? 1 : -1;
-      }
-    }
-
-    if (newIndex === current) {
-      syncStageHeight();
-      return;
-    }
-
-    var startX = dir > 0 ? 5 : -5;   // incoming entry offset (%)
-    var exitX  = dir > 0 ? -5 : 5;   // outgoing exit offset (%)
-
-    var incoming = slides[newIndex];
-    var outgoing = slides[current];
-
-    // Snap incoming to its entry position (no transition), then re-enable
-    // transitions so adding .is-active animates it to centre.
-    incoming.style.transition = "none";
-    incoming.style.setProperty("--slide-x", startX + "%");
-    incoming.style.setProperty("--slide-o", "0");
-    void incoming.offsetWidth; // commit the starting state
-    incoming.style.transition = "";
-
-    // Outgoing transitions toward its exit target.
-    outgoing.style.setProperty("--slide-x", exitX + "%");
-    outgoing.style.setProperty("--slide-o", "0");
-
-    outgoing.classList.remove("is-active");
-    incoming.classList.add("is-active");
-
-    // Clear incoming inline vars so .is-active alone defines its rest state.
-    incoming.style.removeProperty("--slide-x");
-    incoming.style.removeProperty("--slide-o");
-
+  function setActive(index) {
+    current = ((index % slides.length) + slides.length) % slides.length;
+    slides.forEach(function (s, i) { s.classList.toggle("is-active", i === current); });
     thumbs.forEach(function (t, i) {
-      var on = i === newIndex;
+      var on = i === current;
       t.classList.toggle("is-active", on);
       t.setAttribute("aria-selected", on ? "true" : "false");
     });
-
-    current = newIndex;
     syncStageHeight();
   }
-  function next() { setActive(current + 1, 1); }
-  function prev() { setActive(current - 1, -1); }
+  function next() { setActive(current + 1); }
+  function prev() { setActive(current - 1); }
 
   if (prevBtn) prevBtn.addEventListener("click", prev);
   if (nextBtn) nextBtn.addEventListener("click", next);
