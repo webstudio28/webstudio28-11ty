@@ -31,8 +31,10 @@
 /* Mobile: 95vh panel, content centered, image → title → lead → buttons */
 @media (max-width: 959px) {
   .hero {
+    /* Use svh (small viewport height) so the hero does NOT resize as the
+       mobile address bar collapses/expands. dvh would recalc mid-scroll and
+       cause a visible jump in the hero and everything below it. */
     min-height: calc(95svh - var(--header-offset-mobile));
-    min-height: calc(95dvh - var(--header-offset-mobile));
     align-items: center;
     padding: 1.5rem 0 1rem;
   }
@@ -77,8 +79,8 @@
 
 @media (min-width: 960px) {
   .hero {
+    /* svh only — keep the hero size stable while scrolling (no dvh recompute). */
     min-height: calc(100svh - var(--header-offset));
-    min-height: calc(100dvh - var(--header-offset));
     padding: 0 0 2rem;
     align-items: center;
   }
