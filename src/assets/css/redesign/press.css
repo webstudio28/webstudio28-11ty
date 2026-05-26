@@ -5,11 +5,16 @@
 
 .press {
   position: relative;
-  padding-top: 3rem;
-  padding-bottom: 0;
+  padding-top: 1.5rem;
+  /* Match the projects section's top padding (eyebrow inset) so the spacing
+     below the media card mirrors the spacing above the projects eyebrow. */
+  padding-bottom: var(--section-y);
 }
 @media (min-width: 768px) {
-  .press { padding-top: 4.5rem; }
+  .press {
+    padding-top: 1.5rem;
+    padding-bottom: var(--section-y-md);
+  }
 }
 
 .press__card {

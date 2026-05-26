@@ -4,13 +4,11 @@
 
 footer.site-footer {
   width: 100%;
-  padding: var(--section-y) 0 0;
+  /* No top padding — the section above already provides its own
+     padding-bottom, so this footer sits directly under it. Halves the gap
+     between the last section and the footer on every page. */
+  padding: 0;
   margin-top: auto;
-}
-@media (min-width: 768px) {
-  footer.site-footer {
-    padding-top: var(--section-y-md);
-  }
 }
 
 .site-footer__surface {

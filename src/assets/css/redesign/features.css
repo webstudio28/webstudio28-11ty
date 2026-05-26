@@ -3,6 +3,8 @@
    ───────────────────────────────────────────────────────────── */
 
 .features {
+  position: relative;
+  isolation: isolate;
   padding-top: var(--section-y);
   padding-bottom: var(--section-y);
 }
@@ -11,6 +13,24 @@
     padding-top: var(--section-y-md);
     padding-bottom: var(--section-y-md);
   }
+}
+
+/* Full-bleed milky "stage" band — matches the projects band so the page
+   reads as a sequence of calm chapters. Soft feathered edges keep it from
+   looking like a hard panel. */
+.features::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.88) 14%,
+      rgba(255, 255, 255, 0.92) 50%,
+      rgba(255, 255, 255, 0.88) 86%,
+      rgba(255, 255, 255, 0.45) 100%);
 }
 
 .features__head {

@@ -416,12 +416,12 @@
 
 /* Pricing CTA */
 .pricing-cta {
-  padding-top: var(--section-y);
+  /* No top padding — section above already provides its own padding-bottom. */
+  padding-top: 0;
   padding-bottom: var(--section-y);
 }
 @media (min-width: 768px) {
   .pricing-cta {
-    padding-top: var(--section-y-md);
     padding-bottom: var(--section-y-md);
   }
 }

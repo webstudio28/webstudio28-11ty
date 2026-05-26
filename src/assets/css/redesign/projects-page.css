@@ -114,11 +114,11 @@
 
 /* Project detail */
 .project-detail {
-  padding: 1.5rem 0 var(--section-y);
+  padding: 1.5rem 0 0;
 }
 @media (min-width: 960px) {
   .project-detail {
-    padding: calc(var(--header-offset) + 0.6rem) 0 var(--section-y-md);
+    padding: calc(var(--header-offset) + 0.6rem) 0 0;
   }
 }
 

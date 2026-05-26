@@ -6,6 +6,7 @@
 
 .projects {
   position: relative;
+  isolation: isolate;
   padding-top: var(--section-y);
   padding-bottom: var(--section-y);
 }
@@ -14,6 +15,40 @@
     padding-top: var(--section-y-md);
     padding-bottom: var(--section-y-md);
   }
+}
+
+/* Full-bleed milky "stage" band — sets projects apart from the surrounding
+   sections without using a hard border. Fades softly into the page at the
+   top/bottom so it never reads as a flat rectangle. */
+.projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0.88) 14%,
+      rgba(255, 255, 255, 0.92) 50%,
+      rgba(255, 255, 255, 0.88) 86%,
+      rgba(255, 255, 255, 0.45) 100%);
+}
+
+/* Subtle hairlines mark the start/end of the band. They sit inside the fade
+   so they feel like part of the wash, not a divider drawn on top. */
+.projects::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent, rgba(17, 45, 78, 0.08) 18%, rgba(17, 45, 78, 0.08) 82%, transparent) top / 100% 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(17, 45, 78, 0.08) 18%, rgba(17, 45, 78, 0.08) 82%, transparent) bottom / 100% 1px no-repeat;
 }
 
 .projects__head {
@@ -34,6 +69,10 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.25rem;
+  /* Leaves room for each card's drop shadow so it doesn't blend into the
+     bottom fade of the band (and can't be clipped on mobile, where the
+     horizontal scroller forces overflow-y to clip too). */
+  padding-bottom: 1.75rem;
 }
 
 @media (max-width: 859px) {
@@ -49,7 +88,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     touch-action: pan-x pan-y;
-    padding: 0.5rem max(1rem, calc((100vw - 80rem) / 2 + 1rem)) 1.25rem;
+    padding: 0.5rem max(1rem, calc((100vw - 80rem) / 2 + 1rem)) 2.5rem;
     margin: 0 calc(max(1rem, (100vw - 80rem) / 2 + 1rem) * -1);
     scroll-padding-left: max(1rem, calc((100vw - 80rem) / 2 + 1rem));
     scroll-padding-right: max(1rem, calc((100vw - 80rem) / 2 + 1rem));

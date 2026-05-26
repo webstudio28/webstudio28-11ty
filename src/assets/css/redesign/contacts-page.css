@@ -52,11 +52,11 @@
 @media (min-width: 960px) {
   .contacts-channels__inner {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: stretch;
     column-gap: 5rem;
     row-gap: 0;
-    max-width: 62rem;
+    max-width: 100%;
   }
 }
 
